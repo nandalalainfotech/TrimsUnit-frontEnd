@@ -1,0 +1,437 @@
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+  $("#lovestory").click(function(){
+    $("#text").attr("value","500");
+  });
+});
+</script>
+
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Employee Details</legend>
+        <form [formGroup]="employeedetailsForm"(ngSubmit)="ondetailsClick($event, employeedetailsForm)"> 
+            <div class="row">
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" path="slNo" />
+                            <label path="empcode" for="empcode" cssClass="required">Employee Code</label>
+                            <input type="text" class="form-control" path="empcode" formControlName="empcode" />
+                            <div *ngIf="submitted && f.empcode.errors" class="invalid-feedback">
+                                <div *ngIf="f.empcode.errors.required">
+                                    Empcode is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="empname" for="empname" cssClass="required">Employee Name</label>
+                            <input type="text" class="form-control" path="empname" formControlName="empname" />
+                            <div *ngIf="submitted && f.empname.errors" class="invalid-feedback">
+                                <div *ngIf="f.empname.errors.required">
+                                    Empname is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="des" for="des" cssClass="required">Designation</label>
+                            <input type="text" class="form-control" path="des" formControlName="des" />
+                            <div *ngIf="submitted && f.des.errors" class="invalid-feedback">
+                                <div *ngIf="f.des.errors.required">
+                                    Designation is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="age" for="age" cssClass="required">Age</label>
+                            <input type="number" class="form-control" path="age" formControlName="age" />
+                            <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+                                <div *ngIf="f.age.errors.required">
+                                    Age is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="doj" for="doj" cssClass="required">Date-of-Joining</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="doj"  [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.doj.errors" class="invalid-feedback">
+                                        <div *ngIf="f.doj.errors.required">
+                                            Date-of-Joining is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="dob" for="dob" cssClass="required">DOB</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="dob"
+                                        yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dob.errors.required">
+                                            DOB is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="f-name" for="f-name" cssClass="required">Father Name</label>
+                                    <input type="text" class="form-control" path="f-name" formControlName="fname" />
+                                    <div *ngIf="submitted && f.fname.errors" class="invalid-feedback">
+                                        <div *ngIf="f.fname.errors.required">
+                                            Fathername is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="b-group" for="b-group" cssClass="required">Blood Group</label>
+                           
+                            <select value="--Select Blood Group--" class="form-control" path="b-group" formControlName="bgroup" name="bgroup" id="bgroup">
+                                <option value="" hidden>--Select Blood Group--</option>
+                                <option value="null" disabled selected>--Select Blood Group--</option>
+                                <option >A+</option>
+                                <option >A-</option>
+                                <option>B+</option>
+                                <option >B-</option>
+                                <option >AB+</option>
+                                <option >AB-</option>
+                                <option >O+</option>
+                                <option >O-</option>
+                              </select>
+                            <div *ngIf="submitted && f.bgroup.errors" class="invalid-feedback">
+                                <div *ngIf="f.bgroup.errors.required">
+                                    Blood Group is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="sex" for="status" cssClass="required">Gender</label><br>
+                                 <!-- <input type="radio" class="custom-control-input" formControlName="female"
+                                        id="defaultInline1" name="inlineDefaultRadiosExample" value="female" mdbInput> Female &nbsp;
+
+                                    <input type="radio" class="custom-control-input" formControlName="female" value="male"
+                                        id="defaultInline1" name="inlineDefaultRadiosExample" mdbInput> Male -->
+                                     
+                                     <div class="custom-control custom-radio">
+                                        <input id="male" type="radio" class="custom-control-input" value="male" name="male" formControlName="female">
+                          <label class="custom-control-label" for="male">Male</label>
+                        </div>
+            
+                        <div class="custom-control custom-radio">
+                          <input id="female" type="radio" class="custom-control-input" value="female" name="male" formControlName="female">
+                          <label class="custom-control-label" for="female">Female</label>
+                        </div>
+
+                                    <!-- <div *ngIf="submitted && f.female.errors" class="invalid-feedback">
+                                        <div *ngIf="f.female.errors.required">
+                                            Sex is Required
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                     <label path="status" for="sex" cssClass="required">Marital Status</label><br>
+                                    <!-- <input
+                                        onclick="document.getElementById('custom').disabled = false; document.getElementById('charstype').disabled = true;"
+                                        type="radio" name="type" checked="checked" value="married" formControlName="married"> Married
+                                    &nbsp;
+
+                                    <input
+                                        onclick="document.getElementById('custom').disabled = true; document.getElementById('charstype').disabled = false;"
+                                        type="radio" name="type" value="unmarried" formControlName="married">
+                                    Un-Married  -->
+
+                                    <div class="custom-control custom-radio">
+                                        <input id="married" type="radio" class="custom-control-input" value="Married" name="gender" formControlName="married">
+                                        <label class="custom-control-label">Married</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input id="married" type="radio" class="custom-control-input" value="Unmarried" name="gender" formControlName="married">
+                                        <label class="custom-control-label">Unmarried</label>
+                                    </div>
+            
+                                    <!-- <div class="custom-control custom-radio">
+                                        <input id="unmarried" type="radio" class="custom-control-input" value="unmarried" name="gender" formControlName="married">
+                                        <label class="custom-control-label">unmarried</label>
+                                    </div> -->
+
+
+                                    <!-- <div *ngIf="submitted && f.married.errors" class="invalid-feedback">
+                                        <div *ngIf="f.married.errors.required">
+                                            Marital Status is Required
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="child" for="child" cssClass="required">No Of Childrens</label>
+                                    <select class="form-control" name="child" formControlName="child"
+                                    [ngClass]="{'is-invalid': submitted && f.child.errors}">
+                                    <option value="" hidden>--Select the Children Details--</option>
+                                    <!-- <option value="null" disabled selected>--Select the Children Details --</option> -->
+                                    <option>Null</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <div *ngIf="submitted && f.child.errors" class="invalid-feedback">
+                                    <div *ngIf="f.child.errors.required">
+                                        Status is Required
+                                    </div>
+                                </div>
+                                    <!-- <input type="text"name="showtype_cost"  value="null" type="text" id="custom"class="form-control" path="child"
+                                        formControlName="child"> -->
+                                    <!-- <div *ngIf="submitted && f.child.errors" class="invalid-feedback">
+                                        <div *ngIf="f.child.errors.required">
+                                            No-of-child is Required
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="dep" for="dep" cssClass="required">No Of Dependants</label>
+                                    <input type="number" class="form-control" path="dep" formControlName="dep" />
+                                    <div *ngIf="submitted && f.dep.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dep.errors.required">
+                                            No-of-Dept is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="add1" for="add1" cssClass="required">Temporary Address</label>
+                                    <textarea id="add1" name="w3review" rows="2" cols="38"
+                                        formControlName="add1"></textarea>
+                                    <div *ngIf="submitted && f.add1.errors" class="invalid-feedback">
+                                        <div *ngIf="f.add1.errors.required">
+                                            Temp-Address is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="add2" for="add2" cssClass="required">Permanent Address</label>
+                                    <textarea id="add2" name="w3review" rows="2" cols="38"
+                                        formControlName="add2"></textarea>
+                                    <div *ngIf="submitted && f.add2.errors" class="invalid-feedback">
+                                        <div *ngIf="f.add2.errors.required">
+                                            Perm-Address is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="edu" for="edu" cssClass="required">Educational
+                                        Qualification</label><br>
+                                    <input type="text" class="form-control" path="edu" formControlName="edu" />
+                                    <div *ngIf="submitted && f.edu.errors" class="invalid-feedback">
+                                        <div *ngIf="f.edu.errors.required">
+                                            Qualfication is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="exp" for="exp" cssClass="required">Experience</label>
+                                    <input type="number" class="form-control" path="exp" formControlName="exp" />
+                                    <div *ngIf="submitted && f.exp.errors" class="invalid-feedback">
+                                        <div *ngIf="f.exp.errors.required">
+                                            Experience is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="det" for="det" cssClass="required">Previous Training Details</label>
+                                    <input type="det" class="form-control" path="det" formControlName="det" />
+                                    <div *ngIf="submitted && f.det.errors" class="invalid-feedback">
+                                        <div *ngIf="f.det.errors.required">
+                                            Tra-Details is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label>File Upload:</label>
+                        <input type="file" class="form-control" formControlName="filename" (change)="onFileSelected($event)" /><span>"File type should be Zip folder"</span>
+                        <div *ngIf="submitted && f.filename.errors" class="invalid-feedback">
+                            <div *ngIf="f.filename.errors.required">
+                                File Upload is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+  
+</div>
+<fieldset class="scheduler-border">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
+        <legend class="scheduler-border">Employee Details</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+            [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>

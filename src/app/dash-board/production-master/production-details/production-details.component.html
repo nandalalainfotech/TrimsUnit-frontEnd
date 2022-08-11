@@ -1,0 +1,138 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Production Details</legend>
+        <div class="formData">
+            <form [formGroup]="ProdForm" (ngSubmit)="onProdClick($event, ProdForm)">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="proddno" for="series" cssClass="required" required="true">Product
+                                No</label>
+                            <input class="form-control" name="proddno" formControlName="proddno" [ngClass]="{'is-invalid': submitted && f.proddno.errors }" />
+                                <div *ngIf="submitted && f.proddno.errors" class="invalid-feedback">
+                                    <div *ngIf="f.proddno.errors.required">
+                                        Product No is Required
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="proddname" for="series" cssClass="required" required="true">Product
+                                Name</label>
+                            <input class="form-control" name="proddname" formControlName="proddname" [ngClass]="{
+                                'is-invalid': submitted && f.proddname.errors
+                            }" />
+                            <div *ngIf="submitted && f.proddname.errors" class="invalid-feedback">
+                                <div *ngIf="f.proddname.errors.required">
+                                    Product Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="catno" for="series" cssClass="required" required="true">Reference
+                                Number</label>
+                            <input class="form-control" name="catno" formControlName="catno" [ngClass]="{
+                                'is-invalid': submitted && f.catno.errors
+                            }" />
+                            <!-- <div *ngIf="submitted && f.catno.errors" class="invalid-feedback">
+                                <div *ngIf="f.catno.errors.required">
+                                    Reference is Required
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="drawingno" for="series" cssClass="required" required="true">Drawing
+                                Number</label>
+                            <input class="form-control" name="drawingno" formControlName="drawingno" [ngClass]="{
+                                'is-invalid': submitted && f.drawingno.errors
+                            }" />
+                            <div *ngIf="submitted && f.drawingno.errors" class="invalid-feedback">
+                                <div *ngIf="f.drawingno.errors.required">
+                                    Drawing Number is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="cusdetails" for="series" cssClass="required" required="true">Customer
+                                Details</label>
+                            <input class="form-control" name="cusdetails" formControlName="cusdetails" [ngClass]="{
+                                'is-invalid': submitted && f.cusdetails.errors
+                            }" />
+                            <div *ngIf="submitted && f.cusdetails.errors" class="invalid-feedback">
+                                <div *ngIf="f.cusdetails.errors.required">
+                                    Customer Details is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="remarks" for="series" cssClass="required" required="true">Remarks</label>
+                            <input class="form-control" name="remarks" formControlName="remarks" [ngClass]="{
+                                'is-invalid': submitted && f.remarks.errors
+                            }" />
+                            <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                                <div *ngIf="f.remarks.errors.required">
+                                    Remarks is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+
+<fieldset class="scheduler-border">
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <legend class="scheduler-border">List Of Products</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px"
+        [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

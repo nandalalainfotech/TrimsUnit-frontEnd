@@ -1,0 +1,61 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">User Role - Add / Edit</legend>
+    <div class="formData">
+        <form [formGroup]="userRoleForm" (ngSubmit)="onUserRoleFormClick($event, userRoleForm)">
+            <div class="col-xs-2 col-sm-6 col-md-12  ">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 ">
+                        <div class="form-group">
+                            <label for="roleUserName">User Name </label>
+                            <input path="id" type="hidden" />
+                            <input path="loginid" type="hidden" />
+                            <input path="username" type="hidden" />
+                            <select formControlName="username" class="form-control" name="usernamelist" id="usernamelist" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                                <option value="null"> - Select Username - </option>
+                                <option *ngFor="let userName of user001mbs" [value]="userName.personId">
+                                    {{userName.username}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">User Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 ">
+                        <div class="form-group">
+                            <label for="roleID">Role Name</label>
+                            <input path="rolename" type="hidden" />
+                            <select formControlName="rolename" class="form-control" name="rolename" id="rolename" [ngClass]="{ 'is-invalid': submitted && f.rolename.errors }">
+                                <option value="null"> - Select the role - </option>
+                                <option *ngFor="let role of roles" [value]="role.id">
+                                    {{role.rolename}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.rolename.errors" class="invalid-feedback">
+                                <div *ngIf="f.rolename.errors.required">Role Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Registered Details</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [enableFilter]="true" [enableSorting]="true" [pagination]="true" [showToolPanel]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

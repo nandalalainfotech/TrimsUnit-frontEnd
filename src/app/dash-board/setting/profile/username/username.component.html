@@ -1,0 +1,34 @@
+<div class=" userName panel panel-infos">
+    <div class="panel-body">
+        <form [formGroup]="userNameForm" (ngSubmit)="onUserFormClick()">
+            <div class="row">
+                <div class="form-group col-sm-8">
+                    <label path="username" for="username">UserName</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input class="form-control" path="username" formControlName="username" readonly="true" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-8">
+                    <label path="newusername" for="newusername">Enter New UserName</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input class="form-control" id="newusername" path="newusername" formControlName="newusername" [ngClass]="{ 'is-invalid': submitted && f.newusername.errors }" />
+                        <div *ngIf="submitted && f.newusername.errors" class="invalid-feedback">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

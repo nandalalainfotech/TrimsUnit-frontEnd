@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="42px" viewBox="0 0 27 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>lock-event</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="lock-event" transform="translate(-9.000000, -1.000000)">
+            <rect id="Rectangle" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="44" height="44"></rect>
+            <g id="Group" transform="translate(9.000000, 1.000000)" fill-rule="nonzero" fill="#000000">
+                <path d="M7.63414635,9.609375 C7.63414635,5.86153124 10.4898244,2.81250001 14,2.81250001 C17.5101756,2.81250001 20.3658536,5.86153124 20.3658536,9.609375 L20.3658536,15 L23,15 L23,9.609375 C23,4.31071876 18.9626439,0 14,0 C9.0373561,0 5,4.31071876 5,9.609375 L5,15 L7.63414635,15 L7.63414635,9.609375 Z" id="Shape"></path>
+                <path d="M0,17 L0,42 L27,42 L27,17 L0,17 Z M14.7857143,30.2194642 L14.7857143,35.0013394 L12.2142858,35.0013394 L12.2142858,30.2194642 C11.2008,29.7178572 10.5,28.6421428 10.5,27.3956249 C10.5,25.6697321 11.8431429,24.270625 13.5,24.270625 C15.1568572,24.270625 16.5000001,25.6697321 16.5000001,27.3956249 C16.5000001,28.6421428 15.7992,29.7179464 14.7857143,30.2194642 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

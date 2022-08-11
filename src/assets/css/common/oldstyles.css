@@ -1,0 +1,567 @@
+/* @import 'https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700,800'; */
+
+html, body{
+	width: 100%;
+	height: 100%;
+	font-family: 'Raleway', sans-serif !important;
+}
+
+/*------------------------------BODY PART---------------------------*/
+
+
+
+/*    ----------------HEADER PART---------------------------*/
+header {
+	background: #286090;
+	padding:5px 0;
+	color: white;
+	position: fixed !important;
+	top: 0;
+	z-index: 999;
+}
+header .header-container h2 {
+	font-size: 25px;
+	margin: 10px 0;	
+}
+/*Override bootstrap header dropdown*/
+header .header-container .setting-menu-list{
+	margin: 0;
+}
+header .header-container .setting-menu-list>li{
+	display:inline-block;
+	vertical-align: middle;
+	padding: 0 8px;
+	margin: 14px 0;
+}
+header .header-container .setting-menu-list li i{
+	font-size: 18px;
+	cursor: pointer;
+}
+header .header-container .setting-menu-list li .dropdown,
+header .header-container .dropdown .btn-default, 
+header .header-container .dropdown .btn-default:hover,
+header .header-container .dropdown .btn-default:active
+header .header-container .dropdown .btn-default:active:focus{
+	background: transparent;
+    border: none;
+    color: white;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+header .header-container .dropdown .dropdown-menu{
+	top: 30px;
+	right: -3px;
+    border-radius: 0;
+}
+header .header-container .dropdown .dropdown-menu li{
+	font-size: 13px;
+}
+header .header-container .dropdown .dropdown-menu::before{
+	content: '';
+	position: absolute;
+	top: -20px;
+	right: 0;
+	height: 0;
+    width: 0;
+    border-left: 10px solid white;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+	/* Safari & Chrome*/
+	-webkit-transform: rotate(-90deg);	
+	/* Firefox */
+	-moz-transform: rotate(-90deg);	
+	/* IE */
+	-ms-transform: rotate(-90deg);	
+	/* Opera */
+	-o-transform: rotate(-90deg);	
+	/* Internet Explorer */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+.color {
+	color: #fff;
+}
+
+/*    ----------------Sidebar Navigation START---------------------------*/
+.side-menu {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 58px;
+  height: 100%;
+  background-color: #f8f8f8;
+  border-right: 1px solid #e7e7e7;
+  font-size: 12px;
+}
+.side-menu {
+  padding: 0 0 75px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.side-menu .navbar-default{
+	border: none;
+	border-bottom: 1px solid rgb(231, 231, 231)
+}
+.side-menu .navbar-header {
+  width: 100%;
+  border-bottom: 1px solid #e7e7e7;
+}
+.side-menu .navbar-nav .active a {
+  background-color: white;
+  margin-right: -1px;
+  color: #286090;
+  border-right: 5px solid #286090;
+}
+.side-menu .navbar-nav li {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #e7e7e7;
+}
+.side-menu .navbar-nav li i{
+	padding-right: 5px;
+}
+.side-menu .navbar{
+	border-radius: inherit;
+}
+.side-menu .navbar-nav li:last-child{
+	border-bottom: none;
+}
+.side-menu .navbar-nav li a {
+  padding: 8px 15px;
+}
+.side-menu .navbar-nav li a .glyphicon {
+  padding-right: 10px;
+}
+.side-menu #dropdown {
+  border: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+.side-menu #dropdown .caret {
+  float: right;
+  margin: 9px 5px 0;
+}
+.side-menu #dropdown .indicator {
+  float: right;
+}
+.side-menu #dropdown > a {
+  border-bottom: 1px solid #e7e7e7;
+}
+.side-menu #dropdown .panel-body {
+  padding: 0;
+  background-color: #f3f3f3;
+}
+.side-menu #dropdown .panel-body .navbar-nav {
+  width: 100%;
+}
+.side-menu #dropdown .panel-body .navbar-nav li {
+    padding-left: 43px;
+    border-bottom: 1px solid #e7e7e7;
+    line-height: 2.5;
+    font-size: 13px;  
+}
+.side-menu #dropdown .panel-body .navbar-nav li>a{
+	padding: 0;
+	display: inline-block;
+    line-height: 2.5;
+}
+.navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+	color: #286090;
+	background: white;
+}
+.side-menu #dropdown .panel-body .navbar-nav li:before{
+	content: "\f105";
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	padding-right: 9px;
+}
+.side-menu #dropdown .panel-body .navbar-nav li:last-child {
+  border-bottom: none;
+}
+.side-menu #dropdown .panel-body .panel > a {
+  margin-left: -20px;
+  padding-left: 35px;
+}
+.side-menu #dropdown .panel-body .panel-body {
+  margin-left: -15px;
+}
+.side-menu #dropdown .panel-body .panel-body li {
+  padding-left: 30px;
+}
+.side-menu #dropdown .panel-body .panel-body li:last-child {
+  border-bottom: 1px solid #e7e7e7;
+}
+.side-menu #search-trigger {
+  background-color: #f3f3f3;
+  border: 0;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px 18px;
+}
+.side-menu .brand-name-wrapper {
+  min-height: 50px;
+}
+.side-menu .brand-name-wrapper .navbar-brand {
+  display: block;
+}
+.side-menu #search {
+  position: relative;
+  z-index: 1000;
+}
+.side-menu #search .panel-body {
+  padding: 0;
+}
+.side-menu #search .panel-body .navbar-form {
+  padding: 0;
+  padding-right: 50px;
+  width: 100%;
+  margin: 0;
+  position: relative;
+  border-top: 1px solid #e7e7e7;
+}
+.side-menu #search .panel-body .navbar-form .form-group {
+  width: 100%;
+  position: relative;
+}
+.side-menu #search .panel-body .navbar-form input {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  height: 50px;
+}
+.side-menu #search .panel-body .navbar-form .btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: #f3f3f3;
+  padding: 15px 18px;
+}
+
+/* Login */
+
+/*Login style START*/
+.loginWrapper {
+    position: relative;
+    height: 100%;
+}
+.loginWrapper form{
+	height: inherit;
+}
+.loginContainer {
+    display: table;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    height: 300px;
+    border-radius: 5px;
+    padding: 20px;
+    -moz-box-shadow: 0 0 35px 1px rgba(0, 0, 0, 0.28);
+    -webkit-box-shadow: 0 0 35px 1px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 0 35px 1px rgba(0, 0, 0, 0.28);
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#bac4cd+0,ffffff+51,bac4cd+100 */
+    background: #bac4cd;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #bac4cd 0%, #ffffff 51%, #bac4cd 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #bac4cd 0%, #ffffff 51%, #bac4cd 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #bac4cd 0%, #ffffff 51%, #bac4cd 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#bac4cd', endColorstr='#bac4cd', GradientType=0);
+    /* IE6-9 */
+}
+
+.loginContainer .textType .logout {
+	color: #31708f ;
+    background-color: #d9edf7;
+    padding: 5px 8px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #c5d9e2;
+    text-shadow: 1px 1px 1px white;	
+} 
+
+.loginContainer .positionCenter {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.loginContainer h1 {
+    color: #263e6c;
+    font-weight: 500;
+    text-align: left;
+    margin-top: 8%;
+    line-height: 1.3;
+}
+
+.loginContainer h1 span {
+    font-size: 0.6em;
+    font-weight: 300;
+}
+
+.loginContainer .textType {
+    background: #F7F9FA;
+    padding: 10px 10px;
+    border: 1px solid #949494;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.loginContainer .textType strong {
+    color: #330066;
+    font-weight: 500;
+}
+
+.loginContainer .textType .submit {
+    display: inline-block;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.loginContainer .textType .submit .btn {
+    font-size: 12px;
+}
+
+.loginContainer .textType .login-data {
+    padding: 10px 0 0 0;
+}
+
+.loginContainer .textType .invalid {
+    color: red;
+    background: #f2dede;
+    padding: 5px 8px;
+    text-shadow: 1px 1px 1px white;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #E6D1D1;
+}
+
+.loginContainer .textType .login-data label {
+    font-weight: 400;
+    color: #828282;
+    /*width: 25%;*/
+}
+
+.loginContainer .textType .login-data input {
+    /*width: 72%;*/
+    border: 1px solid #ccc;
+}
+/*Login style STOP*/
+
+/*------------------------------ Body Section styles ------------------------------*/
+.container-fluid {
+	width: inherit;
+	min-height: inherit;
+	padding: 0;	
+}
+.dataView {
+	position: relative;
+	top: 58px;
+	margin-left: 25%;
+}
+/*------------------------------ FOOTER ------------------------------*/
+
+#footer {
+	display: none;
+	color: #456f7f;
+	line-height: 20px;
+	width: 940px;
+	margin: 0 auto;
+	padding: 20px 10px;
+}
+
+#footer ul.contacts {
+	float: left;
+	font-size: 12px;
+	list-style: none;
+	width: 300px;
+	margin: 0;
+	padding: 0 0 10px;
+}
+#footer ul.contacts h3 {
+	font-size: 14px;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+}
+#footer ul.contacts li span {
+	float: left;
+	width: 50px;
+}
+#footer ul.contacts li p {
+	margin: 0 0 0 50px;
+}
+#connect {
+	float: left;
+	list-style: none;
+	width: 140px;
+	margin: 0;
+	padding: 0;
+}
+#connect h3 {
+	font-size: 14px;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+}
+#connect li {
+	padding: 0 0 5px;
+}
+#connect li a {
+	color: #456f7f;
+	font-size: 15px;
+	text-decoration: none;
+}
+#newsletter {
+	float: left;
+	width: 500px;
+	padding: 0 0 20px;
+}
+#newsletter p {
+	font-size: 12px;
+	margin: 0;
+}
+#newsletter p b {
+	display: block;
+	font-weight: 800;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+}
+#newsletter form {
+	margin: 4px 0 16px;
+}
+#newsletter .txtfield {
+	background: url(../images/input.gif) no-repeat;
+	color: #9c9c9c;
+	height: 25px;
+	line-height: 25px;
+	width: 200px;
+	border: 0;
+	margin: 0 6px 0 0;
+	padding: 0 10px;
+}
+#newsletter .button {
+	background: url(../images/button-check.gif) no-repeat;
+	cursor: pointer;
+	height: 25px;
+	width: 25px;
+	border: 0;
+	padding: 0;
+}
+#footer span.footnote {
+	clear: both;
+	display: block;
+	font-size: 12px;
+	margin: 40px 0 0;
+	text-align: center;
+}
+/*  add box */
+#adbox .footer {
+	height: 46px;
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+}
+#adbox div.footer ul {
+	background-color: #dcdcdc;
+	display: inline-block;
+	width: 960px;
+	list-style: none;
+	margin: 0 auto;
+	border-radius: 3px;
+	padding: 0;
+	position: absolute;
+	bottom: -80px;
+}
+#adbox div.footer ul li {
+	float: left;
+	width: 280px;
+	padding: 20px 20px 18px;
+}
+#adbox div.footer ul li img {
+	float: left;
+	margin-right: 10px;
+}
+#adbox div.footer ul li p {
+	color: #363636;
+	font-size: 14px;
+	height: 88px;
+	line-height: 20px;
+	margin: 0;
+}
+#adbox div.footer ul li p a {
+	color: #010101;
+	font-weight: bold;
+	text-decoration: none;
+}
+#adbox div.footer ul li.selected {
+	background-color: #e9f1f4;
+	border-radius: 3px;
+}
+#adbox div.footer ul li.selected p, #adbox div.footer ul li.selected p a {
+	color: #5c6164;
+}
+#adbox div.footer span.bottom-shadow {
+	background: url(../images/bottom-shadow.gif) no-repeat left top;
+	display: block;
+	height: 20px;
+	width: 960px;
+	position: absolute;
+	bottom: -100px;
+}
+
+/*Field Set Design*/
+fieldset.scheduler-border {
+    border: 1px solid #d9d9d9 !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    /* -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000; */
+}
+
+legend.scheduler-border {
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+} 
+
+.error{
+    color: 	#FF0000;
+}
+
+.required:after {
+	content:"*"; 
+	color: #e32;
+	position: absolute;
+	font-size: 20px;
+}
+
+table th,td {
+    white-space: nowrap;
+} 
+
+.msg {
+	padding: 5px 8px;
+	text-shadow: 1px 1px 1px white;
+	margin-bottom: 10px;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: 1px solid #bce8f1;
+}

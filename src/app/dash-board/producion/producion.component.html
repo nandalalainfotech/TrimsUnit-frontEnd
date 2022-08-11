@@ -1,0 +1,16 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="./app-prod-plan" routerLinkActive #prodplanTab="routerLinkActive" [active]="prodplanTab.isActive">Prod Plan </a>
+    <a mat-tab-link routerLink="./app-m-setting" routerLinkActive #msettingTab="routerLinkActive" [active]="msettingTab.isActive">4M Setting</a>
+    <a mat-tab-link routerLink="./app-prod-log" routerLinkActive #prodlogTab="routerLinkActive" [active]="prodlogTab.isActive">Prod Log</a>
+    <a mat-tab-link routerLink="./app-purchase-order" routerLinkActive #purchaseOrderTab="routerLinkActive" [active]="purchaseOrderTab.isActive">Rework</a>
+    <a mat-tab-link routerLink="./app-sales-order" routerLinkActive #salesOrderTab="routerLinkActive" [active]="salesOrderTab.isActive">RM Scrap</a>
+    <a mat-tab-link routerLink="./app-payment" routerLinkActive #paymentTab="routerLinkActive" [active]="paymentTab.isActive">Part Rejection Scrap</a>
+    <a mat-tab-link routerLink="./app-prod-plan" routerLinkActive #prodplanTab="routerLinkActive" [active]="prodplanTab.isActive">Prod Actual</a>
+    <a mat-tab-link routerLink="./app-prod-plan" routerLinkActive #prodplanTab="routerLinkActive" [active]="prodplanTab.isActive">SFG </a>
+    <a mat-tab-link routerLink="./app-prod-plan" routerLinkActive #prodplanTab="routerLinkActive" [active]="prodplanTab.isActive">FG </a>
+</nav>
+
+<router-outlet></router-outlet>

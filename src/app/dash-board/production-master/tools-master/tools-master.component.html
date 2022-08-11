@@ -1,0 +1,147 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Tools Details</legend>
+        <div class="formData">
+            <form [formGroup]="ToolForm" (ngSubmit)="ontoolClick($event, ToolForm)">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" path="slNo" />
+                            <label path="pdno" for="series" cssClass="required" required="true">Product
+                                No</label>
+                            <input class="form-control" name="pdno" formControlName="pdno" [ngClass]="{
+                                'is-invalid': submitted && f.pdno.errors
+                            }" />
+                            <div *ngIf="submitted && f.pdno.errors" class="invalid-feedback">
+                                <div *ngIf="f.pdno.errors.required">
+                                    Product No is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" path="slNo" />
+                            <label path="fix1" for="series" cssClass="required" required="true">Fixture
+                                1</label>
+                            <input class="form-control" name="fix1" formControlName="fix1" [ngClass]="{
+                                'is-invalid': submitted && f.pdno.errors
+                            }" />
+                            <div *ngIf="submitted && f.fix1.errors" class="invalid-feedback">
+                                <div *ngIf="f.fix1.errors.required">
+                                    Fixture 1 is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" path="slNo" />
+                            <label path="fix2" for="series" cssClass="required" required="true">Fixture
+                                2</label>
+                            <input class="form-control" name="fix2" formControlName="fix2" [ngClass]="{
+                                'is-invalid': submitted && f.pdno.errors
+                            }" />
+                            <div *ngIf="submitted && f.fix2.errors" class="invalid-feedback">
+                                <div *ngIf="f.fix2.errors.required">
+                                    Fixture 2 is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                    
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4">
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" path="slNo" />
+                                <label path="fix3" for="series" cssClass="required" required="true">Fixture
+                                    3</label>
+                                <input class="form-control" name="fix3" formControlName="fix3" [ngClass]="{
+                                    'is-invalid': submitted && f.pdno.errors
+                                }" />
+                                <div *ngIf="submitted && f.fix3.errors" class="invalid-feedback">
+                                    <div *ngIf="f.fix3.errors.required">
+                                        Fixture 3 is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" path="slNo" />
+                                <label path="fix4" for="series" cssClass="required" required="true">Fixture
+                                    4</label>
+                                <input class="form-control" name="fix4" formControlName="fix4" [ngClass]="{
+                                    'is-invalid': submitted && f.pdno.errors
+                                }" />
+                                <div *ngIf="submitted && f.fix4.errors" class="invalid-feedback">
+                                    <div *ngIf="f.fix4.errors.required">
+                                        Fixture 4 is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" path="slNo" />
+                                <label path="fix5" for="series" cssClass="required" required="true">Fixture
+                                    5</label>
+                                <input class="form-control" name="fix5" formControlName="fix5" [ngClass]="{
+                                    'is-invalid': submitted && f.pdno.errors
+                                }" />
+                                <div *ngIf="submitted && f.fix5.errors" class="invalid-feedback">
+                                    <div *ngIf="f.fix5.errors.required">
+                                        Fixture 5 is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+
+<fieldset class="scheduler-border">
+
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <legend class="scheduler-border">List Of Tools</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px" [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>
+

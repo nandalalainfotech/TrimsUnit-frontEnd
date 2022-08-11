@@ -1,0 +1,178 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Child Part Details</legend>
+        <div class="formData">
+            <form [formGroup]="childPartForm" (ngSubmit)="onchildPartClick($event, childPartForm)">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="cpartno" for="series" cssClass="required" required="true">C Part Number</label>
+                            <input class="form-control" name="cpartno" formControlName="cpartno" [ngClass]="{'is-invalid': submitted && f.cpartno.errors }"  readonly/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="cpartname" for="series" cssClass="required" required="true">Child Part Name</label>
+                            <input class="form-control" name="cpartname" formControlName="cpartname" [ngClass]="{
+                                'is-invalid': submitted && f.cpartname.errors
+                            }" />
+                            <div *ngIf="submitted && f.cpartname.errors" class="invalid-feedback">
+                                <div *ngIf="f.cpartname.errors.required">
+                                    Child Part Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="splan" for="series" cssClass="required" required="true">Sampling Plan</label>
+                            <input class="form-control" name="splan" formControlName="splan" [ngClass]="{
+                                'is-invalid': submitted && f.splan.errors
+                            }" />
+                            <div *ngIf="submitted && f.splan.errors" class="invalid-feedback">
+                                <div *ngIf="f.splan.errors.required">
+                                    Sampling Plan is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="descrip" for="series" cssClass="required" required="true">Item Description</label>
+                            <input class="form-control" formControlName="descrip" [ngClass]="{
+                                'is-invalid': submitted && f.descrip.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.descrip.errors" class="invalid-feedback">
+                                <div *ngIf="f.descrip.errors.required">
+                                    Item Description is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" path="slNo" /> 
+                                <label path="uom" for="uom" cssClass="required">UOM</label>
+                                <select type="uom" class="form-control" path="uom" formControlName="uom" [ngClass]="{'is-invalid': submitted && f.uom.errors}">
+                                    <option value="" hidden> - Select the Uom- </option>
+                                    <option value="null"> - Select the Uom - </option>
+                                    <option >Kgs</option>
+                                    <option >Ltrs</option>
+                                    <option>No's</option>
+                                    <option>Mtrs</option>
+                                    <option>Box</option>
+                                </select>
+                                <div *ngIf="submitted && f.uom.errors" class="invalid-feedback">
+                                    <div *ngIf="f.uom.errors.required">
+                                        uom Description is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="qunty" for="series" cssClass="required" required="true">Quantity</label>
+                            <input class="form-control" formControlName="qunty" [ngClass]="{
+                                'is-invalid': submitted && f.qunty.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.qunty.errors" class="invalid-feedback">
+                                <div *ngIf="f.qunty.errors.required">
+                                    Quantity is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="gst" for="series" cssClass="required" required="true">GST</label>
+                            <input class="form-control" formControlName="gst" [ngClass]="{
+                                'is-invalid': submitted && f.gst.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.gst.errors" class="invalid-feedback">
+                                <div *ngIf="f.gst.errors.required">
+                                    gst is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="unitamount" for="series" cssClass="required" required="true">Unit Rate</label>
+                            <input class="form-control" formControlName="unitamount" [ngClass]="{
+                                'is-invalid': submitted && f.unitamount.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.unitamount.errors" class="invalid-feedback">
+                                <div *ngIf="f.unitamount.errors.required">
+                                    unitamount is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="hsn" for="series" cssClass="required" required="true">HSN/SAC</label>
+                            <input class="form-control" formControlName="hsn" [ngClass]="{
+                                'is-invalid': submitted && f.hsn.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.hsn.errors" class="invalid-feedback">
+                                <div *ngIf="f.hsn.errors.required">
+                                    HSN/SAC is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+
+<fieldset class="scheduler-border">
+
+    <!-- <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div> -->
+
+    <legend class="scheduler-border">List Of Products</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px"
+        [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

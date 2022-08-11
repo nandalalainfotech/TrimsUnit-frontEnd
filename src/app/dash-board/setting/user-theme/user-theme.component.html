@@ -1,0 +1,36 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+<div class=" userName panel panel-infos">
+    <div class="panel-body">
+        <form [formGroup]="userThemeForm" (ngSubmit)="onChangeColorClick(userThemeForm)">
+            <div class="row">
+                <div class="form-group col-sm-8">
+                    <label path="username" for="username">UserName</label>
+                    <div class="input-group">
+                        <input class="form-control" path="username" formControlName="username" readonly="true" [value]="username" /> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-8">
+                    <label path="theme" for="theme">User Theme</label>
+                    <div class="input-group">
+                        <input class="form-control" readonly="true" id="theme" formControlName="theme" path="theme" [value]="themes" [style.background]="themes" [style.font-size.px]="20" [ngClass]="{ 'is-invalid': submitted && f.theme.errors }" />
+                        <span class="input-group-addon"><i class="fa fa-paint-brush" aria-hidden="true" [(colorPicker)]="themes" [cpOKButton]="true" [cpOKButtonClass]="' btn-primary btn-xs button'" [cpOKButtonText]="'Apply'"  [cpCancelButton]="true" [cpCancelButtonClass]="'btn-primary btn-xs'" 
+                             [cpSaveClickOutside]="false" [cpCloseClickOutside]="false" [cpPositionRelativeToArrow]="true"  [cpDisableInput]="false"  [cpOutputFormat]="'hex'" [cpAlphaChannel]="'disabled'"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-group">
+                        <input type="checkbox" name="default" (click)="defaults($event)">
+                        <label for="default">Set as Default</label>
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

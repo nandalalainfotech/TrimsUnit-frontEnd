@@ -1,0 +1,168 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border"> Registration</legend>
+    <div class="formData">
+        <form [formGroup]="registerForm" (ngSubmit)="onUserClick($event, registerForm)">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control" path="id" type="hidden" />
+                        <label path="firstname" for="firstname" cssClass="required">FirstName</label>
+                        <input formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                        <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstname.errors.required">FirstName is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <div class="form-group">
+                        <label path="lastname" for="lastname" cssClass="required">LastName</label>
+                        <input formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+                        <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastname.errors.required">LastName is required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 ">
+                    <div class="form-group">
+                        <label path="username" for="username" cssClass="required">UserName</label>
+                        <input formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">UserName is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 ">
+                    <div class="form-group">
+                        <label path="status" for="status" cssClass="required">Status</label>
+                        <!-- <input formControlName="status" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.status.errors }" /> -->
+                        <select formControlName="status" class="form-control" path="status" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
+                            <option value="" hidden> - Select the status - </option>
+                            <option value="null"> - Select the status - </option>
+                            <option>A</option>
+                            <option>R</option>
+                            <option>C</option>
+                            <!-- <option *ngFor="let system of csystemproperties" [value]="system.description">
+                                {{system.description}}
+                            </option> -->
+                        </select>
+                        <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                            <div *ngIf="f.status.errors.required">Status is required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control" path="securityquestion" type="hidden" />
+                        <label path="securityquestion" for="securityquestion" cssClass="required">Security
+                            Question</label>
+                        <select formControlName="securityquestion" class="form-control" name="securityQuestionList" id="securityQuestionList" [ngClass]="{ 'is-invalid': submitted && f.securityquestion.errors }">
+                            <option value="" hidden> - Select the Status - </option>
+                            <option value="null" > - Select the Status - </option>
+                            <option *ngFor="let system of systemproperties" [value]="system.description">
+                                {{system.description}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.securityquestion.errors" class="invalid-feedback">
+                            <div *ngIf="f.securityquestion.errors.required">Security Question is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 ">
+                    <div class="form-group">
+                        <label path="securityanswer" for="securityanswer" cssClass="required">Security
+                            Answer</label>
+                        <input formControlName="securityanswer" class="form-control" path="securityanswer" [ngClass]="{ 'is-invalid': submitted && f.securityanswer.errors }" />
+                        <div *ngIf="submitted && f.securityanswer.errors" class="invalid-feedback">
+                            <div *ngIf="f.securityanswer.errors.required">Security Answer is required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <div class="form-group">
+                        <label for="unitslNo">Unit</label>
+                        <input class="form-control" path="unitslNo" type="hidden" />
+                        <select formControlName="unitslNo" class="form-control" name="unitslNo" id="unitslNo" [ngClass]="{ 'is-invalid': submitted && f.unitslNo.errors }">
+                            <option value="" hidden> - Select the Unit - </option>
+                            <option value="null"> - Select the Unit - </option>
+                            <option *ngFor="let unitmaster of unitmasters" [value]="unitmaster.slNo">
+                                {{unitmaster.unitName}}
+                            </option>
+                        </select>
+                        <!-- <div *ngIf="submitted && f.unitslNo.errors" class="invalid-feedback">
+                            <div *ngIf="f.unitslNo.errors.required">Unit is required</div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <div class="form-group">
+                        <label for="dpslno">Department</label>
+                        <input class="form-control" path="dpslno" type="hidden" />
+                        <select formControlName="dpslno" class="form-control" name="dpslno" id="dpslno" [ngClass]="{ 'is-invalid': submitted && f.dpslno.errors }">
+                            <option value="" hidden> - Select the Status - </option>
+                            <option value="null"> - Select the Status - </option>
+                            <option *ngFor="let department of departments" [value]="department.departslNo">
+                                {{department.departslNo2?.department}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.dpslno.errors" class="invalid-feedback">
+                            <div *ngIf="f.dpslno.errors.required">Department is required</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <div class="form-group">
+                        <label path="email" for="email" cssClass="required">Email</label>
+                        <input formControlName="email" class="form-control" path="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 ">
+                    <div class="form-group">
+                        <label for="roleid">Role Name</label>
+                        <input class="form-control" path="roleid" type="hidden" />
+                        <select class="form-control" name="roleid" id="roleid" formControlName="roleid" [ngClass]="{ 'is-invalid': submitted && f.roleid.errors }">
+                            <option value="" hidden> - Select the Role - </option>
+                            <option value="null"> - Select the Role - </option>
+                            <option *ngFor="let role of roles" [value]="role.id">
+                                {{role.rolename}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.roleid.errors" class="invalid-feedback">
+                            <div *ngIf="f.roleid.errors.required">Role Name is required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</fieldset>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Registered Details</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

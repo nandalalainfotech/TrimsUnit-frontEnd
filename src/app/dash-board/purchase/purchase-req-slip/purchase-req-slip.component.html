@@ -1,0 +1,121 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Purchase Requisition Slip</legend>
+        <div class="formData">
+            <form [formGroup]="purchasereqForm" (ngSubmit)="onpurchasereqClick($event, purchasereqForm)">
+                <div class="row">
+                    
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="prsNo" for="series" cssClass="required" required="true">PRS NO</label>
+                            <input class="form-control" formControlName="prsNo" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="date" for="date" cssClass="required">Date</label>
+                                <input class="form-control" formControlName="date" readonly />
+                                <!-- <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                    <div *ngIf="f.date.errors.required">
+                                        Date is Required
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="P.O.NO" for="P.O.NO" cssClass="required">Our P.O.NO</label>
+                            <input type="text" class="form-control" path="P.O.NO" formControlName="poNo" [ngClass]="{'is-invalid': submitted && f.poNo.errors}" />
+                            <div *ngIf="submitted && f.poNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.poNo.errors.required">
+                                    P.O.NO is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="P.O date" for=" P.Odate" cssClass="required">P.O Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="poDate"  yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.poDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.poDate.errors.required">P.O Date is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="date" for="date" cssClass="required">Requried Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="reqDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.reqDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.reqDate.errors.required">Requried Date is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+              
+                    
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="Remarks" for="Remarks" cssClass="required">Remarks</label>
+                            <input type="text" class="form-control" path="Remarks" formControlName="remarks" [ngClass]="{'is-invalid': submitted && f.remarks.errors}" />
+                            <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                                <div *ngIf="f.remarks.errors.required">
+                                    Remarks is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary submit" style="right: 30%" (click)="onSubmitClick()">Submit For Approval</button>
+                            <button type="button" class="btn btn-primary" style="left: 72%;" (click)="onAddbuttonClick(addPopup)">Add Item</button>
+                            <button type="submit" class="btn btn-primary submit">Save</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <legend class="scheduler-border">Purchase Requisition Slip</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [getRowStyle]="getRowStyle" (rowClicked)="rowClicked($event)" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

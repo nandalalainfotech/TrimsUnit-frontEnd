@@ -1,0 +1,156 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Material Requisition Slip</legend>
+        <div class="formData">
+            <form [formGroup]="MaterialReqForm" (ngSubmit)="onMaterialReqClick($event, MaterialReqForm)">
+                    <div class="row">
+                        <div class="col-xs-1 col-sm-1"></div>
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="form-group">
+                                <label path="mrsNo" for="mrsNo" cssClass="required">MRS NO</label>
+                                <input type="text" class="form-control" path="mrsNo" formControlName="mrsNo" [ngClass]="{'is-invalid': submitted && f.mrsNo.errors}" />
+                                <div *ngIf="submitted && f.mrsNo.errors" class="invalid-feedback">
+                                    <div *ngIf="f.mrsNo.errors.required">
+                                        MRS NO is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label path="date" for="date" cssClass="required">Date</label>
+                                    <input class="form-control" formControlName="date" readonly />
+                                    <!-- <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                        <div *ngIf="f.date.errors.required">
+                                            Date is Required
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="form-group">
+                                <label path="requestorName" for="requestorName" cssClass="required">Requestor Name</label>
+                                <input type="text" class="form-control" path="requestorName" formControlName="requestorName" [ngClass]="{'is-invalid': submitted && f.requestorName.errors}" />
+                                <div *ngIf="submitted && f.requestorName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.requestorName.errors.required">
+                                        Requestor Name is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 col-sm-1"></div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-xs-1 col-sm-1"></div>
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="form-group">
+                                <label path="department" for="department" cssClass="required">Department</label>
+                                <input type="text" class="form-control" path="department" formControlName="department" [ngClass]="{'is-invalid': submitted && f.department.errors}" />
+                                <div *ngIf="submitted && f.department.errors" class="invalid-feedback">
+                                    <div *ngIf="f.department.errors.required">
+                                        Department is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="form-group">
+                                <div class="p-fluid p-grid p-formgrid">
+                                    <div class="p-field p-col-12 p-md-5">
+                                        <label path="spareSlno" for="spareSlno" cssClass="required">Item Code</label>
+                                        <select class="form-control" path="spareSlno" formControlName="spareSlno" [ngClass]="{'is-invalid': submitted && f.spareSlno.errors}">
+                                            <option value="" hidden> - Select the Item Code - </option>
+                                            <option value="null"> - Select the Item Code - </option>
+                                            <option *ngFor="let spares of sparesSettings;" [value]='spares.slNo'>
+                                                {{spares.spares}}</option>
+                                        </select>
+                                        <div *ngIf="submitted && f.spareSlno.errors" class="invalid-feedback">
+                                            <div *ngIf="f.spareSlno.errors.required">Spare Name is Required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="form-group">
+                                <label path="description" for="description" cssClass="required">Description</label>
+                                <input type="text" class="form-control" path="description" formControlName="description" [ngClass]="{'is-invalid': submitted && f.description.errors}" />
+                                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                    <div *ngIf="f.description.errors.required">
+                                        Description is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 col-sm-1"></div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-xs-1 col-sm-1"></div>
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="form-group">
+                                <label path="qty" for="qty" cssClass="required">Quantity/ Weight</label>
+                                <input type="text" class="form-control" path="Quantity" formControlName="qty" [ngClass]="{'is-invalid': submitted && f.qty.errors}" />
+                                <div *ngIf="submitted && f.qty.errors" class="invalid-feedback">
+                                    <div *ngIf="f.qty.errors.required">
+                                        Quantity is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="form-group">
+                                <label path="remarks" for="remarks" cssClass="required">Remarks</label>
+                                <input type="text" class="form-control" path="remarks" formControlName="remarks" [ngClass]="{'is-invalid': submitted && f.remarks.errors}" />
+                                <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                                    <div *ngIf="f.remarks.errors.required">
+                                        Remarks is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 col-sm-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary submit">Submit</button>
+                                <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+
+
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <legend class="scheduler-border">Material Requisition Slip</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

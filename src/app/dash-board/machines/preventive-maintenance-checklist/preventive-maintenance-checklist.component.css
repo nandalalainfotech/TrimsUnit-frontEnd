@@ -1,0 +1,11 @@
+/* input[type="date"] {
+    width: 243px;
+} */
+
+input.form-control {
+    width: 243px;
+}
+
+select.form-control {
+    width: 243px;
+}

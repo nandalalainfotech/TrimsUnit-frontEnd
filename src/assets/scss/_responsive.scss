@@ -1,0 +1,79 @@
+/****** Responsive Styles *********/
+.button:focus{
+  outline: none;
+}
+
+.brand-logo{
+  width: 300px;
+  padding-left: 15px;
+  @media (max-width:992px){
+      width: 170px;
+  }
+}
+
+.top-right-nav{
+  padding-right: 15px;
+  padding-left: 15px;
+  @media (max-width:992px){
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+  @media (max-width:767px){
+      display: inline-block;
+      li{
+          display: inline-block;
+          margin: 0 5px;
+      }
+      .header-search{
+        display: inline-block;
+      }
+  }
+}
+
+
+.assign-group{
+  .input-group-field{
+    @media (max-width:992px){
+      max-width: 130px;
+      min-width: 0;
+    }
+    @media (max-width:480px){
+      max-width: 130px;
+      min-width: 0;
+    }
+  }
+  .ui-autocomplete{
+    width: 100%;
+  }
+}
+.bb-staff-selector::before{
+  @media (max-width:992px){
+    right: 81px;
+  }
+}
+.student-bio-menu{
+    background-color: #e5f9fd;
+    padding: 10px 10px 5px 15px;
+}
+
+
+
+.btn, .fc button{
+  @media (max-width: 992px){
+    padding: 5px 12px;
+  }
+}
+
+@media (max-width: 767px){
+  .header-search{
+      display: inline-block;
+  }
+  .navbar-collapse{
+    text-align: center;
+  }
+  .service-group-form{
+    .bb-select{
+        margin-bottom: 10px;
+    }
+  }
+}

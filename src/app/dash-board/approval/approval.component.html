@@ -1,0 +1,9 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link routerLink="./app-approval-request" routerLinkActive #SalesinvoiceTab="routerLinkActive"
+            [active]="SalesinvoiceTab.isActive">Approval Request</a>
+        </nav>
+</div>
+
+<router-outlet></router-outlet>

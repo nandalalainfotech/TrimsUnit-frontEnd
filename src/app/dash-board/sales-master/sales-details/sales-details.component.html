@@ -1,0 +1,152 @@
+
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">List Of Purchase Item</legend>
+        <div class="formData">
+            <form [formGroup]="salesItemForm"(ngSubmit)="onSlaseClick($event, salesItemForm)">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="procode" for="procode">Product Code</label>
+                            <input type="text" class="form-control" path="procode" formControlName="procode" readonly value="IC0001"/>
+                        </div>
+                    </div>
+                   <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="proname" for="series" cssClass="required" required="true">Product Name</label>
+                            <input class="form-control" formControlName="proname" [ngClass]="{
+                                'is-invalid': submitted && f.proname.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.proname.errors" class="invalid-feedback">
+                                <div *ngIf="f.proname.errors.required">
+                                    Item Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="prodescrip" for="series" cssClass="required" required="true">Product Description</label>
+                            <input class="form-control" formControlName="prodescrip" [ngClass]="{
+                                'is-invalid': submitted && f.prodescrip.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.prodescrip.errors" class="invalid-feedback">
+                                <div *ngIf="f.prodescrip.errors.required">
+                                    Item Description is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" path="slNo" /> 
+                                <label path="prouom" for="prouom" cssClass="required">UOM</label>
+                                <select type="prouom" class="form-control" path="prouom" formControlName="prouom" [ngClass]="{'is-invalid': submitted && f.prouom.errors}">
+                                    <option value="" hidden> - Select the Uom- </option>
+                                    <option value="null"> - Select the Uom - </option>
+                                    <option >Kgs</option>
+                                    <option >Ltrs</option>
+                                    <option>No's</option> 
+                                    <option>Mtrs</option>
+                                    <option>Box</option>
+                                </select>
+                                <div *ngIf="submitted && f.prouom.errors" class="invalid-feedback">
+                                    <div *ngIf="f.prouom.errors.required">
+                                        uom Description is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="proqunty" for="series" cssClass="required" required="true">Quantity</label>
+                            <input class="form-control" formControlName="proqunty" [ngClass]="{
+                                'is-invalid': submitted && f.proqunty.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.proqunty.errors" class="invalid-feedback">
+                                <div *ngIf="f.proqunty.errors.required">
+                                    Quantity is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="progst" for="series" cssClass="required" required="true">GST</label>
+                            <input class="form-control" formControlName="progst" [ngClass]="{
+                                'is-invalid': submitted && f.progst.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.progst.errors" class="invalid-feedback">
+                                <div *ngIf="f.progst.errors.required">
+                                    gst is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="prounitamount" for="series" cssClass="required" required="true">Unit Rate</label>
+                            <input class="form-control" formControlName="prounitamount" [ngClass]="{
+                                'is-invalid': submitted && f.prounitamount.errors
+                            }" />
+                            
+                            <div *ngIf="submitted && f.prounitamount.errors" class="invalid-feedback">
+                                <div *ngIf="f.prounitamount.errors.required">
+                                    unitamount is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+
+
+
+
+<fieldset class="scheduler-border">
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+    <legend class="scheduler-border">List Of Purchase Item</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px" [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

@@ -1,0 +1,749 @@
+<div [@.disabled]="temporaryDisabled">
+    <div class="side-menu" *ngIf="isShow" [@sideMenu]>
+        <div class="row">
+            <div>
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <ul class="nav navbar-nav">
+
+
+                            <li id="dropdown" title="Dashboard">
+                                <a id="Dashboard" data-toggle="collapse" href="#dashboard" [ngClass]="parentMenuString == 'Dashboard' ? 'is-active' : ''">
+                                    <i class="fas fa-store-alt" [ngClass]="parentMenuString == 'Dashboard' ? 'is-active' : 'is-inactive'"></i>
+                                    <span class="parent-list" [ngClass]="parentMenuString == 'Dashboard' ? 'is-active' : ''">Dashboard</span>
+                                    <span class="caret" style="margin-left: 134px;position: absolute;margin-top: 8px;"></span>
+                                </a>
+
+
+                                <div id="dashboard" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-sidemenu-dashboard/app-maintanance/app-maintanance-bd" [ngClass]="
+                                                    childMenuString == 'Maintenance'
+                                                        ? 'is-active'
+                                                        : ''
+                                                        " (click)="
+                                                        onMenuChildClick(
+                                                        'Dashboard',
+                                                        'production')">
+                                                    <i class="fa fa-university" [ngClass]="parentMenuString == 'Maintenance' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Maintenance</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div id="dashboard" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-sidemenu-dashboard/app-production/app-scrap" [ngClass]="
+                                                    childMenuString == 'production'
+                                                        ? 'is-active'
+                                                        : ''
+                                                        " (click)="
+                                                        onMenuChildClick(
+                                                        'Dashboard',
+                                                        'production')">
+                                                    <i class="fa fa-sitemap" [ngClass]="parentMenuString == 'Production' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Production</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="dashboard" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-sidemenu-dashboard/app-purchase/app-supplier-performance" [ngClass]="
+                                                    childMenuString == 'purchase'
+                                                        ? 'is-active'
+                                                        : ''
+                                                        " (click)="
+                                                        onMenuChildClick(
+                                                        'Dashboard',
+                                                        'purchase')">
+                                                    <i class="fa fa-credit-card" [ngClass]="parentMenuString == 'Purchase' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Purchase</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="dashboard" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-sidemenu-dashboard/app-quality/app-internal-complaints" [ngClass]="
+                                                    childMenuString == 'quality'
+                                                        ? 'is-active'
+                                                        : ''
+                                                        " (click)="
+                                                        onMenuChildClick(
+                                                        'Dashboard',
+                                                        'quality')">
+                                                    <i class="fa fa-certificate" [ngClass]="parentMenuString == 'Quality' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Quality</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+                                <div id="dashboard" class="panel-collapse collapse" *ngIf="(user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Store') && user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit1'">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-sidemenu-dashboard/app-store/app-raw-material" [ngClass]="
+                                                    childMenuString == 'store'
+                                                        ? 'is-active'
+                                                        : ''
+                                                        " (click)="
+                                                        onMenuChildClick(
+                                                        'Dashboard',
+                                                        'store')">
+                                                    <i class="fa fa-cube" [ngClass]="parentMenuString == 'Store' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Store</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="dashboard" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-sidemenu-dashboard/app-store/app-raw-material" [ngClass]="
+                                                    childMenuString == 'store'
+                                                        ? 'is-active'
+                                                        : ''
+                                                        " (click)="
+                                                        onMenuChildClick(
+                                                        'Dashboard',
+                                                        'store')">
+                                                    <i class="fa fa-cube" [ngClass]="parentMenuString == 'Store' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Production</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="dashboard" class="panel-collapse collapse" *ngIf="(user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Quality') && user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit2'">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-sidemenu-dashboard/app-store/app-raw-material" [ngClass]="
+                                                    childMenuString == 'store'
+                                                        ? 'is-active'
+                                                        : ''
+                                                        " (click)="
+                                                        onMenuChildClick(
+                                                        'Dashboard',
+                                                        'store')">
+                                                    <i class="fa fa-cube" [ngClass]="parentMenuString == 'Store' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Quality</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="dashboard" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-sidemenu-dashboard/app-hr/app-training" [ngClass]="
+                                                    childMenuString == 'hr'
+                                                        ? 'is-active'
+                                                        : ''
+                                                        " (click)="
+                                                        onMenuChildClick(
+                                                        'Dashboard',
+                                                        'hr')">
+                                                    <i class="fa fa-bookmark" [ngClass]="parentMenuString == 'Store' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Hr</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </li>
+
+
+
+
+
+                            <li id="dropdown" title="Machine" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Maintenance'">
+                                <a id="Machine" data-toggle="collapse" href="#machine" [ngClass]="parentMenuString == 'Machine' ? 'is-active' : ''">
+                                    <i class="fa fa-cogs" [ngClass]="parentMenuString == 'Machine' ? 'is-active' : 'is-inactive'"></i>
+                                    <span class="parent-list" [ngClass]="parentMenuString == 'Machine' ? 'is-active' : ''">Machine</span>
+                                    <span class="caret" style="margin-left: 150px;position: absolute;margin-top: 8px;"></span>
+                                </a>
+                                <div id="machine" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list" *ngFor="let machine001mb of currentMachine001mbs;let i=index">
+                                                <!-- <span class="list-style">{{i+1}}</span> -->
+                                                <a routerLink="./app-machines/app-preventive-maintenance-plan" [ngClass]="
+                                                childMenuString == 'Machines'
+                                                    ? 'is-active'
+                                                    : ''
+                                                 " (click)="
+                                                 onMenuChildClick(
+                                                    'Machine',
+                                                    'Machines'
+                                                    )
+                                                    " [queryParams]="{mslno:machine001mb.slNo}">
+                                                    <span class="badge badge-pill list-style">{{i+1}}</span>
+                                                    <span class="mcode" [routerLinkActive]="['active']">
+                                                        {{machine001mb.mcode}}</span>
+
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- ------------------------------------------------------------------------ -->
+                            <!-- <li id="dropdown" title="supplier"
+                                *ngIf="user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Purchase' ">
+                                <a id="supplier" data-toggle="collapse" href="#suppliers"
+                                    [ngClass]="parentMenuString == 'supplier' ? 'is-active' : ''">
+                                    <i class="fa fa-users"
+                                        [ngClass]="parentMenuString == 'supplier' ? 'is-active' : 'is-inactive'"></i>
+                                    <span class="parent-list"
+                                        [ngClass]="parentMenuString == 'supplier' ? 'is-active' : ''">Supplier</span>
+                                    <span class="caret"
+                                        style="margin-left: 150px;position: absolute;margin-top: 8px;"></span>
+                                </a>
+                                <div id="suppliers" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list"
+                                                *ngFor="let supplierRegistration of currentSupplierReg;let i=index">
+                                               
+                                                <a routerLink="./app-supplier/app-supplier-assessment" [ngClass]="
+                                                    childMenuString == 'supplier'
+                                                    ? 'is-active'
+                                                    : ''
+                                                    " (click)="
+                                                    onMenuChildClick(
+                                                        'suppliers',
+                                                    'supplier'
+                                                 )
+                                                     " [queryParams]="{suppSlno:supplierRegistration.slNo}">
+                                                    <span class="badge badge-pill list-style">{{i+1}}</span>
+                                                    <span class="mcode" [routerLinkActive]="['active']">
+                                                        {{supplierRegistration.supplierCode}}</span>
+
+                                                </a>
+                                             
+                                            </li>
+
+
+                                      
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li> -->
+                            <!-- ------------------------------------------------------------------------ -->
+                            <li id="dropdown" title="Purchase" *ngIf="user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Purchase' && user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit2'">
+                                <a id="Purchases" data-toggle="collapse" href="#Purchase" [ngClass]="parentMenuString == 'Purchases' ? 'is-active' : ''">
+                                    <i class="fa fa-credit-card-alt" [ngClass]="parentMenuString == 'Purchases' ? 'is-active' : 'is-inactive'"></i>
+                                    <a style="margin-left: -25px;" routerLink="./app-purchase/app-purchase-req-slip" [ngClass]="
+                                        childMenuString == 'purchase'
+                                            ? 'is-active'
+                                            : ''
+                                            " (click)="
+                                            onMenuChildClick(
+                                            'Purchases',
+                                            'Purchase')">
+                                        <i class="" [ngClass]="parentMenuString == 'Purchases' ? 'is-active' : 'is-inactive'"></i>
+                                        <span [routerLinkActive]="['active']">Purchase</span>
+                                    </a>
+                                    <span class="caret" style="margin-left: 128px;position: absolute;margin-top: 8px;"></span>
+
+                                </a>
+
+                                <div id="Purchase" class="panel-collapse collapse">
+                                    <li id="dropdown" title="supplier" *ngIf="user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Purchase' ">
+                                        <a style="margin-left: 15px;" id="supplier" data-toggle="collapse" href="#suppliers" [ngClass]="parentMenuString == 'supplier' ? 'is-active' : ''">
+                                            <i class="fa fa-users" [ngClass]="parentMenuString == 'supplier' ? 'is-active' : 'is-inactive'"></i>
+                                            <span class="parent-list" [ngClass]="parentMenuString == 'supplier' ? 'is-active' : ''">Supplier</span>
+                                            <span class="caret" style="margin-left: 135px;position: absolute;margin-top: 8px;"></span>
+                                        </a>
+                                        <div id="suppliers" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <ul class="nav navbar-nav">
+                                                    <li class="total-list" *ngFor="let supplierRegistration of currentSupplierReg;let i=index">
+
+                                                        <a routerLink="./app-supplier/app-supplier-assessment" [ngClass]="
+                                                    childMenuString == 'supplier'
+                                                    ? 'is-active'
+                                                    : ''
+                                                    " (click)="
+                                                    onMenuChildClick(
+                                                        'suppliers',
+                                                    'supplier'
+                                                 )
+                                                     " [queryParams]="{suppSlno:supplierRegistration.slNo}">
+                                                            <span class="badge badge-pill list-style">{{i+1}}</span>
+                                                            <span class="mcode" [routerLinkActive]="['active']">
+                                                        {{supplierRegistration.supplierCode}}</span>
+
+                                                        </a>
+
+                                                    </li>
+
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+
+                            </li>
+                            <li id="dropdown" title="Sale" *ngIf="(user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Sales') && user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit2'">
+                                <a id="Sales" data-toggle="collapse" href="#Sale" [ngClass]="parentMenuString == 'Sales' ? 'is-active' : ''">
+                                    <i class="	fas fa-bullhorn" [ngClass]="parentMenuString == 'Sales' ? 'is-active' : 'is-inactive'"></i>
+                                    <a style="margin-left: -15px;" routerLink="./app-sales/app-sales-invoice" [ngClass]="
+                                                childMenuString == 'Sale'
+                                                ? 'is-active'
+                                                : ''
+                                                " (click)="
+                                                onMenuChildClick(
+                                                'Sales',
+                                                'Sale')">
+                                        <span [routerLinkActive]="['active']">Sales</span>
+                                    </a>
+                                    <!-- <span class="caret"
+                                    style="margin-left: 160px;position: absolute;margin-top: 8px;"></span> -->
+                                </a>
+
+                                <!-- <div id="Sale" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li class="total-list">
+                                            <a routerLink="./app-sales/app-sales-invoice" [ngClass]="
+                                                childMenuString == 'Sale'
+                                                ? 'is-active'
+                                                : ''
+                                                " (click)="
+                                                onMenuChildClick(
+                                                'Sales',
+                                                'Sale')">
+                                                <span [routerLinkActive]="['active']">Sales</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                            </li>
+
+
+                            <!-------------------------------------------------------------------------- -->
+
+                            <li id="dropdown" title="stores" *ngIf="(user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Store') && user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit1'">
+                                <a id="HR" data-toggle="collapse" href="#stores" [ngClass]="parentMenuString == 'stores' ? 'is-active' : ''">
+                                    <i class="fas fa-store-alt" [ngClass]="parentMenuString == 'stores' ? 'is-active' : 'is-inactive'"></i>
+                                    <span class="parent-list" [ngClass]="parentMenuString == 'HR' ? 'is-active' : ''">Store</span>
+                                    <span class="caret" style="margin-left: 165px;position: absolute;margin-top: 8px;"></span>
+                                </a>
+
+                                <div id="stores" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-store/app-material-inward-record" [ngClass]="
+                                                        childMenuString == 'Raw Materials'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'Stores',
+                                                            'Raw Materials')">
+                                                    <i class="fa fa-users" [ngClass]="parentMenuString == 'Raw Materials' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Raw Materials</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="stores" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-human-resources/app-facilitys/app-firstaid-materials-plan" [ngClass]="
+                                                        childMenuString == 'Semi Finish Goods'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'Stores',
+                                                            'Semi Finish Goods')">
+                                                    <i class="fa fa-building" [ngClass]="parentMenuString == 'Semi Finish Goods' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Semi Finish Goods</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div id="stores" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-human-resources/app-legal-documents-details/app-legal-documents" [ngClass]="
+                                                        childMenuString == 'Legal'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'Stores',
+                                                            'Finish Goods')">
+                                                    <i class="fa fa-book" [ngClass]="parentMenuString == 'Finish Goods' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Finish Goods</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-------------------------------------------------------------------------- -->
+
+
+                            <!-------------------------------------------------------------------------- -->
+
+                            <li id="dropdown" title="production" *ngIf="(user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Production') && user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit1'">
+                                <a id="production" data-toggle="collapse" href="#production" [ngClass]="parentMenuString == 'Production' ? 'is-active' : ''">
+                                    <i class="fa fa-anchor" [ngClass]="parentMenuString == 'production' ? 'is-active' : 'is-inactive'"></i>
+                                    <a style="margin-left: -25px;" routerLink="./app-producion/app-prod-plan" [ngClass]="
+                            childMenuString == 'production'
+                                ? 'is-active'
+                                : ''
+                                " (click)="
+                                onMenuChildClick(
+                                'Production',
+                                'production')">
+                                        <i class="" [ngClass]="parentMenuString == 'production' ? 'is-active' : 'is-inactive'"></i>
+                                        <span [routerLinkActive]="['active']">Production</span>
+                                    </a>
+                                    <span class="caret" style="margin-left: 128px;position: absolute;margin-top: 8px;"></span>
+
+                                </a>
+
+                                <div id="production" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-store/app-material-inward-record" [ngClass]="
+                                                        childMenuString == 'Raw Materials'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'production',
+                                                            'Raw Materials')">
+                                                    <i class="fa fa-users" [ngClass]="parentMenuString == 'Raw Materials' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Fixture</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="production" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-human-resources/app-facilitys/app-firstaid-materials-plan" [ngClass]="
+                                                        childMenuString == 'Semi Finish Goods'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'Stores',
+                                                            'Semi Finish Goods')">
+                                                    <i class="fa fa-building" [ngClass]="parentMenuString == 'Semi Finish Goods' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Tools & Dies</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div id="production" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-human-resources/app-legal-documents-details/app-legal-documents" [ngClass]="
+                                                        childMenuString == 'Legal'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'Stores',
+                                                            'Finish Goods')">
+                                                    <i class="fa fa-book" [ngClass]="parentMenuString == 'Finish Goods' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Moulds</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-------------------------------------------------------------------------- -->
+
+
+
+                            <li id="dropdown" title="Quality" *ngIf="(user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Quality' )&& user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit2'">
+                                <a id="Quality" data-toggle="collapse" href="#Quality" [ngClass]="parentMenuString == 'Quality' ? 'is-active' : ''">
+                                    <i class="fa fa-check-square-o" [ngClass]="parentMenuString == 'Quality' ? 'is-active' : 'is-inactive'"></i>
+                                    <a style="margin-left: -25px;" routerLink="./app-store/app-material-inward-record" [ngClass]="
+                                        childMenuString == 'store'
+                                            ? 'is-active'
+                                            : ''
+                                            " (click)="
+                                            onMenuChildClick(
+                                            'Quality',
+                                            'Quality')">
+                                        <i class="" [ngClass]="parentMenuString == 'Quality' ? 'is-active' : 'is-inactive'"></i>
+                                        <span [routerLinkActive]="['active']">Quality</span>
+                                    </a>
+
+                                </a>
+
+
+                            </li>
+
+                            <!-------------------------------------------------------------------------- -->
+
+                            <li id="dropdown" title="QMS" *ngIf="(user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Store' )&& user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit1'">
+                                <a id="QMS" data-toggle="collapse" href="#QMS" [ngClass]="parentMenuString == 'QMS' ? 'is-active' : ''">
+                                    <i class="fa fa-cube" [ngClass]="parentMenuString == 'QMS' ? 'is-active' : 'is-inactive'"></i>
+                                    <span class="parent-list" [ngClass]="parentMenuString == 'QMS' ? 'is-active' : ''">QMS</span>
+                                    <span class="caret" style="margin-left: 165px;position: absolute;margin-top: 8px;"></span>
+                                </a>
+
+                                <div id="QMS" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-store/app-material-inward-record" [ngClass]="
+                                                        childMenuString == 'Raw Materials'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'QMS',
+                                                            'Raw Materials')">
+                                                    <i class="fa fa-users" [ngClass]="parentMenuString == 'Raw Materials' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">IQA</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="QMS" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-human-resources/app-facilitys/app-firstaid-materials-plan" [ngClass]="
+                                                        childMenuString == 'Semi Finish Goods'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'Stores',
+                                                            'Semi Finish Goods')">
+                                                    <i class="fa fa-building" [ngClass]="parentMenuString == 'Semi Finish Goods' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">MRM</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div id="QMS" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-human-resources/app-legal-documents-details/app-legal-documents" [ngClass]="
+                                                        childMenuString == 'Legal'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'Stores',
+                                                            'Finish Goods')">
+                                                    <i class="fa fa-book" [ngClass]="parentMenuString == 'Finish Goods' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">QC Tools</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-------------------------------------------------------------------------- -->
+
+
+
+                            <li id="dropdown" title="stores" *ngIf="(user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Store' )&& user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit1'">
+                                <a id="stores" data-toggle="collapse" href="#store" [ngClass]="parentMenuString == 'stores' ? 'is-active' : ''">
+                                    <i class="fa fa-external-link" [ngClass]="parentMenuString == 'stores' ? 'is-active' : 'is-inactive'"></i>
+                                    <a style="margin-left: -25px;" routerLink="./app-store/app-material-inward-record" [ngClass]="
+                     childMenuString == 'store'
+                         ? 'is-active'
+                         : ''
+                         " (click)="
+                         onMenuChildClick(
+                         'stores',
+                         'store')">
+                                        <i class="" [ngClass]="parentMenuString == 'stores' ? 'is-active' : 'is-inactive'"></i>
+                                        <span [routerLinkActive]="['active']">NPD</span>
+                                    </a>
+
+                                </a>
+
+
+                            </li>
+                            <!-------------------------------------------------------------------------- -->
+
+                            <!-------------------------------------------------------------------------- -->
+                            <li id="dropdown" title="HR" *ngIf="(user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'statutory') && user?.unitdepartslNo2?.unitslNo2?.unitName == 'Unit2'">
+                                <a id="HR" data-toggle="collapse" href="#Hr" [ngClass]="parentMenuString == 'HR' ? 'is-active' : ''">
+                                    <i class="fa fa-cubes" [ngClass]="parentMenuString == 'HR' ? 'is-active' : 'is-inactive'"></i>
+                                    <span class="parent-list" [ngClass]="parentMenuString == 'HR' ? 'is-active' : ''">HR</span>
+                                    <span class="caret" style="margin-left: 175px;position: absolute;margin-top: 8px;"></span>
+                                </a>
+
+                                <div id="Hr" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-human-resources/app-emp-details/app-statutory-plan" [ngClass]="
+                                                        childMenuString == 'Employee'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'HR',
+                                                            'Employee')">
+                                                    <i class="fa fa-users" [ngClass]="parentMenuString == 'Employee' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Employee</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="Hr" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-human-resources/app-facilitys/app-firstaid-materials-plan" [ngClass]="
+                                                        childMenuString == 'Firstaid-Materials'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'HR',
+                                                            'Facilities')">
+                                                    <i class="fa fa-building" [ngClass]="parentMenuString == 'Facilities' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Facilities</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div id="Hr" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li class="total-list">
+                                                <a routerLink="./app-human-resources/app-legal-documents-details/app-legal-documents" [ngClass]="
+                                                        childMenuString == 'Legal'
+                                                            ? 'is-active'
+                                                            : ''
+                                                            " (click)="
+                                                            onMenuChildClick(
+                                                            'HR',
+                                                            'Legal')">
+                                                    <i class="fa fa-book" [ngClass]="parentMenuString == 'Legal' ? 'is-active' : 'is-inactive'"></i>
+                                                    <span [routerLinkActive]="['active']">Legal</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                            <li id="dropdown" title="approvalrequest">
+                                <a routerLink="./app-approval/app-approval-request" [ngClass]="
+                            childMenuString == 'Approval'
+                            ? 'is-active'
+                            : ''
+                            " (click)="
+                            onMenuChildClick(
+                            'Approval-Request',
+                            'Approval   ')">
+                                    <i class="fa fa-check-square-o" [ngClass]="parentMenuString == 'approvalrequest' ? 'is-active' : 'is-inactive'"></i>
+                                    <span [routerLinkActive]="['active']">Approval-Request</span>
+                                </a>
+                            </li>
+
+
+                            <!-- <div id="dashboard" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="nav navbar-nav">
+                                <li class="total-list">
+                                    <a routerLink="./app-sidemenu-dashboard/app-hr/app-training" [ngClass]="
+                                        childMenuString == 'hr'
+                                            ? 'is-active'
+                                            : ''
+                                            " (click)="
+                                            onMenuChildClick(
+                                            'Dashboard',
+                                            'hr')">
+                                        <i class="fa fa-bookmark"
+                                            [ngClass]="parentMenuString == 'Store' ? 'is-active' : 'is-inactive'"></i>
+                                        <span [routerLinkActive]="['active']">Hr</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

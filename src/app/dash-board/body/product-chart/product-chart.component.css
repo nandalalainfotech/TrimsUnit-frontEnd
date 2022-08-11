@@ -1,0 +1,92 @@
+ .box {
+     display: flex;
+     justify-content: space-between;
+     margin-left: 30px;
+ }
+ 
+ .card {
+     background-color: #fff;
+     height: 150px;
+     border-radius: 19px;
+     border: none;
+     position: relative;
+     /* height: 137%; */
+     margin-bottom: 30px;
+     box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90 97 105 / 10%);
+     margin-top: 30px;
+     text-align: center;
+     display: flex;
+     flex-wrap: wrap;
+     /* margin-right: -12px;
+     margin-left: -12px; */
+ }
+ 
+ .d-flex {
+     text-align: center;
+     margin-top: 0px;
+     /* padding-left: 14px; */
+ }
+ 
+ .card1 {
+     width: 100%;
+     /* margin-left: 9%; */
+ }
+ 
+ .col-4 {
+     flex: 0 0 auto;
+     padding: 0.5rem;
+     /* width: 85.3333%; */
+     width: 94.3333%;
+ }
+ 
+ h5 {
+     font-family: verdana;
+     font-size: 14px;
+ }
+ 
+ h2 .span {
+     font-size: 15px;
+     font-weight: bold;
+     font-family: verdana;
+ }
+ 
+ .l-bg-cherry {
+     background: linear-gradient(to right, #cfb0f1, #3cbfe7) !important;
+     color: #fff;
+ }
+ 
+ .l-bg-blue-dark {
+     background: linear-gradient(to right, #cfb0f1, #3cbfe7) !important;
+     color: #fff;
+ }
+ 
+ .l-bg-green-dark {
+     background: linear-gradient(to right, #cfb0f1, #3cbfe7) !important;
+     color: #fff;
+ }
+ 
+ .l-bg-orange-dark {
+     background: linear-gradient(to right, #cfb0f1, #3cbfe7) !important;
+     color: #fff;
+ }
+ 
+ .card .card-statistic-3 .card-icon {
+     text-align: center;
+     line-height: 10px;
+     margin-left: 90px;
+     color: #fff;
+     position: absolute;
+     right: 18px;
+     top: 26px;
+     /* opacity: 0.1; */
+     font-size: 3em;
+     margin-top: 0px;
+ }
+ .p-progressbar-determinate .p-progressbar-label {
+    font-weight: 700;
+    height: 100%;
+    position: absolute;
+    visibility: hidden !important; 
+    text-align: center;
+    width: 10%;
+}

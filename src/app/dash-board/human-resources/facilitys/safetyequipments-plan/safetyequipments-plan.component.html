@@ -1,0 +1,117 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Safety Equipment</legend>
+        <form [formGroup]=" safetyForm" (ngSubmit)="onsafetyClick($event,  safetyForm)">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" path="slNo" />
+                            <label path="seNo" for="seNo" cssClass="required">Safety Equipment Name</label>
+                            <input type="text" class="form-control" path="seNo" formControlName="seNo"
+                                [ngClass]="{'is-invalid': submitted && f.seNo.errors}" />
+                            <div *ngIf="submitted && f.seNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.seNo.errors.required">
+                                    Safety Equipment Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="pur" for="pur" cssClass="required">Purpose</label>
+                            <input type="text" class="form-control" path="pur" formControlName="pur"
+                                [ngClass]="{'is-invalid': submitted && f.pur.errors}" />
+                            <div *ngIf="submitted && f.pur.errors" class="invalid-feedback">
+                                <div *ngIf="f.pur.errors.required">
+                                    Purpose is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="stock" for="stock" cssClass="required">Min Stock Level</label>
+                                    <input type="text" class="form-control" path="stock" formControlName="stock"
+                                        [ngClass]="{'is-invalid': submitted && f.stock.errors}" />
+                                    <div *ngIf="submitted && f.stock.errors" class="invalid-feedback">
+                                        <div *ngIf="f.stock.errors.required">
+                                            Min Stock Level is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="remark" for="remark" cssClass="required">Remarks</label>
+                                    <input type="text" class="form-control" path="remark" formControlName="remark"
+                                        [ngClass]="{'is-invalid': submitted && f.remark.errors}" />
+                                    <div *ngIf="submitted && f.remark.errors" class="invalid-feedback">
+                                        <div *ngIf="f.remark.errors.required">
+                                            Remarks is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <legend class="scheduler-border">Safety Equipment</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+            [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

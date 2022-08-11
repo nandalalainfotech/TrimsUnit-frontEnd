@@ -1,0 +1,112 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Preventive Maintenance Plan</legend>
+        <div class="formData">
+            <form [formGroup]="PreMaintainPlanForm" (ngSubmit)="onPremainPlanClick($event, PreMaintainPlanForm)">
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="machineno" for="series" cssClass="required" required="true">Machine Code
+                                :</label>
+                            <span *ngIf="machine001mb"><b>
+                                    {{machine001mb.mcode}}</b></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="machinenames" for="series" cssClass="required">Machine Name :</label>
+                            <span *ngIf="machine001mb"><b> {{machine001mb.mname}}</b></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="status" cssClass="required">Status :</label>
+                            <select class="form-control" name="status" formControlName="status"
+                                [ngClass]="{'is-invalid': submitted && f.status.errors}">
+                                <option value="" hidden>--Select the status--</option>
+                                <option value="null" disabled selected>--Select the status--</option>
+                                <option>P</option>
+                                <option>A</option>
+                            </select>
+                            <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                                <div *ngIf="f.status.errors.required">
+                                    Status is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="date" for="date" cssClass="required"> Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="date"
+                                        [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030"
+                                        inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <!-- <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="date" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar> -->
+                                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                        <div *ngIf="f.date.errors.required">Date is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+<fieldset class="scheduler-border">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- <table >
+        <tr *ngFor="let preventive of preventiveplans">
+            <td >
+                {{preventive.mslno2.mname}}
+            </td>
+        </tr>
+    </table> -->
+    <legend class="scheduler-border">Preventive Maintenance Plan</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+        [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

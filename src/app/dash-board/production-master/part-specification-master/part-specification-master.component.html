@@ -1,0 +1,91 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Item Specification Details</legend>
+        <div class="formData">
+            <form [formGroup]="partSpecificationForm" (ngSubmit)="onPartSpecification($event, partSpecificationForm)">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="pslno" for="pslno" cssClass="required">Item Code</label>
+                            <select class="form-control" name="pslno" formControlName="pslno" [ngClass]="{'is-invalid': submitted && f.pslno.errors}" (change)="onChange($event)">
+                                <option value="null"> -Select item Code- </option>
+                                    <option *ngFor="let orderitem001mb of orderitem001mbs" [value]="orderitem001mb.slNo">
+                                        {{orderitem001mb.itemcode}} </option>
+                            </select>
+                                <div *ngIf="submitted && f.pslno.errors" class="invalid-feedback">
+                                    <div *ngIf="f.pslno.errors.required">
+                                        Product No is Required
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label path="itemname" for="itemname" cssClass="required">Item Name</label>
+                                    <input class="form-control" path="itemname" formControlName="itemname"  readonly/>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                            <div class="form-group">
+                                <label path="splan" for="series" cssClass="required" required="true">Sampling Plan</label>
+                                <input class="form-control" name="splan" formControlName="splan" [ngClass]="{
+                                    'is-invalid': submitted && f.splan.errors
+                                }" />
+                                <div *ngIf="submitted && f.splan.errors" class="invalid-feedback">
+                                    <div *ngIf="f.splan.errors.required">
+                                        Sampling Plan is Required
+                                    </div>
+                                </div>
+                            </div>
+                    </div> 
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" style="left: 71%;"
+                            (click)="onAddbuttonClick(addPopup)">Add Item</button>
+                            <button type="submit" class="btn btn-primary submit">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+
+<fieldset class="scheduler-border">
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <legend class="scheduler-border">List Of Products</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px"
+        [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

@@ -1,0 +1,10 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+
+<nav mat-tab-nav-bar>
+   
+    <a mat-tab-link routerLink="./app-legal-documents"  routerLinkActive #legalTab="routerLinkActive" [active]="legalTab.isActive">Legal documents </a>
+  
+</nav>
+<router-outlet></router-outlet>

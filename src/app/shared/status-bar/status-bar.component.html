@@ -1,0 +1,31 @@
+<nandalala-popup title="Approval Status" acceptLabel="Submit" cancelLabel="Cancel" acceptIcon="fa fa-sign-out"
+    [widthArg]="400" [heightArg]="400" (acceptClick)="onOkClick(status,remarks);" (cancelClick)="onCancelClick()">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">List Of Checklist</legend>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="form-group">
+                            <label path="status" for="status" cssClass="required">Status</label>
+                            <select class="form-control" name="status" [(ngModel)]="status">
+                                <option value="" hidden> - Select the Status - </option>
+                                <option value="null"> - Select the Status - </option>
+                                <option *ngFor="let status001mb of statussets" [value]="status001mb.slNo">
+                                    {{status001mb.name}}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="form-group">
+                            <label path="remarks" for="remarks" cssClass="required">Remarks</label>
+                            <input class="form-control" path="remarks" [(ngModel)]="remarks" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6"></div>
+                </div>
+    </fieldset>
+</nandalala-popup>

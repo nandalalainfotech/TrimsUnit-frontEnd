@@ -1,0 +1,113 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Preventive Maintenance Checklist</legend>
+        <div class="formData">
+            <form [formGroup]="preventiveChecklistForm" (ngSubmit)="onChecklistClick($event, preventiveChecklistForm)">
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="machineno" for="series" cssClass="required" required="true">Machine Code
+                                :</label>
+                            <span *ngIf="machine001mb"><b> {{machine001mb.mcode}}</b></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="machinenames" for="series" cssClass="required">Machine Name :</label>
+                            <span *ngIf="machine001mb"><b> {{machine001mb.mname}}</b></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="checkpointdate" for="checkpointdate" cssClass="required">Date :</label>
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="checkpointdate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.checkpointdate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.checkpointdate.errors.required">
+                                            Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="cpslno" cssClass="required">Check Points :</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="form-group">
+                            <label path="observation" cssClass="required">Observation :</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div formArrayName="observations" *ngFor="let observation of o.controls; let i = index">
+                        <div [formGroupName]="i">
+                            <div class="col-xs-1 col-sm-1"></div>
+                            <div class="col-xs-4 col-sm-4">
+                                <div class="form-group">
+                                    <div>{{preventiveChecklistForm.controls.observations.controls[i].controls.label.value}}</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-1 col-sm-1"></div>
+                            <div class="col-xs-6 col-sm-6">
+                                <div class="form-group">
+                                    <textarea rows="2" cols="50" type="text" formControlName="observation" [ngClass]="{ 'is-invalid': submitted && preventiveChecklistForm.controls.observations.controls[i].controls.observation.errors }"> </textarea>
+                                    <div *ngIf="submitted && preventiveChecklistForm.controls.observations.controls[i].controls.observation.errors" class="invalid-feedback">
+                                        <div *ngIf="preventiveChecklistForm.controls.observations.controls[i].controls.observation.errors.required">observation is required</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit"> Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+<fieldset class="scheduler-border">
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;" (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" (click)="onGeneratePdfReport()" style="margin-right: 40px;">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <legend class="scheduler-border">Preventive Maintenance Checklist</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

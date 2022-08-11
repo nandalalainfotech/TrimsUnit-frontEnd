@@ -1,0 +1,269 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Supplier Quotation</legend>
+        <div class="formData">
+            <form [formGroup]="PurchaseQuotationForm"
+                (ngSubmit)="onSupplierQuotationClick($event, PurchaseQuotationForm)">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="supplierSlno" for="supplierSlno" cssClass="required">Supplier Code</label>
+                            <select class="form-control" path="supplierSlno" formControlName="supplierSlno" (change)="onChange($event)" (change)="onChangeper($event)">
+                                <option value="" hidden> - Select the Supplier Code - </option>
+                                <option value="null"> - Select the Supplier code - </option>
+                                <option *ngFor="let supplierreg of supplierregs;" [value]='supplierreg.slNo'>
+                                    {{supplierreg.supplierCode}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="supliername" for="supliername" cssClass="required">supplier Name</label>
+                                <input type="text" class="form-control" path="supliername" formControlName="supliername" readonly/>
+                                <div *ngIf="submitted && f.supliername.errors" class="invalid-feedback">
+                                    <div *ngIf="f.supliername.errors.required">
+                                        supliername is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="supliertype" for="supliertype" cssClass="required">supplier Type</label>
+                                <input type="text" class="form-control" path="supliertype" formControlName="supliertype" readonly/>
+                                <div *ngIf="submitted && f.supliertype.errors" class="invalid-feedback">
+                                    <div *ngIf="f.supliertype.errors.required">
+                                        supliertype is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="address" for="address" cssClass="required">Address</label>
+                                <textarea class="form-control" rows="3" cols="1" path="address"
+                                    formControlName="address" readonly>
+                                </textarea>
+                                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                    <div *ngIf="f.address.errors.required">
+                                        Address is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div  class="col-xs-3 col-sm-3">
+                        <div class="form-group" >
+                            <label path="prsno" for="prsno" cssClass="required">Supplier Code</label>
+                            <select class="form-control" path="prsno" formControlName="prsno" (change)="onChangeprsNo($event)">
+                                <option value="" hidden> - Select the PRS No- </option>
+                                <option value="null"> - Select the PRS No- </option>
+                                <option *ngFor="let purchasereqslip001wb of purchasereqslip001wbs;" [value]='purchasereqslip001wb.slNo'>
+                                    {{purchasereqslip001wb.prsNo}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="quotationNo" for="quotationNo" cssClass="required">Quotation No</label>
+                            <input type="text" class="form-control" path="quotationNo" formControlName="quotationNo" />
+                            <div *ngIf="submitted && f.quotationNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.quotationNo.errors.required">
+                                    Quotation No is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="quotationDate" for="quotationDate" cssClass="required">Quotation
+                                        Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="quotationDate" 
+                                        yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.quotationDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.quotationDate.errors.required">
+                                            Quotation Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="validity" for="validity" cssClass="required">Validity</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="validity" 
+                                        yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.validity.errors" class="invalid-feedback">
+                                        <div *ngIf="f.validity.errors.required">Validity is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="termsCondition" for="termsCondition" cssClass="required">Terms and
+                                        Conditions</label>
+                                    <textarea class="form-control" rows="3" cols="1" path="termsCondition"
+                                        formControlName="termsCondition"  readonly>
+                                    </textarea>
+                                    <div *ngIf="submitted && f.termsCondition.errors" class="invalid-feedback">
+                                        <div *ngIf="f.termsCondition.errors.required">Terms and Condition is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="personName" for="personName" cssClass="required" >person Name</label>
+                            <select class="form-control" path="personName" formControlName="personName"  (change)="onChangePerson($event)" >
+                                
+                                <option value="null"> -Select person Name- </option>
+                                <option *ngFor="let supplierContact001wb of supplierContact001wbs" [value]="supplierContact001wb.slNo">
+                                    {{supplierContact001wb.pname}} </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="desgnation" for="desgnation" cssClass="required">Designation</label>
+                            <input class="form-control" path="desgnation" formControlName="desgnation"  readonly/>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+
+                        <div class="form-group">
+                            <label path="department" for="department" cssClass="required">Department</label>
+                            <input class="form-control" path="department" formControlName="department"  readonly/>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="level" for="level" cssClass="required">Level</label>
+                            <input type="text" class="form-control" path="level" formControlName="level" readonly/>
+                            <div *ngIf="submitted && f.level.errors" class="invalid-feedback">
+                                <div *ngIf="f.level.errors.required">
+                                    level is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="mnumber" for="mnumber" cssClass="required">Mobile Number</label>
+                                    <input type="text" class="form-control" path="mnumber" formControlName="mnumber" />
+                                    <div *ngIf="submitted && f.mnumber.errors" class="invalid-feedback">
+                                        <div *ngIf="f.mnumber.errors.required">mnumber is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="mobile" for="mobile" cssClass="required">Alter Mobile Number </label>
+                            <input type="text" class="form-control" path="mobile" formControlName="mobile" />
+                            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                <div *ngIf="f.mobile.errors.required">
+                                    productName is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="mailid" for="mailid" cssClass="required">Mail Id</label>
+                            <input type="text" class="form-control" path="mailid" formControlName="mailid"  />
+                            <!-- <div *ngIf="submitted && f.mailId.errors" class="invalid-feedback">
+                                <div *ngIf="f.mailId.errors.required">
+                                    Mail Id is Required
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label>File Upload:</label>
+                            <input type="file" class="form-control" formControlName="filename" (change)="onFileSelected($event)" /><span>"File type should be Zip folder"</span>
+                            <div *ngIf="submitted && f.filename.errors" class="invalid-feedback">
+                                <div *ngIf="f.filename.errors.required">
+                                    File Upload is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="row">
+                  
+                </div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit" style="right: 20%;" (click)="onStatusClick()">Submit For Approval</button>
+                            <button type="button" class="btn btn-primary" style="left: 50%;"
+                                (click)="onAddbuttonClick(addPopup)">Add items</button>
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Supplier Quotation</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions"  [getRowStyle]="getRowStyle" (rowClicked)="rowClicked($event)"  style="width: 100%; height: 350px;"
+            [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

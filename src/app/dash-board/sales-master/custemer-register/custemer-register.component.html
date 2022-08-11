@@ -1,0 +1,223 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Custemer Registration Form</legend>
+    <div class="formData">
+        <form [formGroup]="custemerRegForm" (ngSubmit)="onCustemerRegClick($event, custemerRegForm)">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required"> Custemer Code</label>
+                                <input type="text" class="form-control" path="custemercode"
+                                    formControlName="custemercode" />
+                                <div *ngIf="submitted && f.custemercode.errors" class="invalid-feedback">
+                                    <div *ngIf="f.custemercode.errors.required">Custemer Code is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required"> CustemerName</label>
+                                <input type="text" class="form-control" path="custemername"
+                                    formControlName="custemername" />
+                                <div *ngIf="submitted && f.custemername.errors" class="invalid-feedback">
+                                    <div *ngIf="f.custemername.errors.required">Custemer Name is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required">consignee Name</label>
+                                <input type="text" class="form-control" path="consignee"
+                                    formControlName="consignee" />
+                                <div *ngIf="submitted && f.consignee.errors" class="invalid-feedback">
+                                    <div *ngIf="f.consignee.errors.required">Custemer Name is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="address" for="address" cssClass="required">Custemer Address</label>
+                        <textarea class="form-control" rows="1" cols="1" path="address" formControlName="address">
+                        </textarea>
+                        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                            <div *ngIf="f.address.errors.required">
+                                Custemer Address Details Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="contact" for="contact" cssClass="required">Custemer Contact Details</label>
+                        <input type="text" class="form-control" path="contact" formControlName="contact" />
+                        <div *ngIf="submitted && f.contact.errors" class="invalid-feedback">
+                            <div *ngIf="f.contact.errors.required">
+                                Contact Cause Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="gstin" for="gstin" cssClass="required">GSTIN</label>
+                        <input type="text" class="form-control" path="gstin" formControlName="gstin" />
+                        <div *ngIf="submitted && f.gstin.errors" class="invalid-feedback">
+                            <div *ngIf="f.gstin.errors.required">
+                                GSTIN Action is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="certification" for="certification" cssClass="required">If any
+                            Certifications</label>
+                        <input type="text" class="form-control" path="certification" formControlName="certification" />
+                        <div *ngIf="submitted && f.certification.errors" class="invalid-feedback">
+                            <div *ngIf="f.certification.errors.required">
+                                Any Certification is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="nature" for="nature" cssClass="required">Nature of Custemer</label>
+                        <select class="form-control" path="nature" formControlName="nature">
+                            <option value="" hidden> - Nature of Custemer - </option>
+                            <option value="null"> - Nature of Custemer - </option>
+                            <option> Manufacturer </option>
+                            <option> Authorized Dealer </option>
+                            <option> Distributor </option>
+                            <option> Stockist </option>
+                            <option> Out source Custemer </option>
+                        </select>
+                        <div *ngIf="submitted && f.nature.errors" class="invalid-feedback">
+                            <div *ngIf="f.nature.errors.required">
+                                Nature of Custemer is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="productDesc" for="productDesc" cssClass="required">Product Description</label>
+                        <input type="text" class="form-control" path="productDesc" formControlName="productDesc" />
+                        <div *ngIf="submitted && f.productDesc.errors" class="invalid-feedback">
+                            <div *ngIf="f.productDesc.errors.required">
+                                Product Description is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="reputedCust" for="reputedCust" cssClass="required">Details of Present Reputed
+                            Customers</label>
+                        <input class="form-control" path="reputedCust" formControlName="reputedCust" />
+                        <div *ngIf="submitted && f.reputedCust.errors" class="invalid-feedback">
+                            <div *ngIf="f.reputedCust.errors.required">
+                                Details of Present Reputed is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="concern" for="concern" cssClass="required">Sister Concerns if Any </label>
+                        <input type="text" class="form-control" path="concern" formControlName="concern" />
+                        <div *ngIf="submitted && f.concern.errors" class="invalid-feedback">
+                            <div *ngIf="f.concern.errors.required">
+                                Sister Concerns if Any is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="otherInfo" for="otherInfo" cssClass="required">Other Informations</label>
+                        <input type="text" class="form-control" path="otherInfo" formControlName="otherInfo" />
+                        <div *ngIf="submitted && f.otherInfo.errors" class="invalid-feedback">
+                            <div *ngIf="f.otherInfo.errors.required">
+                                Other Informations Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="website" for="website" cssClass="required">Web Site</label>
+                        <input type="text" class="form-control" path="website" formControlName="website" />
+                        <div *ngIf="submitted && f.website.errors" class="invalid-feedback">
+                            <div *ngIf="f.website.errors.required">
+                                Web Site Informations Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-10 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Approve</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <!-- <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div> -->
+    
+
+        <legend class="scheduler-border">Custemer Registration Form</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+            [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

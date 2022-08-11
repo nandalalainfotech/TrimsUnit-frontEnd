@@ -1,0 +1,84 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Daily Maintenance Checklist</legend>
+    <div class="formData">
+        <form [formGroup]="dailyForm" (ngSubmit)="ondailyCheckClick($event, dailyForm)">
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-5 col-sm-5">
+                    <div class="form-group">
+                        <label path="machineno" for="series" cssClass="required" required="true">Machine Code
+                            :</label>
+                        <span *ngIf="machine001mb"><b> {{machine001mb.mcode}}</b></span>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-sm-5">
+                    <div class="form-group">
+                        <label path="machinenames" for="series" cssClass="required">Machine Name :</label>
+                        <span *ngIf="machine001mb"><b> {{machine001mb.mname}}</b></span>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-5 col-sm-5">
+                    <div class="form-group">
+
+                        <label path="cpslno" for="cpslno" cssClass="required">Check Points</label>
+                        <select type="cpslno" class="form-control" path="cpslno" formControlName="cpslno" [ngClass]="{'is-invalid': submitted && f.cpslno.errors}">
+                            <option value="" hidden> - Select the checkpoints - </option>
+                            <option value="null"> - Select the checkpoints - </option>
+                            <option *ngFor="let checklist001mb of checklist001mbs" [value]="checklist001mb.slNo">
+                                {{checklist001mb.checkpoints}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.cpslno.errors" class="invalid-feedback">
+                            <div *ngIf="f.cpslno.errors.required">
+                                Check Points is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-sm-5">
+                    <div class="form-group">
+                        <label path="date" for="date" cssClass="required">Date</label>
+                        <input class="form-control" formControlName="date" readonly />
+
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;" (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                    <button type="button" class="btn btn-primary submit" (click)="onGeneratePdfReport()" style="margin-right: 40px;">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <legend class="scheduler-border">Daily Maintenance Checklist </legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

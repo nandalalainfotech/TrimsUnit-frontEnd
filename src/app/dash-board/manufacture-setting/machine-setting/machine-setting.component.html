@@ -1,0 +1,165 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">List Of Machines</legend>
+        <div class="formData">
+            <form [formGroup]="listOfMachinesForm" (ngSubmit)="onMachineClick($event, listOfMachinesForm)">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" path="slNo" />
+                            <label path="mcode" for="series" cssClass="required" required="true">Machine
+                                Code</label>
+                            <input class="form-control" name="mcode" formControlName="mcode" [ngClass]="{
+                                'is-invalid': submitted && f.mcode.errors
+                            }" />
+                            <div *ngIf="submitted && f.mcode.errors" class="invalid-feedback">
+                                <div *ngIf="f.mcode.errors.required">
+                                    Machine Code is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" path="slNo" />
+                            <label path="mname" for="series" cssClass="required" required="true">Machine
+                                Name</label>
+                            <input class="form-control" name="mname" formControlName="mname" [ngClass]="{
+                                'is-invalid': submitted && f.mname.errors
+                            }" />
+                            <div *ngIf="submitted && f.mname.errors" class="invalid-feedback">
+                                <div *ngIf="f.mname.errors.required">
+                                    Machine Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="year" cssClass="required">Year of Purchase</label>
+                            <input class="form-control" name="year" formControlName="year" [ngClass]="{
+                                'is-invalid': submitted && f.year.errors
+                            }" />
+                            <div *ngIf="submitted && f.year.errors" class="invalid-feedback">
+                                <div *ngIf="f.year.errors.required">
+                                    Year of Purchase is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="capacity" for="series" cssClass="required" required="true">Capacity</label>
+                            <input class="form-control" name="capacity" formControlName="capacity" [ngClass]="{
+                                'is-invalid': submitted && f.capacity.errors
+                            }" />
+                            <div *ngIf="submitted && f.capacity.errors" class="invalid-feedback">
+                                <div *ngIf="f.capacity.errors.required">
+                                    Capacity is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="mtype" for="series" cssClass="required" required="true">Type/Size</label>
+                            <input class="form-control" name="mtype" formControlName="mtype" [ngClass]="{
+                                'is-invalid': submitted && f.mtype.errors
+                            }" />
+                            <div *ngIf="submitted && f.mtype.errors" class="invalid-feedback">
+                                <div *ngIf="f.mtype.errors.required">
+                                    Type/Size is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="make" for="series" cssClass="required" required="true">Make</label>
+                            <input class="form-control" name="make" formControlName="make" [ngClass]="{
+                                'is-invalid': submitted && f.make.errors
+                            }" />
+                            <div *ngIf="submitted && f.make.errors" class="invalid-feedback">
+                                <div *ngIf="f.make.errors.required">
+                                    Make is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <!-- <input type="hidden" class="form-control" path="prId" /> -->
+                            <label path="location" for="series" cssClass="required" required="true">Location</label>
+                            <input class="form-control" name="location" formControlName="location" [ngClass]="{
+                                'is-invalid': submitted && f.location.errors
+                            }" />
+                            <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                                <div *ngIf="f.location.errors.required">
+                                    Location is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="sslno" for="series" cssClass="required" required="true">Status</label>
+                            <select class="form-control" name="sslno" formControlName="sslno">
+
+                                <option value="" hidden> - Select the Status - </option>
+                                <option value="null"> - Select the Status - </option>
+                                <option *ngFor="let Status001mb of statussets" [value]="Status001mb.slNo">
+                                    {{Status001mb.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.sslno.errors" class="invalid-feedback">
+                                <div *ngIf="f.sslno.errors.required">
+                                    Status is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<fieldset class="scheduler-border">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+    <legend class="scheduler-border">List Of Machines</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+        [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>
+

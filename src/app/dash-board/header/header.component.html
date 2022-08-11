@@ -1,0 +1,965 @@
+<div [@.disabled]="temporaryDisabled">
+    <div class="header-container">
+        <!-- <input type="checkbox" id="menu"> -->
+        <div class="header col-sm-12 col-md-12 col-lg-12 padding">
+            <div class="col-md-5 col-lg-7 logo">
+                <h2 class="h2">
+                    <!-- <label for="menu" class="menu-bar is-active"> -->
+                    <i class="fa fa-bars" [ngClass]="isOpen ? 'rerotation' : 'rotation'" style="margin-left: 10px;margin-top:12px;position: absolute;" (click)="clickMenu()"></i>
+                    <!-- <img src="../../assets/images/ERP-logo.png" /> -->
+                    <!-- </label> -->
+                    <span routerLink="/app-dash-board" style="margin-left: -6px">
+                        <i aria-hidden="true"></i>&nbsp; <img src="../../assets/images/Trims.png" width="150px" />
+                    </span>
+                </h2>
+                <div class="search_input">
+                    <a class="search_bar"><input type="text" placeholder="Search.." [(ngModel)]="searchValue"></a>
+                    <span class=" search_button "><button class=" btn-primary" type="submit"
+                            (click)="onSerchClick(searchValue,searchItems)"><i class="fa fa-search"></i></button></span>
+                    <span class=" search_button1 "><button class=" btn-primary" type="submit"
+                            (click)="onSerchButtonClick(searchPopup)"><i class="fa fa-search"></i></button></span>
+                </div>
+            </div>
+            <!-- <div class="header search-hero" (change)="updateResults()" (keyup)="updateResults()">
+                <input class="form-control" [(ngModel)]="searchValue" type="search" name="search" autocomplete="off" placeholder="&#61442;  Search">
+                <div *ngIf="showSearch">
+                    <div *ngFor="let machine001mb of machine001mbs " value="machine001mb.slno">
+                        {{ machine001mb.mcode }}
+                    </div>
+                </div>
+                 <ul class="header">
+                    <li *ngFor="let machine001mb of machine001mbs ">
+                        {{ machine001mb.mcode }}
+                    </li>
+                </ul> 
+            </div> -->
+            <div>
+                <ul class="setting-menu-list pull-right" style="margin: 0">
+                    <li class="setting">
+                        Welcome {{ user?.firstname | titlecase }} {{ user?.lastname | titlecase }}&nbsp;
+                    </li>
+
+                    <li class="setting">
+                        <div class="notification-wrapper">
+                            <div class="notification-btn" [ngClass]="blink ? 'blink' : ''" (click)="openNotification(!showNotification) ">
+                                <span><i class="fa fa-bell" aria-hidden="true"></i></span>
+                            </div>
+                            <div *ngIf="showNotification" class=" notification-content ">
+                                <div class="notification-header" *ngFor="let preventiveplan of preventiveplans;">
+
+                                    <!-- <a (click)="Preplanshow()" class="text">Maintenance Plan is scheduled for {{preventiveplan.mslno2?.mcode}} on {{preventiveplan.date}}</a>  -->
+
+                                    <!-- <a class="text" [routerLink]="['/app-dash-board/app-machines/app-preventive-maintenance-plan', {mslno: 'mslno']">Maintenance Plan is scheduled for {{preventiveplan.mslno2?.mcode}} on {{preventiveplan.date}}</a>  -->
+
+
+                                    <a class="text" routerLink="/app-dash-board/app-machines/app-preventive-maintenance-plan">Maintenance Plan is scheduled for {{preventiveplan.mslno2?.mcode}} on {{preventiveplan.date}}</a>
+
+
+
+                                </div>
+                                <!-- <div class="notification-header" *ngFor="let firstaiddetails of firstaiddetails;">
+                                    <a class="text"> Firstaid is scheduled for {{firstaiddetails.eslno2?.faNo}} on {{firstaiddetails.date}} </a>
+                                </div> -->
+                                <div class="notification-header" *ngFor="let firePlan of firePlan;">
+                                    <a class="text" routerLink="/app-dash-board/app-human-resources/app-fire-plan"> Re-Filling Frequencyis scheduled for {{firePlan.fire}} on
+                                        {{firePlan.date1}} to {{firePlan.date}} </a>
+                                </div>
+                                <div class="notification-header" *ngFor="let safetyEquipment of safetyEquipment;">
+                                    <a class="text" routerLink="/app-dash-board/app-human-resources/app-safetyequipments-plan"> safty Equipment is scheduled for {{safetyEquipment.seNo}} on
+                                        {{safetyEquipment.stock}}</a>
+                                </div>
+                                <div class="notification-header" *ngFor="let supPlan of supPlans;">
+                                    <a class="text" routerLink="/app-dash-board/app-supplier/app-supplier-audit-plan"> Supplier Audit Plan is scheduled for
+                                        {{supPlan.supregslno2?.supplierCode}} on {{supPlan.date}} </a>
+                                </div>
+                                <div class="notification-header" *ngFor="let trainPlan of trainPlans;">
+                                    <a class="text" routerLink="/app-dash-board/app-supplier/app-supplier-training-plan"> Supplier Traning Plan is scheduled for
+                                        {{trainPlan.supregslNo2?.supplierCode}} on {{trainPlan.date}} </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="setting">
+                        <a><i class="fa fa-paint-brush" style="color: white" aria-hidden="true" [(colorPicker)]="themes"
+                                [cpOKButton]="true" [cpOKButtonClass]="' btn-primary btn-xs button'"
+                                [cpOKButtonText]="'Reset'" [cpCancelButton]="true"
+                                [cpCancelButtonClass]="'btn-primary btn-xs'" [cpCancelButtonText]="'Cancel'"
+                                [cpSaveClickOutside]="false" [cpCloseClickOutside]="false" [cpPresetColors]="[
+                                    '#9400D3',
+                                    '#0000FF',
+                                    '#00FF00',
+                                    '#FFFF00',
+                                    '#FF7F00',
+                                    '#FF0000'
+                                ]" [cpPositionRelativeToArrow]="true" [cpPosition]="'left'" [cpPositionOffset]="'80%'"
+                                [cpAlphaChannel]="'disabled'" [cpDisableInput]="false" [cpOutputFormat]="'hex'"
+                                [cpWidth]="'270px'" [cpHeight]="'390px'" (cpSliderChange)="colorPicker($event)"
+                                (colorPickerSelect)="defaultColor()"></i></a>
+                    </li>
+
+                    <!-- <li class="setting"> -->
+                    <!-- <span id="notification_count"></span>
+                        <span style="color: white" id="notificationLink">
+                          <img  src="assets/images/favicon-industry.ico" style="filter: brightness(100);width:12px;height:12px;" ></span>
+                        <div id="notificationContainer">
+                            <div id="notificationsBody" class="notifications"></div>
+                        </div> -->
+                    <!-- <div class="dropdown" >
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
+                                style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                                class="bttn">
+                                <span> <img  src="assets/images/favicon-industry.ico" style="filter: brightness(100);width:12px;height:12px;"  [ngClass]="
+                                        parentMenuString == 'ManufactureSetting'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="ManufactureSetting"></span>
+                            </button>
+
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu2">
+                                <li routerLink="./app-manufacture-setting/app-machine-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'MachineSetting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'MachineSetting'
+                                            )
+                                        ">Machine Setting</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-department-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'DepartmentSetting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'DepartmentSetting'
+                                            )
+                                        ">Department Setting</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-checklist-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'ChecklistSetting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'ChecklistSetting'
+                                            )
+                                        ">Checklist Setting</a>
+                                </li> 
+                                </ul>
+                                </div>
+                    </li> -->
+                    <!-- --------------------------- -->
+
+                    <!-- Master Customer-->
+                    <!-- <li class="manufacture-setting" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' || user?.dpslno2?.department == 'Production' ">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="fa fa-user-plus" [ngClass]="
+                                        parentMenuString == 'Customer Master'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="Add Customer"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-customer-master/app-customer">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Customers'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Customer Master',
+                                                'Customers'
+                                            )
+                                        ">Customer Master</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li> -->
+
+                    <li class="manufacture-setting" *ngIf="user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Maintenance'">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="fa fa-industry" [ngClass]="
+                                        parentMenuString == 'manufacture-setting'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="Add Machine"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-manufacture-setting/app-machine-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Machine-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Machine-setting'
+                                            )
+                                        ">Machine Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-spare-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Spare-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Spare-setting'
+                                            )
+                                        ">Spares Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-checklist-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Checklist-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Checklist-setting'
+                                            )
+                                        ">Checklist Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-department-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Department-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Department-setting'
+                                            )
+                                        ">Department Master</a>
+                                </li>
+
+                                <li routerLink="./app-manufacture-setting/app-breakdown-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Breakdown-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Breakdown-setting'
+                                            )
+                                        ">Breakdown Master</a>
+                                </li>
+
+                                <li routerLink="./app-manufacture-setting/app-root-cause-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Root-cause-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Root-cause-setting'
+                                            )
+                                        ">Root Cause Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-preventive-action-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Preventive-action-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Preventive-action-setting'
+                                            )
+                                        ">Preventive Action Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-status-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Status-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Status-setting'
+                                            )
+                                        ">Status Master</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="manufacture-setting" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' || user?.dpslno2?.department == 'Production' ">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="fa fa-users" [ngClass]="
+                                        parentMenuString == 'supplier'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="Add Supplier"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-supplier-master/app-supplier-reg-form">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'supplier-registration'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'supplier',
+                                                'supplier-registration'
+                                            )
+                                        ">Supplier Registration Master</a>
+                                </li>
+                                <li routerLink="./app-supplier-master/app-assessment-criteria">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'assessment-criteria'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'supplier',
+                                                'assessment-criteria'
+                                            )
+                                        ">Assessment Criteria Master</a>
+                                </li>
+                                <li routerLink="./app-supplier-master/app-activity">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Activity'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'supplier',
+                                                'Activity'
+                                            )
+                                        ">Supplier Audit Report Activity Master</a>
+                                </li>
+                                <li routerLink="./app-supplier-master/app-supplier-checklist">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Supplier Checklist'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'supplier',
+                                                'Supplier Checklist'
+                                            )
+                                        "> Supplier Checklist Master</a>
+                                </li>
+                                <li routerLink="./app-supplier-master/app-traning-plan">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Traning Plan'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'supplier',
+                                                'Traning Plan'
+                                            )
+                                        "> Traning Plan Master</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="manufacture-setting" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' || user?.dpslno2?.department == 'Production' ">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="fa fa-shopping-cart" [ngClass]="
+                                        parentMenuString == 'purchase'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="Add Company"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-purchase-master/app-company-details">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Company'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'purchase',
+                                                'Company'
+                                            )
+                                        ">Company Master</a>
+                                </li>
+                                <li routerLink="./app-purchase-master/app-consignee-details">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Consignee'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'purchase',
+                                                'Consignee'
+                                            )
+                                        ">Consignee Master</a>
+                                </li>
+                                <li routerLink="./app-purchase-master/app-purchaseble-master">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Purchaseable'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'purchase',
+                                                'Purchaseable'
+                                            )
+                                        ">Purchaseable Master</a>
+                                </li>
+                                <li routerLink="./app-purchase-master/app-item-master">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Item Master'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'purchase',
+                                                'Item Master'
+                                            )
+                                        ">Item Master</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+                    <li class="manufacture-setting" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Sales' ">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="	fas fa-comment-dollar" [ngClass]="
+                                        parentMenuString == 'Sales-Master'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="Add Sales"></i>
+                            </button>
+
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-sales-master/app-custemer-register">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'custemer'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'custemer-Master',
+                                                'custemer'
+                                            )
+                                        ">Custemer Master</a>
+                                </li>
+                                <li routerLink="./app-sales-master/app-sales-details">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Sales'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Sales-Master',
+                                                'Sales'
+                                            )
+                                        ">Sales Master</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- ------------------------------------- -->
+                    <li class="manufacture-setting" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Production' ">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="fa fa-industry" [ngClass]="
+                                        parentMenuString == 'manufacture-setting'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="Add Production"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-production-setting/app-fixture-machine-master">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Machine-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Production-setting',
+                                                'Machine-setting'
+                                            )
+                                        ">Fixture Machine Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-spare-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Spare-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Spare-setting'
+                                            )
+                                        ">Spares Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-checklist-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Checklist-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Checklist-setting'
+                                            )
+                                        ">Checklist Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-department-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Department-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Department-setting'
+                                            )
+                                        ">Department Master</a>
+                                </li>
+
+                                <li routerLink="./app-manufacture-setting/app-breakdown-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Breakdown-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Breakdown-setting'
+                                            )
+                                        ">Breakdown Master</a>
+                                </li>
+
+                                <li routerLink="./app-manufacture-setting/app-root-cause-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Root-cause-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Root-cause-setting'
+                                            )
+                                        ">Root Cause Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-preventive-action-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Preventive-action-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Preventive-action-setting'
+                                            )
+                                        ">Preventive Action Master</a>
+                                </li>
+                                <li routerLink="./app-manufacture-setting/app-status-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Status-setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Status-setting'
+                                            )
+                                        ">Status Master</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- ------------------------------------- -->
+                    <li class="manufacture-setting" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'HR' ">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="fa fa-user" [ngClass]="
+                                        parentMenuString == 'employee-master'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="Add Employee"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-employee-master/app-employee-details">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Employee'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Manufacture-setting',
+                                                'Employee'
+                                            )
+                                        ">Employee Master</a>
+                                </li>
+
+                                <li routerLink="./app-employee-master/app-employefecility">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Employee Facility Master'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Employee',
+                                                'Employee Facility Master'
+                                            )
+                                        ">Employee Facility Master</a>
+                                </li>
+
+                                <li routerLink="./app-employee-master/app-legal-documents">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Legal Documents'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Employee',
+                                                'Legal Documents'
+                                            )
+                                        ">Legal Documents Master</a>
+                                </li>
+
+                                <li routerLink="./app-employee-master/app-bank-master">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Bank Name'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Employee',
+                                                'Bank Name'
+                                            )
+                                        ">Bank Name Master</a>
+                                </li>
+                                <!-- <li routerLink="./app-employee-master/app-bank-master">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Bank Name'
+                                                ? 'is-active'
+                                                : ''
+                                        "(click)="
+                                            onMenuChildClick(
+                                                'Employee',
+                                                'Bank Name'
+                                            )
+                                        ">Bank Name Master</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- ---------------File Document---------------------- -->
+                    <!-- <li class="manufacture-setting" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'HR' ">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="fa fa-file-text" [ngClass]="
+                                        parentMenuString == 'File Master'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="Add Files"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-file-master/app-file-document">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Files'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'File Master',
+                                                'Files'
+                                            )
+                                        ">File Master</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li> -->
+
+                    <!-- ----------------File Document--------------------- -->
+                    <li class="manufacture-setting" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' || user?.dpslno2?.department == 'Sales'">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="fa fa-wrench" [ngClass]="
+                                        parentMenuString == 'Production-master'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="Add Product"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-production-master/app-production-details" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' || user?.dpslno2?.department == 'Sales'">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Product'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Product-master',
+                                                'Product'
+                                            )
+                                        ">Product Master</a>
+                                </li>
+                                <li routerLink="./app-production-master/app-part-specification-master" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' ">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Product'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Part-specification-master',
+                                                'Product'
+                                            )
+                                        ">Item Specification Master</a>
+                                </li>
+                                <li routerLink="./app-production-master/app-child-part" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' || user?.dpslno2?.department == 'Sales'">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Tool'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Product-master',
+                                                'Child Part'
+                                            )
+                                        ">Child Part Master</a>
+                                </li>
+                                <li routerLink="./app-production-master/app-part-master" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' || user?.dpslno2?.department == 'Sales'">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Tool'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Product-master',
+                                                'Part Master'
+                                            )
+                                        ">Part Master</a>
+                                </li>
+                                <li routerLink="./app-production-master/app-consumer-master" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' ">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Tool'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Product-master',
+                                                'consumable Master'
+                                            )
+                                        ">Consumable Master</a>
+                                </li>
+                                <li routerLink="./app-production-master/app-tools-master" *ngIf="user?.dpslno2?.department == 'Top Management'|| user?.dpslno2?.department == 'Purchase' || user?.dpslno2?.department == 'Store' ">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Tool'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Product-master',
+                                                'tools'
+                                            )
+                                        ">Tool Master</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- ------------------------------------- -->
+
+                    <li class="setting">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                                <i class="fa fa-cog" [ngClass]="
+                                        parentMenuString == 'Setting'
+                                            ? 'is-active'
+                                            : ''
+                                    " aria-hidden="true" title="More options"></i>
+                            </button>
+
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                                <li routerLink="./app-setting/app-profile/app-registration">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                        childMenuString == 'Profile'
+                                            ? 'is-active'
+                                            : ''
+                                    " (click)="
+                                        onMenuChildClick(
+                                            'Setting',
+                                            'Profile'
+                                        )
+                                    ">Profile</a>
+                                </li>
+
+                                <li routerLink="./app-setting/app-settings">
+                                    <a [ngStyle]="{ 'color': colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Settings'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'Settings'
+                                            )
+                                        ">Settings</a>
+                                </li>
+
+                                <li routerLink="./app-setting/app-unitmaster">
+                                    <a [ngStyle]="{ 'color': colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'UnitMaster'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'UnitMaster'
+                                            )
+                                        ">Unit Master</a>
+                                </li>
+                                <li routerLink="./app-setting/app-unit-dept-master">
+                                    <a [ngStyle]="{ 'color': colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'UnitDeptMaster'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'UnitDeptMaster'
+                                            )
+                                        ">Unit Department Master</a>
+                                </li>
+                                <li routerLink="./app-setting/app-user-theme">
+                                    <a [ngStyle]="{ 'color': colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'UserTheme'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'UserTheme'
+                                            )
+                                        ">Themes</a>
+                                </li>
+
+                                <!-- <li routerLink="./app-setting/app-machine-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'MachineSetting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'MachineSetting'
+                                            )
+                                        ">Machine Setting</a>
+                                </li>
+                                <li routerLink="./app-setting/app-department-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'DepartmentSetting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'DepartmentSetting'
+                                            )
+                                        ">Department Setting</a>
+                                </li> -->
+                                <!-- <li routerLink="./app-setting/app-user-theme">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'ChecklistSetting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'ChecklistSetting'
+                                            )
+                                        ">Checklist Setting</a>
+                                </li> -->
+                                <!-- <li routerLink="./app-setting/app-favourites">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Favourites'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'Favourites'
+                                            )
+                                        ">Favourites</a>
+                                </li>
+
+                                <li routerLink="./app-setting/app-about">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'About'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick('Setting', 'About')
+                                        ">About</a>
+                                </li>
+
+                                <li routerLink="./app-setting/app-import-export">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString == 'Import / Export'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'Import / Export'
+                                            )
+                                        ">Import / Export</a>
+                                </li>
+                                <li routerLink="./app-setting/app-application-setting">
+                                    <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                            childMenuString ==
+                                            'Application Setting'
+                                                ? 'is-active'
+                                                : ''
+                                        " (click)="
+                                            onMenuChildClick(
+                                                'Setting',
+                                                'Application Setting'
+                                            )
+                                        ">Application Setting</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- <li class="setting" routerLink="./app-help">
+                        <a>
+                            <i class="fa fa-question-circle" aria-hidden="true" title="Help" style="color: white"
+                                [ngClass]="
+                                    parentMenuString == 'Help'
+                                        ? 'is-active'
+                                        : ''
+                                " (click)="onMenuParentClick('Help', 'Help')"></i></a>
+                    </li> -->
+
+                    <li class="setting">
+                        <a (click)="submit()" [ngClass]="
+                                parentMenuString == 'Logout' ? 'is-actived' : ''
+                            " (click)="onMenuParentClick('Logout', 'Logout')">
+                            <i class="fa fa-sign-out color" aria-hidden="true" title="Logout"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div> 
+
+<nav mat-tab-nav-bar>
+  
+    <a mat-tab-link routerLink="./app-preventive-maintenance-plan" [queryParams]="{mslno:mslno}" routerLinkActive #preventivePlanTab="routerLinkActive" [active]="preventivePlanTab.isActive">Preventive Maintenance Plan</a>
+    <a mat-tab-link routerLink="./app-preventive-maintenance-checklist" [queryParams]="{mslno:mslno}" routerLinkActive #preventiveListTab="routerLinkActive" [active]="preventiveListTab.isActive">Preventive Maintenance Checklist</a>
+    <a mat-tab-link routerLink="./app-daily-maintenance-checklist" [queryParams]="{mslno:mslno}" routerLinkActive #dailyListTab="routerLinkActive" [active]="dailyListTab.isActive">Daily Maintenance Checklist</a>
+    <a mat-tab-link routerLink="./app-break-down-register" [queryParams]="{mslno:mslno}" routerLinkActive #breakDownTab="routerLinkActive" [active]="breakDownTab.isActive">Break Down Register</a>
+    <a mat-tab-link routerLink="./app-machine-reports" [queryParams]="{mslno:mslno}" routerLinkActive #reportTab="routerLinkActive" [active]="reportTab.isActive">Reports</a>
+    
+</nav>
+
+<router-outlet></router-outlet>

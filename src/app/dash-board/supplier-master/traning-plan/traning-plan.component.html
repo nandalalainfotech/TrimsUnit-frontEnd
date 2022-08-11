@@ -1,0 +1,71 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Supplier Training Plan Form</legend>
+    <div class="formData">
+        <form [formGroup]="TraningPlanForm" (ngSubmit)="onTrainingPlanClick($event, TraningPlanForm)">
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-5">
+                    <div class="form-group">
+                        <label path="trainingname" for="trainingname" cssClass="required">Name Of Training</label>
+                        <input type="text" class="form-control" path="trainingname" formControlName="trainingname">
+                        <div *ngIf="submitted && f.trainingname.errors" class="invalid-feedback">
+                            <div *ngIf="f.trainingname.errors.required">
+                                Training Name is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-5">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="status" for="status" cssClass="required"> Status </label>
+                                <input type="text" class="form-control" path="criteria" formControlName="status">
+                                <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                                    <div *ngIf="f.status.errors.required">Status is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-10 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <legend class="scheduler-border">Supplier Training Plan Form</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

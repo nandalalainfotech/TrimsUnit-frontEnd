@@ -1,0 +1,210 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Sales Invoice</legend>
+        <div class="formData">
+            <form [formGroup]="slaesInvocieForm" (ngSubmit)="onPurchaseOrderClick($event, slaesInvocieForm)">
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="custmrSlno" for="custmrSlno" cssClass="required">Customer Name</label>
+                            <select class="form-control" path="custmrSlno" formControlName="custmrSlno" [ngClass]="{'is-invalid': submitted && f.custmrSlno.errors}">
+                                <option value="" hidden> - Select the Invoice To - </option>
+                                <option value="null"> - Select the Invoice To - </option>
+                                <option *ngFor="let Custemerreg of Custemerregs;" [value]='Custemerreg.slNo'>
+                                    {{Custemerreg.custemername}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.custmrSlno.errors" class="invalid-feedback">
+                                <div *ngIf="f.custmrSlno.errors.required">
+                                    Invioce To is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="consignee" for="consignee" cssClass="required">Consignee No (Ship
+                                    To)</label>
+                                <select class="form-control" path="consignee" formControlName="consignee" [ngClass]="{'is-invalid': submitted && f.consignee.errors}">
+                                    <option value="" hidden> - Select the Consignee No - </option>
+                                    <option value="null"> - Select the Consignee No - </option>
+                                    <option *ngFor="let Custemerreg of Custemerregs;" [value]='Custemerreg.slNo'>
+                                        {{Custemerreg.consignee}}
+                                    </option>
+                                </select>
+                                <div *ngIf="submitted && f.consignee.errors" class="invalid-feedback">
+                                    <div *ngIf="f.consignee.errors.required">
+                                        Consignee No is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="pono" for="series" cssClass="required" required="true">PO NO</label>
+                            <input class="form-control" formControlName="pono" readonly />
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="date" for="date" cssClass="required">Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="date" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                        <div *ngIf="f.date.errors.required">
+                                            Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="refno" for="series" cssClass="required" required="true">Reference No</label>
+                            <input class="form-control" formControlName="refno" />
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="otherRef" for="otherRef" cssClass="required">Other Reference</label>
+                            <input type="text" class="form-control" path="otherRef" formControlName="otherRef" [ngClass]="{'is-invalid': submitted && f.otherRef.errors}" />
+                            <div *ngIf="submitted && f.otherRef.errors" class="invalid-feedback">
+                                <div *ngIf="f.otherRef.errors.required">
+                                    Other Reference is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="dispatchThrough" for="dispatchThrough" cssClass="required">Dispached
+                                Through</label>
+                            <textarea class="form-control" rows="3" cols="1" path="dispatchThrough" formControlName="dispatchThrough" [ngClass]="{'is-invalid': submitted && f.dispatchThrough.errors}">
+                            </textarea>
+                            <div *ngIf="submitted && f.dispatchThrough.errors" class="invalid-feedback">
+                                <div *ngIf="f.dispatchThrough.errors.required">
+                                    Dispached Through is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="destination" for="destination" cssClass="required">Destination</label>
+                            <textarea class="form-control" rows="3" cols="1" path="destination" formControlName="destination" [ngClass]="{'is-invalid': submitted && f.destination.errors}">
+                            </textarea>
+                            <div *ngIf="submitted && f.destination.errors" class="invalid-feedback">
+                                <div *ngIf="f.destination.errors.required">
+                                    Destination is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="termsDelivery" for="termsDelivery" cssClass="required">Terms Of
+                                Delivery</label>
+                            <textarea class="form-control" rows="3" cols="1" path="termsDelivery" formControlName="termsDelivery" [ngClass]="{'is-invalid': submitted && f.termsDelivery.errors}">
+                            </textarea>
+                            <div *ngIf="submitted && f.termsDelivery.errors" class="invalid-feedback">
+                                <div *ngIf="f.termsDelivery.errors.required">Price is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="supplierFrom" for="supplierFrom" cssClass="required">Custemer (Bill
+                                From)</label>
+                            <textarea class="form-control" rows="3" cols="1" path="supplierFrom" formControlName="supplierFrom" [ngClass]="{'is-invalid': submitted && f.supplierFrom.errors}">
+                            </textarea>
+                            <div *ngIf="submitted && f.supplierFrom.errors" class="invalid-feedback">
+                                <div *ngIf="f.supplierFrom.errors.required">
+                                    Supplier is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="hsn" for="hsn" cssClass="required">HSN/SAC</label>
+                            <input type="text" class="form-control" path="hsn" formControlName="hsn" [ngClass]="{'is-invalid': submitted && f.hsn.errors}" />
+                            <div *ngIf="submitted && f.hsn.errors" class="invalid-feedback">
+                                <div *ngIf="f.hsn.errors.required">
+                                    HSN/SAC is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="dueOn" for="dueOn" cssClass="required">Due On</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="dueOn" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.dueOn.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dueOn.errors.required">Due On is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit" style="right: 30%" (click)="onStatusClick()">Submit For Approval</button>
+                            <button type="button" class="btn btn-primary" style="left: 71%;" (click)="onAddbuttonClick(addPopup)">Add Item</button>
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;" (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" (click)="onGeneratePdfReport()" style="margin-right: 40px;">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <legend class="scheduler-border">Slaes Invoice</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

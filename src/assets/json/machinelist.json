@@ -1,0 +1,110 @@
+[{
+    "mcode": "TS/MC/01",
+    "mname": "JIG BORING MACHINE",
+    "ypurchase": "2021",
+    "capacity": "5LTR",
+    "size": "10mm",
+    "make": "Nokia",
+    "location": "Shop Floor"
+},
+{
+    "mcode": "TS/MC/02",
+    "mname": "LATHE MACHINE",
+    "ypurchase": "2021",
+    "capacity": "5LTR",
+    "size": "10mm",
+    "make": "Nokia",
+    "location": "Shop Floor"
+},
+{
+    "mcode": "TS/MC/03",
+    "mname": "SURFACE GRINDING",
+    "ypurchase": "2021",
+    "capacity": "5LTR",
+    "size": "10mm",
+    "make": "LG",
+    "location": "Shop Floor"
+},
+{
+    "mcode": "TS/MC/04",
+    "mname": "BENCH GRINDING",
+    "ypurchase": "2021",
+    "capacity": "5LTR",
+    "size": "10mm",
+    "make": "Nokia",
+    "location": "Shop Floor"
+},
+{
+    "mcode": "TS/MC/05",
+    "mname": "MILLING MACHINE",
+    "ypurchase": "2021",
+    "capacity": "5LTR",
+    "size": "10mm",
+    "make": "LG",
+    "location": "Shop Floor"
+},
+{
+    "mcode": "TS/MC/06",
+    "mname": "DRILLING MACHINE",
+    "ypurchase": "2021",
+    "capacity": "10LTR",
+    "size": "10mm",
+    "make": "Nokia",
+    "location": "Shop Floor"
+},
+{
+    "mcode": "TS/MC/07",
+    "mname": "LASER CUTTING",
+    "ypurchase": "2021",
+    "capacity": "10LTR",
+    "size": "10mm",
+    "make": "LG",
+    "location": "Shop Floor"
+},
+{
+    "mcode": "TS/MC/08",
+    "mname": "PRESS BRAKE",
+    "ypurchase": "10LTR",
+    "capacity": "tires",
+    "size": "10mm",
+    "make": "Nokia",
+    "location": "Shop Floor"
+},
+{
+    "mcode": "TS/MC/09",
+    "mname": "WELDING MACHINE",
+    "ypurchase": "2021",
+    "capacity": "10LTR",
+    "size": "10mm",
+    "make": "Nokia",
+    "location": "Shop Floor"
+},
+{
+    "mcode": "TS/MC/10",
+    "mname": "CNC MACHINE",
+    "ypurchase": "2021",
+    "capacity": "10LTR",
+    "size": "10mm",
+    "make": "Nokia",
+    "location": "Shop Floor"
+}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

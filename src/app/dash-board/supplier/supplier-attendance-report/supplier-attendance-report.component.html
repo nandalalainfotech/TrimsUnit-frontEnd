@@ -1,0 +1,153 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Supplier Attendance Report Form</legend>
+        <div class="formData">
+            <form [formGroup]="SupplierAttendanceForm" (ngSubmit)="onSupplierAttendanceClick($event, SupplierAttendanceForm)">
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="machineno" for="series" cssClass="required" required="true">Supplier Code
+                                :</label>
+                            <span *ngIf="supplierregistration001mb"><b> {{supplierregistration001mb.supplierCode}}
+                                </b></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="machinenames" for="series" cssClass="required">Supplier Name : </label>
+                            <span *ngIf="supplierregistration001mb"><b> {{supplierregistration001mb.supplierName}}
+                                </b></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div><br>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="trainerName" for="trainerName" cssClass="required">Tranier Name</label>
+                            <input type="text" class="form-control" path="ncrRef" formControlName="trainerName" />
+                            <div *ngIf="submitted && f.trainerName.errors" class="invalid-feedback">
+                                <div *ngIf="f.trainerName.errors.required">
+                                    Tranier Name Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="date" for="date" cssClass="required"> Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="date" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                        <div *ngIf="f.date.errors.required">Date is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="trainingslNo" for="trainingslNo" cssClass="required">Trainee Topics</label>
+                            <select class="form-control" name="trainingslNo" formControlName="trainingslNo">
+                                <option value="" hidden>--Select Training Name--</option>
+                                <option value="null" disabled selected>--Select Training Name--</option>
+                                <option *ngFor="let trainplan of trainplans"
+                                    [value]="trainplan.slNo">
+                                    {{trainplan.trainingname}} </option>
+                            </select>
+                            <div *ngIf="submitted && f.trainingslNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.trainingslNo.errors.required">
+                                    Trainee Topics is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="traineeName" for="traineeName" cssClass="required">Trainee Name</label>
+                            <input type="text" class="form-control" path="remarks" formControlName="traineeName" />
+                            <div *ngIf="submitted && f.traineeName.errors" class="invalid-feedback">
+                                <div *ngIf="f.traineeName.errors.required">
+                                    Trainee Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="traineeRole" for="traineeRole" cssClass="required">Trainer Role</label>
+                            <input type="text" class="form-control" path="ncrRef" formControlName="traineeRole" />
+                            <div *ngIf="submitted && f.traineeRole.errors" class="invalid-feedback">
+                                <div *ngIf="f.traineeRole.errors.required">
+                                    Trainer Role is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-5">
+                        <div class="form-group">
+                            <label path="attendancestatus" cssClass="required">Attendance Status</label>
+                            <select class="form-control" name="status" formControlName="attendancestatus">
+                                <option value="" hidden>--Select the status--</option>
+                                <option value="null" disabled selected>--Select the status--</option>
+                                <option>P</option>
+                                <option>A</option>
+                            </select>
+                            <div *ngIf="submitted && f.attendancestatus.errors" class="invalid-feedback">
+                                <div *ngIf="f.attendancestatus.errors.required">
+                                    Attendance Status is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+<fieldset class="scheduler-border">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+    <legend class="scheduler-border">Supplier Attendance Report Form</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

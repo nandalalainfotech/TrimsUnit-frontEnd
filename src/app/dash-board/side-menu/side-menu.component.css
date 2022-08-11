@@ -1,0 +1,21 @@
+.is-active {
+    color: orange !important;
+    font-weight: bold !important;
+}
+
+::ng-deep .side-menu #dropdown .panel-body ul li>span>i li>a>span .is-active {
+    color: orange !important;
+    font-weight: bold !important;
+}
+
+.active {
+    color: orange !important;
+    font-weight: bold !important;
+}
+
+
+/* .side-menu #dropdown .caret {
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 150px;
+} */

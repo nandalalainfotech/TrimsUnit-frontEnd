@@ -1,0 +1,12 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="./app-purchase-req-slip" routerLinkActive #purReqSlipTab="routerLinkActive" [active]="purReqSlipTab.isActive">Purchase Requsion Slip </a>
+    <a mat-tab-link routerLink="./app-supplier-quotation" routerLinkActive #supplierQuotTab="routerLinkActive" [active]="supplierQuotTab.isActive">Supplier Quotation</a>
+    <a mat-tab-link routerLink="./app-purchase-order" routerLinkActive #purchaseOrderTab="routerLinkActive" [active]="purchaseOrderTab.isActive">Purchase Order</a>
+    <a mat-tab-link routerLink="./app-sales-order" routerLinkActive #salesOrderTab="routerLinkActive" [active]="salesOrderTab.isActive">Purchase Invoice</a>
+    <a mat-tab-link routerLink="./app-payment" routerLinkActive #paymentTab="routerLinkActive" [active]="paymentTab.isActive">Payment</a>
+</nav>
+<router-outlet></router-outlet>

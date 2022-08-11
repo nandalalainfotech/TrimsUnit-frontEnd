@@ -1,0 +1,612 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">New</legend>
+        <form [formGroup]="statutoryForm" (ngSubmit)="onstatutoryClick($event,statutoryForm)">
+            <div class="row">
+
+
+
+
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" path="slNo" />
+                        <!-- <label path="ecode" for="series" cssClass="required" required="true"></label> -->
+                        <label path="ecode" for="ecode" cssClass="required">EMPLOYEE CODE</label>
+                        <input class="form-control" path="ecode" formControlName="ecode"
+                            [ngClass]="{'is-invalid': submitted && f.ecode.errors}" />
+                        <div *ngIf="submitted && f.ecode.errors" class="invalid-feedback">
+                            <div *ngIf="f.ecode.errors.required">
+                                Employee Code is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" path="slNo" />
+                        <!-- <label path="ename" for="series" cssClass="required" required="true"></label> -->
+                        <label path="ename" for="ename" cssClass="required">EMPLOYEE NAME</label>
+                        <input class="form-control" path="ename" formControlName="ename"
+                            [ngClass]="{'is-invalid': submitted && f.ename.errors}" />
+                        <div *ngIf="submitted && f.ename.errors" class="invalid-feedback">
+                            <div *ngIf="f.ename.errors.required">
+                                Employee Name is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+
+
+                                    <div class="form-group">
+                                        
+                                        <input type="radio" id="Enable" name="fav_language1" value="Enable"
+                                            formControlName="escheckbox" (click)="setEnableESI()" checked="checked"
+                                           />
+                                        <label class="rlabel" for="Enable"> Enable</label>
+
+                                        <input class="rbutton" type="radio" id="Disable" name="fav_language1"
+                                            value="Disable" formControlName="escheckbox" (click)="setDisableESI()" />
+                                        <label class="rlabel" for="Disable"> Disable</label><br>
+
+
+                                        <!-- <div *ngIf="submitted && f.Status.errors" class="invalid-feedback">
+                                            <div *ngIf="f.Status.errors.required">
+                                                Status is Required
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" path="slNo" />
+                        <!-- <label path="esno" for="series" cssClass="required" required="true"></label> -->
+                        <label path="esno" for="esno" cssClass="required">ESI NO</label>
+                        <input class="form-control" path="esno" formControlName="esno"
+                            [ngClass]="{'is-invalid': submitted && f.esno.errors}" />
+                        <div *ngIf="submitted && f.esno.errors" class="invalid-feedback">
+                            <div *ngIf="f.esno.errors.required">
+                                ESI Number is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="escheme" for="escheme" cssClass="required">ESI SCHEME</label>
+                            <input class="form-control" path="escheme" formControlName="escheme"
+                                [ngClass]="{'is-invalid': submitted && f.escheme.errors}" />
+                            <div *ngIf="submitted && f.escheme.errors" class="invalid-feedback">
+                                <div *ngIf="f.escheme.errors.required">
+                                    ESI Scheme is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="esstartdate" for="esstartdate" cssClass="required">ESI START
+                                        DATE</label>&nbsp;
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="esstartdate" yearRange="2000:2030" inputId="navigators"
+                                        [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.esstartdate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.esstartdate.errors.required">
+                                            ESI Start Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="esenddate" for="esenddate" cssClass="required">ESI END
+                                        DATE</label>&nbsp;
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="esenddate" yearRange="2000:2030" inputId="navigators"
+                                        [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.esenddate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.esenddate.errors.required">
+                                            ESI End Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+
+
+                                    <div class="form-group">
+                                        
+                                        <input type="radio" id="Enable" name="fav_language2" value="Enable"
+                                            formControlName="pfcheckbox" (click)="setEnablePF()" checked="checked"
+                                             />
+                                        <label class="rlabel" for="Enable"> Enable</label>
+
+                                        <input class="rbutton" type="radio" id="Disable" name="fav_language2"
+                                            value="Disable" formControlName="pfcheckbox" (click)="setDisablePF()" />
+                                        <label class="rlabel" for="Disable"> Disable</label><br>
+
+
+                                        <!-- <div *ngIf="submitted && f.Status.errors" class="invalid-feedback">
+                                            <div *ngIf="f.Status.errors.required">
+                                                Status is Required
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="pfno" for="pfno" cssClass="required">PF NO</label>
+                            <input class="form-control" path="pfno" formControlName="pfno"
+                                [ngClass]="{'is-invalid': submitted && f.pfno.errors}" />
+                            <div *ngIf="submitted && f.pfno.errors" class="invalid-feedback">
+                                <div *ngIf="f.pfno.errors.required">
+                                    PF Number is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="pscheme" for="pscheme" cssClass="required">PF SCHEME</label>
+                            <input class="form-control" path="pscheme" formControlName="pscheme"
+                                [ngClass]="{'is-invalid': submitted && f.pscheme.errors}" />
+                            <div *ngIf="submitted && f.pscheme.errors" class="invalid-feedback">
+                                <div *ngIf="f.pscheme.errors.required">
+                                    PF scheme is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="pfstartdate" for="pfstartdate" cssClass="required">PF START
+                                        DATE</label>&nbsp;
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="pfstartdate" yearRange="2000:2030" inputId="navigators"
+                                        [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.pfstartdate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.pfstartdate.errors.required">
+                                            PF Start Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="pfenddate" for="pfenddate" cssClass="required">PF END
+                                        DATE</label>&nbsp;
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="pfenddate" yearRange="2000:2030" inputId="navigators"
+                                        [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.pfenddate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.pfenddate.errors.required">
+                                            PF End Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+
+
+                                    <div class="form-group">
+                                       
+                                        <input type="radio" id="Enable" name="fav_language3" value="Enable"
+                                            formControlName="inscheckbox" (click)="setEnableINS()" checked="checked"
+                                             />
+                                        <label class="rlabel" for="Enable"> Enable</label>
+
+                                        <input class="rbutton" type="radio" id="Disable" name="fav_language3"
+                                            value="Disable" formControlName="inscheckbox" (click)="setDisableINS()" />
+                                        <label class="rlabel" for="Disable"> Disable</label><br>
+
+
+                                        <!-- <div *ngIf="submitted && f.Status.errors" class="invalid-feedback">
+                                            <div *ngIf="f.Status.errors.required">
+                                                Status is Required
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="insurno" for="insurno" cssClass="required">INSURENCE NO</label>
+                            <input class="form-control" path="insurno" formControlName="insurno"
+                                [ngClass]="{'is-invalid': submitted && f.insurno.errors}" />
+                            <div *ngIf="submitted && f.insurno.errors" class="invalid-feedback">
+                                <div *ngIf="f.insurno.errors.required">
+                                    Insurence Number is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="inscheme" for="inscheme" cssClass="required">INSURENCE SCHEME</label>
+                            <input class="form-control" path="inscheme" formControlName="inscheme"
+                                [ngClass]="{'is-invalid': submitted && f.inscheme.errors}" />
+                            <div *ngIf="submitted && f.inscheme.errors" class="invalid-feedback">
+                                <div *ngIf="f.inscheme.errors.required">
+                                    Insurence Scheme is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="instartdate" for="instartdate" cssClass="required">INSURENCE START
+                                        DATE</label>&nbsp;
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="instartdate" yearRange="2000:2030" inputId="navigators"
+                                        [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.instartdate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.instartdate.errors.required">
+                                            Insurence start Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="insenddate" for="insenddate" cssClass="required">INSURENCE END
+                                        DATE</label>&nbsp;
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="insenddate" yearRange="2000:2030" inputId="navigators"
+                                        [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.insenddate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.insenddate.errors.required">
+                                            Insurence End Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+
+
+                                    <div class="form-group">
+                                        <input type="radio" id="Enable" name="fav_language4" value="Enable"
+                                            formControlName="medicheckbox" (click)="setEnableMED()" checked="checked"
+                                           />
+                                        <label class="rlabel" for="Enable"> Enable</label>
+
+                                        <input class="rbutton" type="radio" id="Disable" name="fav_language4"
+                                            value="Disable" formControlName="medicheckbox" (click)="setDisableMED()" />
+                                        <label class="rlabel" for="Disable"> Disable</label><br>
+
+
+                                        <!-- <div *ngIf="submitted && f.Status.errors" class="invalid-feedback">
+                                            <div *ngIf="f.Status.errors.required">
+                                                Status is Required
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="mediclno" for="mediclno" cssClass="required">MEDICLAIME NO</label>
+                            <input class="form-control" path="mediclno" formControlName="mediclno"
+                                [ngClass]="{'is-invalid': submitted && f.mediclno.errors}" />
+                            <div *ngIf="submitted && f.mediclno.errors" class="invalid-feedback">
+                                <div *ngIf="f.mediclno.errors.required">
+                                    Mediclaime Number is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label path="mscheme" for="mscheme" cssClass="required">MEDICLAIME SCHEME</label>
+                            <input class="form-control" path="mscheme" formControlName="mscheme"
+                                [ngClass]="{'is-invalid': submitted && f.mscheme.errors}" />
+                            <div *ngIf="submitted && f.mscheme.errors" class="invalid-feedback">
+                                <div *ngIf="f.mscheme.errors.required">
+                                    Mediclaime Scheme is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="mstartdate" for="mstartdate" cssClass="required">MEDICLAIME START
+                                        DATE</label>&nbsp;
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="mstartdate" yearRange="2000:2030" inputId="navigators"
+                                        [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.mstartdate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.mstartdate.errors.required">
+                                            Mediclaime Start Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="menddate" for="menddate" cssClass="required">MEDICLAIME END
+                                        DATE</label>&nbsp;
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true"
+                                        formControlName="menddate" yearRange="2000:2030" inputId="navigators"
+                                        [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.menddate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.menddate.errors.required">
+                                            Mediclaime End Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+
+
+                                    <div class="form-group">
+                                        <input type="radio" id="Enable" name="fav_language5" value="Enable"
+                                            formControlName="bankcheckbox" (click)="setEnableBANK()" checked="checked"
+                                            />
+                                        <label class="rlabel" for="Enable"> Enable</label>
+
+                                        <input class="rbutton" type="radio" id="Disable" name="fav_language5"
+                                            value="Disable" formControlName="bankcheckbox" (click)="setDisableBANK()" />
+                                        <label class="rlabel" for="Disable"> Disable</label><br>
+
+
+                                        <!-- <div *ngIf="submitted && f.Status.errors" class="invalid-feedback">
+                                            <div *ngIf="f.Status.errors.required">
+                                                Status is Required
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" path="slNo" /> 
+                        <label path="bslno" for="bslno" cssClass="required">Bank Name</label>
+                        <select type="bslno" class="form-control" path="bslno" formControlName="bslno" [ngClass]="{'is-invalid': submitted && f.bslno.errors}">
+                            <option value="">-- Select Bank Name --</option>
+                            <option *ngFor="let bank001mb of currentbank001mb" [value]="bank001mb.slNo">
+                                {{bank001mb.bankname}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.acholdername.errors" class="invalid-feedback">
+                            <div *ngIf="f.acholdername.errors.required">
+                                Bank Name is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" path="slNo" />
+                        <!-- <label path="acholdername" for="series" cssClass="required" required="true"></label> -->
+                        <label path="acholdername" for="acholdername" cssClass="required">A/C Holder Name</label>
+                        <input class="form-control" path="acholdername" formControlName="acholdername"
+                            [ngClass]="{'is-invalid': submitted && f.acholdername.errors}" />
+                        <div *ngIf="submitted && f.acholdername.errors" class="invalid-feedback">
+                            <div *ngIf="f.acholdername.errors.required">
+                                A/C Holder Name is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" path="slNo" />
+                        <!-- <label path="accno" for="series" cssClass="required" required="true"></label> -->
+                        <label path="accno" for="accno" cssClass="required">ACCOUNT NO</label>
+                        <input class="form-control" path="accno" formControlName="accno"
+                            [ngClass]="{'is-invalid': submitted && f.accno.errors}" />
+                        <div *ngIf="submitted && f.accno.errors" class="invalid-feedback">
+                            <div *ngIf="f.accno.errors.required">
+                                ACCOUNT NO is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-2 col-sm-2">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" path="slNo" />
+                        <!-- <label path="ifsccode" for="series" cssClass="required" required="true"></label> -->
+                        <label path="ifsccode" for="ifsccode" cssClass="required">IFSC CODE</label>
+                        <input class="form-control" path="ifsccode" formControlName="ifsccode"
+                            [ngClass]="{'is-invalid': submitted && f.ifsccode.errors}" />
+                        <div *ngIf="submitted && f.ifsccode.errors" class="invalid-feedback">
+                            <div *ngIf="f.ifsccode.errors.required">
+                                IFSC CODE is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">
+                            Submit
+                        </button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <legend class="scheduler-border">Statutory</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+            [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

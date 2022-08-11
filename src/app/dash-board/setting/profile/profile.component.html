@@ -1,0 +1,11 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="./app-registration" routerLinkActive #registrationTab="routerLinkActive" [active]="registrationTab.isActive">Registration</a>
+    <a mat-tab-link routerLink="./app-password" routerLinkActive #passwordTab="routerLinkActive" [active]="passwordTab.isActive">Change Password</a>
+    <a mat-tab-link routerLink="./app-username" routerLinkActive #userNameTab="routerLinkActive" [active]="userNameTab.isActive">Change Username</a>
+</nav>
+
+<router-outlet></router-outlet>

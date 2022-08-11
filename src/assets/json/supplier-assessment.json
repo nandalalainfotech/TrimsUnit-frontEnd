@@ -1,0 +1,32 @@
+[
+    {
+        "assessment": "Organisation ",
+        "details": "Does the company have adequate no. of people and infrastructure to process required quantity?",
+        "max": "10",
+        "score": "8"
+    },
+    {
+        "assessment": "Material Control",
+        "details": "Are the adequate controls excessed by the supplier (Supplier) on raw material, consumables and accessories used in processing?",
+        "max": "10",
+        "score": "5"
+    },
+    {
+        "assessment": "Equipment Control",
+        "details": "Are the equipments used for the processing are in good condition and properly maintained and controlled?",
+        "max": "10",
+        "score": "7"
+    },
+    {
+        "assessment": "Inspection Procedure and Facilities",
+        "details": "Are the adequate facilities and skills available for identifying and controlling the defects?",
+        "max": "10",
+        "score": "8"
+    },
+    {
+        "assessment": "Calibration",
+        "details": "How Clean is their work area including the orderlines in keeping products?",
+        "max": "10",
+        "score": "10"
+    }
+]

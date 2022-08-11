@@ -1,0 +1,19 @@
+<!-- <div class="card">
+    <h4 style="color:chocolate; font-weight: 700;margin-bottom: 0px;">SRINIVAS ENTERPRISES</h4>
+    <h3 style="color:chocolate; font-weight: 700;">PREVENTIVE MAINTENANCE TREND CHART - 2020 - 21</h3>
+    <ngx-charts-bar-vertical-stacked style="margin-left:100px;" [view]="[725, 260]" [results]="multi"
+        [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
+        [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel" [animations]="animations" [legendPosition]="legendPosition"
+        (select)="onSelect($event)">
+    </ngx-charts-bar-vertical-stacked>
+</div> -->
+<div  *ngIf="user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Maintenance' ">
+<div class="card">
+  <ngx-charts-bar-vertical-2d [view]="[1270, 560]" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [legendPosition]="legendPosition"
+    [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitle" (select)="onSelect($event)"
+    (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+  </ngx-charts-bar-vertical-2d>
+</div>
+</div>

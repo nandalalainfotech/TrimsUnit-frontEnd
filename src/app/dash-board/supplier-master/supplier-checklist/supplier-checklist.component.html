@@ -1,0 +1,92 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Supplier Checklist Form</legend>
+    <div class="formData">
+        <form [formGroup]="SupChecklistForm" (ngSubmit)="onSupChecklistClick($event, SupChecklistForm)">
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-5">
+                    <div class="form-group">
+                        <label path="activityslNo" for="activityslNo" cssClass="required">Activity</label>
+                        <select class="form-control" path="activityslNo" formControlName="activityslNo">
+                            <option value="" hidden> - Assessment Criteria - </option>
+                            <option value="null"> - Assessment Criteria - </option>
+                            <option *ngFor="let activity001mb of activity001mbs" [value]="activity001mb.slNo">
+                                {{activity001mb.activity}} </option>
+                        </select>
+                        <div *ngIf="submitted && f.activityslNo.errors" class="invalid-feedback">
+                            <div *ngIf="f.activityslNo.errors.required">
+                                Activity is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-5">
+                    <div class="form-group">
+                        <label path="checkpointsName" for="checkpointsName" cssClass="required">Checklist Name</label>
+                        <input type="text" class="form-control" path="checkpointsName"
+                            formControlName="checkpointsName">
+                        <div *ngIf="submitted && f.checkpointsName.errors" class="invalid-feedback">
+                            <div *ngIf="f.checkpointsName.errors.required">
+                                Check Points is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-5">
+                    <div class="form-group">
+                        <label path="status" for="status" cssClass="required">Status</label>
+                        <input type="text" class="form-control" path="criteria" formControlName="status">
+                        <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                            <div *ngIf="f.status.errors.required">
+                                Status is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-10 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Save</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+
+
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <legend class="scheduler-border">Supplier Checklist Form</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+            [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

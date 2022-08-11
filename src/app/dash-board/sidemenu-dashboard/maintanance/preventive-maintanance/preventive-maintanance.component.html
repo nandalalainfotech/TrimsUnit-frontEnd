@@ -1,0 +1,9 @@
+<div  *ngIf="user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Maintenance' ">
+    <div class="card">
+      <ngx-charts-bar-vertical-2d [view]="[1270, 560]" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [legendPosition]="legendPosition"
+        [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitle" (select)="onSelect($event)"
+        (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+      </ngx-charts-bar-vertical-2d>
+    </div>
+    </div>

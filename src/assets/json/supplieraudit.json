@@ -1,0 +1,25 @@
+[{
+        "supCode": "supplier01",
+        "supName": "ERP Company",
+        "status": "P",
+        "date": "19-03-22"
+    },
+    {
+        "supCode": "supplier02",
+        "supName": "ABC Company",
+        "status": "C",
+        "date": "20-03-22"
+    },
+    {
+        "supCode": "supplier03",
+        "supName": "TRIMS Company",
+        "status": "P",
+        "date": "21-03-22"
+    },
+    {
+        "supCode": "supplier04",
+        "supName": "MPVE Company",
+        "status": "C",
+        "date": "22-03-22"
+    }
+]

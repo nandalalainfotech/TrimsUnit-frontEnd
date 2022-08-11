@@ -1,0 +1,142 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Approval-Request</legend>
+
+    <div *ngIf="user?.dpslno2?.department == 'Top Management' || user?.dpslno2?.department == 'Purchase' ">
+        <div class="scrollbar">
+            <fieldset class="scheduler-border">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                                (click)="onViewPurchaseReqClick()">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View
+                            </button>
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                                (click)="onGeneratePurchaseReqPdfReport()">
+                                Export Pdf
+                            </button>
+                            <button type="button" class="btn btn-warning reset"
+                                (click)="onGeneratePurchaseReqExcelReport()">
+                                Export Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <legend class="scheduler-border">Purchase Requisition Slip</legend>
+                <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions"
+                [getRowStyle]="getRowStyle" (rowClicked)="rowClicked($event)"
+                    style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+                </ag-grid-angular>
+            </fieldset>
+        </div>
+
+        <div class="scrollbar">
+            <fieldset class="scheduler-border">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                                (click)="onViewSupplierQuoClick()">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View
+                            </button>
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                                (click)="onGenerateSupplierQuoPdfReport()">
+                                Export Pdf
+                            </button>
+                            <button type="button" class="btn btn-warning reset"
+                                (click)="onGenerateSupplierQuoExcelReport()">
+                                Export Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <legend class="scheduler-border">Supplier Quotation</legend>
+                <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions1"
+                [getRowStyle]="getRowStyle" (rowClicked)="rowClicked($event)"
+                    style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+                </ag-grid-angular>
+            </fieldset>
+        </div>
+
+
+        <div class="scrollbar">
+            <fieldset class="scheduler-border">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                                (click)="onViewPOrderClick()">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View
+                            </button>
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                                (click)="onGeneratePOrderPdfReport()">
+                                Export Pdf
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onGeneratePOrderExcelReport()">
+                                Export Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <legend class="scheduler-border">Purchase Order</legend>
+                <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions2"
+                [getRowStyle]="getRowStyle" (rowClicked)="rowClicked($event)"
+                    style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+                </ag-grid-angular>
+            </fieldset>
+        </div>
+
+        <div class="scrollbar">
+            <fieldset class="scheduler-border">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                                (click)="onViewSalesClick()">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View
+                            </button>
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                                (click)="onGenerateSalesPdfReport()">
+                                Export Pdf
+                            </button>
+                            <button type="button" class="btn btn-warning reset" (click)="onGenerateSalesExcelReport()">
+                                Export Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <legend class="scheduler-border">Sales Invoice</legend>
+                <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions3"
+                    style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+                </ag-grid-angular>
+            </fieldset>
+        </div>
+
+        <div class="scrollbar">
+            <fieldset class="scheduler-border">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                                (click)="onViewPaymentClick()">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View
+                            </button>
+                            <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                                (click)="onGeneratePaymentPdfReport()">
+                                Export Pdf
+                            </button>
+                            <button type="button" class="btn btn-warning reset"
+                                (click)="onGeneratePaymentExcelReport()">
+                                Export Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <legend class="scheduler-border">Payment</legend>
+                <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions4"
+                    style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+                </ag-grid-angular>
+            </fieldset>
+        </div>
+    </div>
+</fieldset>

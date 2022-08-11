@@ -1,0 +1,17 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+
+<nav mat-tab-nav-bar>
+
+    <a mat-tab-link routerLink="./app-supplier-assessment" [queryParams]="{suppSlno:suppSlno}" routerLinkActive #supplierAssessmentTab="routerLinkActive" [active]="supplierAssessmentTab.isActive">Supplier Assessment</a>
+    <a mat-tab-link routerLink="./app-supplier-audit-plan" [queryParams]="{suppSlno:suppSlno}" routerLinkActive #supplierAuditplanTab="routerLinkActive" [active]="supplierAuditplanTab.isActive">Supplier Audit Plan</a>
+    <a mat-tab-link routerLink="./app-supplier-audit-report" [queryParams]="{suppSlno:suppSlno}" routerLinkActive #supplierAuditReportTab="routerLinkActive" [active]="supplierAuditReportTab.isActive">Supplier Audit Report</a>
+    <a mat-tab-link routerLink="./app-supplier-training-plan" [queryParams]="{suppSlno:suppSlno}" routerLinkActive #suppliertrainPlanTab="routerLinkActive" [active]="suppliertrainPlanTab.isActive">Supplier Training Plan</a>
+    <a mat-tab-link routerLink="./app-supplier-attendance-report" [queryParams]="{suppSlno:suppSlno}" routerLinkActive #supplierAttendanceReportTab="routerLinkActive" [active]="supplierAttendanceReportTab.isActive">Supplier Attendance Report</a>
+    <!-- <a mat-tab-link routerLink="./app-machine-reports" [queryParams]="{mslno:mslno}" routerLinkActive #reportTab="routerLinkActive" [active]="reportTab.isActive">Reports</a>  -->
+
+
+</nav>
+
+<router-outlet></router-outlet>

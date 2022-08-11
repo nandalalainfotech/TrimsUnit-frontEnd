@@ -1,0 +1,185 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Payment</legend>
+        <div class="formData">
+            <form [formGroup]="paymentForm" (ngSubmit)="onpaymentClick($event, paymentForm)">
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="saleorderSlno" for="saleorderSlno" cssClass="required">Invoice No</label>
+                            <select class="form-control" path="saleorderSlno" formControlName="saleorderSlno" (click)="onPayClick()" [ngClass]="{'is-invalid': submitted && f.saleorderSlno.errors}">
+                                <option value="" hidden> - Select the Invoice No - </option>
+                                <option value="null"> - Select the Invoice No - </option>
+                                <option *ngFor="let sale of sales;" [value]='sale.slNo'>
+                                    {{sale.invoiceNo}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.saleorderSlno.errors" class="invalid-feedback">
+                                <div *ngIf="f.saleorderSlno.errors.required">
+                                    Invoice No is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="amount" for="amount" cssClass="required">Invoice Amount</label>
+                                <input type="text" class="form-control" path="amount" formControlName="amount" readonly (blur)="onBlurEvent($event)" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="payDate" for="payDate" cssClass="required">Payment Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="payDate" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.payDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.payDate.errors.required">Payment Date is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="payStatus" for="payStatus" cssClass="required">Payment Status</label>
+                            <select class="form-control" path="payStatus" formControlName="payStatus" [ngClass]="{'is-invalid': submitted && f.payStatus.errors}">
+                                <option value="" hidden> - Select the Payment Status - </option>
+                                <option value="null"> - Select the Payment Status - </option>
+                                <option> Paid </option>
+                                <option> Not Paid </option>
+                            </select>
+                            <div *ngIf="submitted && f.payStatus.errors" class="invalid-feedback">
+                                <div *ngIf="f.payStatus.errors.required">
+                                    Payment Status is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="dueDate" for="dueDate" cssClass="required">Due Date</label>
+                                    <p-calendar style="font-size: larger;" [monthNavigator]="true" [yearNavigator]="true" formControlName="dueDate" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.dueDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dueDate.errors.required">Due Date is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="gstNo" for="gstNo" cssClass="required">GST No</label>
+                            <input type="text" class="form-control" path="gstNo" formControlName="gstNo" [ngClass]="{'is-invalid': submitted && f.gstNo.errors}" />
+                            <div *ngIf="submitted && f.gstNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.gstNo.errors.required">
+                                    GST No is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="gstPercent" for="gstPercent" cssClass="required">GST Percentage(%)</label>
+                            <select class="form-control" path="gstPercent" formControlName="gstPercent" (blur)="onBlurEvent($event)" [ngClass]="{'is-invalid': submitted && f.gstPercent.errors}">
+                                <option value="" hidden> - Select the GST Percentage - </option>
+                                <option value="null"> - Select the GST Percentage - </option>
+                                <option> 18 </option>
+                                <option> 24 </option>
+                            </select>
+                            <div *ngIf="submitted && f.gstPercent.errors" class="invalid-feedback">
+                                <div *ngIf="f.gstPercent.errors.required">
+                                    GST Percentage is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="gstAmount" for="gstAmount" cssClass="required">GST Amount</label>
+                            <input type="text" class="form-control" path="gstAmount" formControlName="gstAmount" readonly [ngClass]="{'is-invalid': submitted && f.gstAmount.errors}" />
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="totalAmount" for="totalAmount" cssClass="required">Total Amount</label>
+                            <input type="text" class="form-control" path="totalAmount" formControlName="totalAmount" readonly [ngClass]="{'is-invalid': submitted && f.totalAmount.errors}" />
+                            <div *ngIf="submitted && f.totalAmount.errors" class="invalid-feedback">
+                                <div *ngIf="f.totalAmount.errors.required">
+                                    Total Amount is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="remarks" for="remarks" cssClass="required">Remarks</label>
+                            <textarea type="text" class="form-control" path="remarks" formControlName="remarks" [ngClass]="{'is-invalid': submitted && f.remarks.errors}"></textarea>
+                            <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                                <div *ngIf="f.remarks.errors.required">
+                                    Remarks is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <legend class="scheduler-border">Payment</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

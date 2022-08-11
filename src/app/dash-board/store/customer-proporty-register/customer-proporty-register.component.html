@@ -1,0 +1,119 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Customer Property Register</legend>
+        <div class="formData">
+            <form [formGroup]="materialInwardForm" (ngSubmit)="onMaterialInwardClick($event, materialInwardForm)">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="cname" for="cname" cssClass="required">Customer Name</label>
+                                    <input type="text" class="form-control" path="cname" formControlName="cname" />
+                                    <div *ngIf="submitted && f.cname.errors" class="invalid-feedback">
+                                        <div *ngIf="f.cname.errors.required">
+                                            Customer Name is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="proname" for="proname" cssClass="required">Property Name/No</label>
+                                    <input type="text" class="form-control" path="proname" formControlName="proname" />
+                                    <div *ngIf="submitted && f.proname.errors" class="invalid-feedback">
+                                        <div *ngIf="f.proname.errors.required">
+                                          Property Name is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="recdate" for="recdate" cssClass="required">Received Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="recdate" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.recdate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.recdate.errors.required">
+                                            Received Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               
+                    </div>
+                    <div class="row">
+                        
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="outdate" for="recdate" cssClass="required">Out Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="outdate" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.outdate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.outdate.errors.required">
+                                            Out Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="loc" for="loc" cssClass="required">Location</label>
+                                <input type="text" class="form-control" path="loc" formControlName="loc" />
+                                <div *ngIf="submitted && f.loc.errors" class="invalid-feedback">
+                                    <div *ngIf="f.loc.errors.required">
+                                        Location is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <legend class="scheduler-border">Material Inward Record</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>
+

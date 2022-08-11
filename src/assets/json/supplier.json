@@ -1,0 +1,27 @@
+[{
+        "suppName": "Hema",
+        "address": "Trichy, Samayapuram",
+        "contact": "latha11@gmail.com",
+        "gstin": "159854",
+        "certificate": "ISO CERTIFIED",
+        "natureSupp": "Distributor",
+        "productDesc": "SHEETPLATE",
+        "reputedCust": "100",
+        "concerns": "YES",
+        "otherInfo": "NONE"
+    },
+    {
+        "suppName": "chandraseakar",
+        "address": "Trichy, Pullambadi",
+        "contact": "kavichandran877@gmail.com",
+        "gstin": "122021",
+        "certificate": "ISO CERTIFIED",
+        "natureSupp": "Manufacturer",
+        "productDesc": "SHEETPLATE",
+        "reputedCust": "50",
+        "concerns": "NO",
+        "otherInfo": "NONE"
+
+
+    }
+]

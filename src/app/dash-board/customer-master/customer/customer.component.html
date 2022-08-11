@@ -1,0 +1,162 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Customer Form</legend>
+    <div class="formData">
+        <form [formGroup]="CustomerForm" (ngSubmit)="onCustomerClick($event, CustomerForm)">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required">Customer Name</label>
+                                <input type="text" class="form-control" path="supplierCode"
+                                    formControlName="customerName" />
+                                <div *ngIf="submitted && f.customerName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.customerName.errors.required">Customer Name is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required">Address</label>
+                                <input type="text" class="form-control" path="supplierName" formControlName="address" />
+                                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                    <div *ngIf="f.address.errors.required">Address is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required">GSTIN</label>
+                                <input type="text" class="form-control" path="supplierCode" formControlName="gstin" />
+                                <div *ngIf="submitted && f.gstin.errors" class="invalid-feedback">
+                                    <div *ngIf="f.gstin.errors.required">GSTIN is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 col-sm-4">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required">Vendor Code</label>
+                                <input type="text" class="form-control" path="supplierName"
+                                    formControlName="vendorCode" />
+                                <div *ngIf="submitted && f.vendorCode.errors" class="invalid-feedback">
+                                    <div *ngIf="f.vendorCode.errors.required">Vendor Code is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required">Contact Person Name</label>
+                                <input type="text" class="form-control" path="supplierName"
+                                    formControlName="contactPersonName" />
+                                <div *ngIf="submitted && f.contactPersonName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.contactPersonName.errors.required">Contact Person Name is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required">Customer Phone</label>
+                                <input type="text" class="form-control" path="supplierName"
+                                    formControlName="customerPhone" />
+                                <div *ngIf="submitted && f.customerPhone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.customerPhone.errors.required">Customer Phone is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 col-sm-4">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required">Customer Email</label>
+                                <input type="text" class="form-control" path="supplierName"
+                                    formControlName="customerEmail" />
+                                <div *ngIf="submitted && f.customerEmail.errors" class="invalid-feedback">
+                                    <div *ngIf="f.customerEmail.errors.required">Customer Email is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required">Major Products</label>
+                                <input type="text" class="form-control" path="supplierName"
+                                    formControlName="majorProduct" />
+                                <div *ngIf="submitted && f.majorProduct.errors" class="invalid-feedback">
+                                    <div *ngIf="f.majorProduct.errors.required">Major Products is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">
+                            Submit
+                        </button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;" (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;" (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <legend class="scheduler-border">Customer Form</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+            [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

@@ -1,0 +1,15 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+
+<nav mat-tab-nav-bar>
+   
+ <a mat-tab-link routerLink="./app-material-inward-record" routerLinkActive #materialInwardTab="routerLinkActive" [active]="materialInwardTab.isActive">Material Inward Record</a>
+ <a mat-tab-link routerLink="./app-incoming-inspection-record" routerLinkActive #materialIncomingTab="routerLinkActive" [active]="materialIncomingTab.isActive">Incoming Inspection Record</a>
+ <a mat-tab-link routerLink="./app-customer-proporty-registe" routerLinkActive #materialCustomerTab="routerLinkActive" [active]="materialCustomerTab.isActive">Customer Propoerty Register</a>
+ <a mat-tab-link routerLink="./app-material-moments" routerLinkActive #materialMomentsTab="routerLinkActive" [active]="materialMomentsTab.isActive">Material Moments</a>
+ <a mat-tab-link routerLink="./app-material-stock" routerLinkActive #materialStockTab="routerLinkActive" [active]="materialStockTab.isActive">Stock</a>
+ <a mat-tab-link routerLink="./app-material-req-slip" routerLinkActive #materialReqTab="routerLinkActive" [active]="materialReqTab.isActive">Material Requisition Slip</a>
+ 
+</nav>
+<router-outlet></router-outlet>

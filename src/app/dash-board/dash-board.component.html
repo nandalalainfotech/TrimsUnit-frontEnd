@@ -1,0 +1,8 @@
+<div class="container-fluid">
+    <app-header></app-header>
+    <app-side-menu [ngClass]="isOpen ? 'side_menu2' : 'side_menu1'"> </app-side-menu>
+    <div [ngClass]="isOpen ? 'dataView1' : 'dataView'">
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+    </div>
+</div>

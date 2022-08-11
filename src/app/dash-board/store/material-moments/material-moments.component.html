@@ -1,0 +1,183 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Material Moments</legend>
+        <div class="formData">
+            <form [formGroup]="materialInwardForm" (ngSubmit)="onMaterialInwardClick($event, materialInwardForm)">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="scno" for="scno" cssClass="required">Supplier/Customer Name</label>
+                                    <input type="text" class="form-control" path="scno" formControlName="scno" />
+                                    <div *ngIf="submitted && f.scno.errors" class="invalid-feedback">
+                                        <div *ngIf="f.scno.errors.required">
+                                            Name is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="dcno" for="dcno" cssClass="required">DC or Inv.No</label>
+                                    <input type="text" class="form-control" path="dcno" formControlName="dcno" />
+                                    <div *ngIf="submitted && f.dcno.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dcno.errors.required">
+                                            DC No is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="date" for="date" cssClass="required">Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="date" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                        <div *ngIf="f.date.errors.required">
+                                            Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label path="part" for="part" cssClass="required">Part Name</label>
+                                    <input type="text" class="form-control" path="part" formControlName="part" />
+                                    <div *ngIf="submitted && f.part.errors" class="invalid-feedback">
+                                        <div *ngIf="f.part.errors.required">
+                                            Part Name is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="partNo" for="partNo" cssClass="required">Part No</label>
+                                <input type="text" class="form-control" path="partNo" formControlName="partNo" />
+                                <div *ngIf="submitted && f.partNo.errors" class="invalid-feedback">
+                                    <div *ngIf="f.partNo.errors.required">
+                                        Part No is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="param" for="param" cssClass="required">Parameter</label>
+                                    <input type="text" class="form-control" path="param" formControlName="param" />
+                                    <div *ngIf="submitted && f.param.errors" class="invalid-feedback">
+                                        <div *ngIf="f.param.errors.required">
+                                            Parameter is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="specifi" for="specifi" cssClass="required">Specfication</label>
+                                <input type="text" class="form-control" path="specifi" formControlName="specifi" />
+                                <div *ngIf="submitted && f.specifi.errors" class="invalid-feedback">
+                                    <div *ngIf="f.specifi.errors.required">
+                                        Specification is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="inspection" for="inspection" cssClass="required">Inspection Method</label>
+                            <input type="text" class="form-control" path="inspection" formControlName="inspection" />
+                            <div *ngIf="submitted && f.inspection.errors" class="invalid-feedback">
+                                <div *ngIf="f.inspection.errors.required">
+                                    Inspection is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="obs" for="obs" cssClass="required">Observation</label>
+                            <select class="form-control" path="obs" formControlName="obs">
+                                <option value="" hidden> - Select the Voucher No - </option>
+                                <option value="null"> - Select the Voucher No - </option>
+                                <option *ngFor="let order of orders;" [value]='order.slNo'>
+                                    {{order.supplierFrom}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.obs.errors" class="invalid-feedback">
+                                <div *ngIf="f.obs.errors.required">Observation is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="remark" for="remark" cssClass="required">Remark</label>
+                            <input type="text" class="form-control" path="remark" formControlName="remark" />
+                            <div *ngIf="submitted && f.remark.errors" class="invalid-feedback">
+                                <div *ngIf="f.remark.errors.required">
+                                    Remarkis Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <legend class="scheduler-border">Material Inward Record</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

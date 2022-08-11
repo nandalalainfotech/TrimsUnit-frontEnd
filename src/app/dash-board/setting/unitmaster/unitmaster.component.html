@@ -1,0 +1,83 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Unit Master</legend>
+    <div class="formData">
+        <form [formGroup]="unitmasterForm" (ngSubmit)="onUnitMasterClick($event, unitmasterForm)">
+            <div class="col-xs-2 col-sm-6 col-md-12  ">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 ">
+                        <div class="form-group">
+                            <label path="unitName" for="unitName" cssClass="required">Unit Name</label>
+                            <input formControlName="unitName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.unitName.errors }" />
+                            <div *ngIf="submitted && f.unitName.errors" class="invalid-feedback">
+                                <div *ngIf="f.unitName.errors.required">Unit Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 ">
+                        <div class="form-group">
+                            <label path="unitDescribtion" for="unitDescribtion" cssClass="required">Unit Description</label>
+                            <!-- <input formControlName="unitDescribtion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.unitDescribtion.errors }" /> -->
+                            <textarea class="form-control" rows="3" cols="1" path="unitDescribtion" formControlName="unitDescribtion" [ngClass]="{'is-invalid': submitted && f.unitDescribtion.errors}">
+                        </textarea>
+                            <div *ngIf="submitted && f.unitDescribtion.errors" class="invalid-feedback">
+                                <div *ngIf="f.unitDescribtion.errors.required">
+                                    Unit Description is required</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <!-- <div class="col-xs-6 col-sm-6 ">
+                        <div class="form-group">
+                            <label for="roleID">Department Name</label>
+                            <select formControlName="deptslNo" class="form-control" name="deptslNo" id="deptslNo" [ngClass]="{ 'is-invalid': submitted && f.deptslNo.errors }">
+                                <option value="null"> - Select the Department - </option>
+                                <option *ngFor="let department of departmentSettings" [value]="department.slNo">
+                                    {{department.department}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.deptslNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.deptslNo.errors.required">Department Name is required</div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-xs-6 col-sm-6 ">
+                        <div class="form-group">
+                            <label path="status" for="status" cssClass="required">Status</label>
+                            <!-- <input formControlName="status" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.status.errors }" /> -->
+                            <select formControlName="status" class="form-control" name="status" id="status" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
+                                <option value="null"> - Select the Status - </option>
+                                <option *ngFor="let statusprop of statusproperty" [value]="statusprop.slNo">
+                                    {{statusprop.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                                <div *ngIf="f.status.errors.required">Status is required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Unit Master Details</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

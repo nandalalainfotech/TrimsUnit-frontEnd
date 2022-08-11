@@ -1,0 +1,304 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Purchase Invoice</legend>
+        <div class="formData">
+            <form [formGroup]="salesOrderForm" (ngSubmit)="onSalesOrderClick($event, salesOrderForm)">
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="porderSlno" for="porderSlno" cssClass="required">Supplier From</label>
+                            <select class="form-control" path="porderSlno" formControlName="porderSlno" (click)="onPurchaseClick()">
+                                <option value="" hidden> - Select the Supplier From - </option>
+                                <option value="null"> - Select the Supplier From - </option>
+                                <option *ngFor="let purchaseOrder of purchaseOrders;" [value]='purchaseOrder.slNo'>
+                                    {{purchaseOrder.supplierFrom}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.porderSlno.errors" class="invalid-feedback">
+                                <div *ngIf="f.porderSlno.errors.required">
+                                    Invioce No is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="buyer_billto" for="buyer_billto" cssClass="required">Buyer (Invioce To)</label>
+                            <input type="text" class="form-control" path="buyer_billto" formControlName="buyer_billto" readonly />
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="consignee" for="consignee" cssClass="required">Consignee No (Ship
+                                    To)</label>
+                                <input type="text" class="form-control" path="consignee" formControlName="consignee" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="invoiceNo" for="invoiceNo" cssClass="required">Invoice No</label>
+                            <input type="text" class="form-control" path="invoiceNo" formControlName="invoiceNo" />
+                            <div *ngIf="submitted && f.invoiceNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.invoiceNo.errors.required">Invoice No is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="date" for="date" cssClass="required">Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="date" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                        <div *ngIf="f.date.errors.required">
+                                            Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="deliveryNote" for="deliveryNote" cssClass="required">Delivery Note</label>
+                            <input type="text" class="form-control" path="deliveryNote" formControlName="deliveryNote" />
+                            <div *ngIf="submitted && f.deliveryNote.errors" class="invalid-feedback">
+                                <div *ngIf="f.deliveryNote.errors.required">
+                                    Delivery Note is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="modePay" for="modePay" cssClass="required">Mode Of Terms</label>
+                            <input type="text" class="form-control" path="modePay" formControlName="modePay" />
+                            <div *ngIf="submitted && f.modePay.errors" class="invalid-feedback">
+                                <div *ngIf="f.modePay.errors.required">
+                                    Mode Of Terms is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="refNoDate" for="refNoDate" cssClass="required">Reference No</label>
+                            <input type="text" class="form-control" path="refNoDate" formControlName="refNoDate" />
+                            <div *ngIf="submitted && f.refNoDate.errors" class="invalid-feedback">
+                                <div *ngIf="f.refNoDate.errors.required">
+                                    Reference No is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="otherRef" for="otherRef" cssClass="required">Other Reference</label>
+                            <input type="text" class="form-control" path="otherRef" formControlName="otherRef" />
+                            <div *ngIf="submitted && f.otherRef.errors" class="invalid-feedback">
+                                <div *ngIf="f.otherRef.errors.required">
+                                    Other Reference is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="buyerOrderNo" for="buyerOrderNo" cssClass="required">Buyer's Order No</label>
+                            <input type="text" class="form-control" path="buyerOrderNo" formControlName="buyerOrderNo" />
+                            <div *ngIf="submitted && f.buyerOrderNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.buyerOrderNo.errors.required">
+                                    Buyer's Order No is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="buyerDate" for="buyerDate" cssClass="required">Buyer's Date</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="buyerDate" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.buyerDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.buyerDate.errors.required">
+                                            Buyer's Date is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="dispatchDocNo" for="dispatchDocNo" cssClass="required">Dispatch Doc No</label>
+                            <input type="text" class="form-control" path="dispatchDocNo" formControlName="dispatchDocNo" />
+                            <div *ngIf="submitted && f.dispatchDocNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.dispatchDocNo.errors.required">Dispatch Doc No is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="deliveryNoteDate" for="deliveryNoteDate" cssClass="required">Delivery Note
+                                Date</label>
+                            <input type="text" class="form-control" path="deliveryNoteDate" formControlName="deliveryNoteDate" />
+                            <div *ngIf="submitted && f.deliveryNoteDate.errors" class="invalid-feedback">
+                                <div *ngIf="f.deliveryNoteDate.errors.required">Delivery Note Date is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="dispatchThrough" for="dispatchThrough" cssClass="required">Dispatched
+                                Through</label>
+                            <input type="text" class="form-control" path="dispatchThrough" formControlName="dispatchThrough" />
+                            <div *ngIf="submitted && f.dispatchThrough.errors" class="invalid-feedback">
+                                <div *ngIf="f.dispatchThrough.errors.required">Dispatched Through is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="destination" for="destination" cssClass="required">Destination</label>
+                            <input type="text" class="form-control" path="destination" formControlName="destination" />
+                            <div *ngIf="submitted && f.destination.errors" class="invalid-feedback">
+                                <div *ngIf="f.destination.errors.required">Destination is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="billOfLading" for="billOfLading" cssClass="required">Billing Of Lading</label>
+                            <input type="text" class="form-control" path="billOfLading" formControlName="billOfLading" />
+                            <div *ngIf="submitted && f.billOfLading.errors" class="invalid-feedback">
+                                <div *ngIf="f.billOfLading.errors.required">Billing Of Landing is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="motorvehicleNo" for="motorvehicleNo" cssClass="required">Motor Vechile
+                                No</label>
+                            <input type="text" class="form-control" path="motorvehicleNo" formControlName="motorvehicleNo" />
+                            <div *ngIf="submitted && f.motorvehicleNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.motorvehicleNo.errors.required">Motor Vechile No is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="termsDelivery" for="termsDelivery" cssClass="required">Terms Of
+                                Delivery</label>
+                            <input type="text" class="form-control" path="termsDelivery" formControlName="termsDelivery" />
+                            <div *ngIf="submitted && f.termsDelivery.errors" class="invalid-feedback">
+                                <div *ngIf="f.termsDelivery.errors.required">Terms Of Delivery is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="description" for="description" cssClass="required">Description Of Goods</label>
+                            <input type="text" class="form-control" path="description" formControlName="description" readonly />
+
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="hsn" for="hsn" cssClass="required">HSN/SAC</label>
+                            <input type="text" class="form-control" path="hsn" formControlName="hsn" readonly />
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="partno" for="partno" cssClass="required">Part No</label>
+                            <input type="text" class="form-control" path="partno" formControlName="partno" readonly />
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="quantity" for="quantity" cssClass="required">Quantity</label>
+                            <input type="text" class="form-control" path="quantity" formControlName="quantity" readonly />
+
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="rate" for="rate" cssClass="required">Price</label>
+                            <input type="text" class="form-control" path="rate" formControlName="rate" readonly />
+
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="amount" for="amount" cssClass="required">Amount</label>
+                            <input type="text" class="form-control" path="amount" formControlName="amount" readonly />
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;" (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" (click)="onGeneratePdfReport()" style="margin-right: 40px;">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <legend class="scheduler-border">Sales Invoice</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

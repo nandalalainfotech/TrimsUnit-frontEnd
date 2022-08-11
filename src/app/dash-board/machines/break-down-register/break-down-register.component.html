@@ -1,0 +1,233 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Break Down Register</legend>
+    <div class="formData">
+        <form [formGroup]="breakDownForm" (ngSubmit)="onBreakDownClick($event, breakDownForm)">
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-5 col-sm-5">
+                    <div class="form-group">
+                        <label path="machineno" for="series" cssClass="required" required="true">Machine Code
+                            :</label>
+                        <span *ngIf="machine001mb"><b> {{machine001mb.mcode}}</b></span>
+
+                    </div>
+                </div>
+
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-5 col-sm-5">
+                    <div class="form-group">
+                        <label path="machinenames" for="series" cssClass="required">Machine Name :</label>
+                        <span *ngIf="machine001mb"><b> {{machine001mb.mname}}</b></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="date" for="date" cssClass="required"> Date</label>
+                                <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="date" [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030" inputId="navigators" [showIcon]="true" inputId="icon">
+                                </p-calendar>
+                                <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                    <div *ngIf="f.date.errors.required">Date is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="bdsl" for="bdsl" cssClass="required">Breakdown Details</label>
+                        <select class="form-control" path="bdsl" formControlName="bdsl" [ngClass]="{'is-invalid': submitted && f.bdsl.errors}" (change)="onBreakDownChange($event)">
+                            <option value="" hidden> - Select BreakDown - </option>
+                            <option value="null"> - Select BreakDown - </option>
+                            <option *ngFor="let breakDown of breakdownSettings;" [value]='breakDown.slNo'>
+                                {{breakDown.name}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.bdsl.errors" class="invalid-feedback">
+                            <div *ngIf="f.bdsl.errors.required">
+                                Breakdown Details Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="rcsl" for="rcsl" cssClass="required">Root Cause</label>
+                        <select class="form-control" path="rcsl" formControlName="rcsl" (change)="onRootCauseChange($event)" [ngClass]="{'is-invalid': submitted && f.rcsl.errors}">
+                            <option value="" hidden> - Select the Root Cause - </option>
+                            <option value="null"> - Select the Root Cause - </option>
+                            <option *ngFor="let rootCause of rootcauses;" [value]='rootCause.slNo'>
+                                {{rootCause.name}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.rcsl.errors" class="invalid-feedback">
+                            <div *ngIf="f.rcsl.errors.required">
+                                Root Cause Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="pasl" for="pasl" cssClass="required">Preventive Action</label>
+                        <select class="form-control" path="pasl" formControlName="pasl" [ngClass]="{'is-invalid': submitted && f.pasl.errors}">
+                            <option value="" hidden> - Select the Action - </option>
+                            <option value="null"> - Select the Action - </option>
+                            <option *ngFor="let preventiveaction of preventiveactionSettings;"
+                                [value]='preventiveaction.slNo'>
+                                {{preventiveaction.name}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.pasl.errors" class="invalid-feedback">
+                            <div *ngIf="f.pasl.errors.required">
+                                Preventive Action is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="startTime" for="startTime" cssClass="required">Start Time</label>
+                        <input type="time" class="form-control" path="startTime" formControlName="startTime" [ngClass]="{'is-invalid': submitted && f.startTime.errors}" />
+                        <div *ngIf="submitted && f.startTime.errors" class="invalid-feedback">
+                            <div *ngIf="f.startTime.errors.required">
+                                Start Time is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="endTime" for="endTime" cssClass="required">End Time</label>
+                        <input type="time" class="form-control" path="endTime" formControlName="endTime" [ngClass]="{'is-invalid': submitted && f.endTime.errors}" />
+                        <div *ngIf="submitted && f.endTime.errors" class="invalid-feedback">
+                            <div *ngIf="f.endTime.errors.required">
+                                End Time is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="sslno" for="sslno" cssClass="required">Spares Used</label>
+                        <select class="form-control" path="sslno" formControlName="sslno" [ngClass]="{'is-invalid': submitted && f.sslno.errors}">
+                            <option value="" hidden> - Select the Spares - </option>
+                            <option value="null"> - Select the Spares - </option>
+                            <option *ngFor="let spares of sparesSettings;" [value]='spares.slNo'>
+                                {{spares.spares}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.sslno.errors" class="invalid-feedback">
+                            <div *ngIf="f.sslno.errors.required">
+                                Spares Used is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="sparescost" for="sparescost" cssClass="required">Spares Cost</label>
+                        <input class="form-control" path="sparescost" formControlName="spareCost" readonly />
+                        <!-- <div *ngIf="submitted && f.spareCost.errors" class="invalid-feedback">
+                            <div *ngIf="f.spareCost.errors.required">
+                                Spares Cost is Required
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="sparesQty" for="sparesQty" cssClass="required">Spares Quantity</label>
+                        <input class="form-control" path="sparesQty" formControlName="sparesQty" [ngClass]="{'is-invalid': submitted && f.sparesQty.errors}" />
+                        <div *ngIf="submitted && f.sparesQty.errors" class="invalid-feedback">
+                            <div *ngIf="f.sparesQty.errors.required">
+                                Spares Quantity is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="attendby" for="attendby" cssClass="required">Attended By</label>
+                        <input class="form-control" path="attendby" formControlName="attendby" [ngClass]="{'is-invalid': submitted && f.attendby.errors}" />
+                        <div *ngIf="submitted && f.attendby.errors" class="invalid-feedback">
+                            <div *ngIf="f.attendby.errors.required">
+                                Attended by is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label path="remarks" for="remarks" cssClass="required">Remarks</label>
+                        <input class="form-control" path="remarks" formControlName="remarks" [ngClass]="{'is-invalid': submitted && f.remarks.errors}" />
+                        <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                            <div *ngIf="f.remarks.errors.required">
+                                Remarks is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <div class="form-group">
+                        <label>File Upload:</label>
+                        <input type="file" class="form-control" formControlName="filename" (change)="onFileSelected($event)" />
+                        <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                            <div *ngIf="f.remarks.errors.required">
+                                File Upload is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-10 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;" (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" (click)="onGeneratePdfReport()" style="margin-right: 40px;">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <legend class="scheduler-border">Break Down Register</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

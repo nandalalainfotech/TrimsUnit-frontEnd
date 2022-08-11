@@ -1,0 +1,152 @@
+<div class="container-fluid register">
+    <div class="row">
+        <div class="ng ">
+            <div class="col-md-3 col-lg-3 col-sm-3 register-left">
+                <img src="../../assets/images/Rocket_image.png" alt="" />
+                <h3 class="typography">TRIMS NxtGen ERP</h3>
+            </div>
+            <div class="col-md-9 col-sm-9 col-lg-9 register-right">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">REGISTER HERE</h3>
+                        <div class="row register-form">
+                            <form [formGroup]="userRegisterForm"
+                                (ngSubmit)="onUserRegistrationClick($event, userRegisterForm)">
+                                <div class="totaltextbox">
+                                    <div class="row col-md-12 col-lg-12 col-sm-12 textset1">
+                                        <div class="row col-md-6 col-sm-6 col-lg-6 fname1">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" formControlName="firstname"
+                                                    placeholder="First Name*" value=""
+                                                    [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+
+                                            </div>
+                                            <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                                                <div *ngIf="f.firstname.errors.required">First Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row col-md-6 col-sm-6 col-lg-6 lname2">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" formControlName="lastname"
+                                                    placeholder="Last Name*" value=""
+                                                    [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+
+                                            </div>
+                                            <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                                                <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row col-md-12 col-lg-12 col-sm-12 textset2">
+                                        <div class="row col-md-6 col-sm-6 col-lg-6 fname1">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" formControlName="username"
+                                                    placeholder="User Name*" value=""
+                                                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+
+                                            </div>
+                                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                                <div *ngIf="f.username.errors.required">User Name is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="row col-md-6 col-sm-6 col-lg-6 Qname">
+                                            <div class="form-group">
+                                                <select class="select form-control-arrow form-control"
+                                                    formControlName="dpslno"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.dpslno.errors }" required>
+                                                    <!-- <option value="" hidden> - Select the Department - </option> -->
+                                                    <option [value]="null"> Select the Department </option>
+
+                                                    <option *ngFor="let departmentSetting of departmentSettings"
+                                                        [value]="departmentSetting.slNo">
+                                                        {{departmentSetting.department}}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                            <div *ngIf="submitted && f.dpslno.errors" class="invalid-feedback">
+                                                <div *ngIf="f.dpslno.errors.required">Department is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row col-md-12 col-lg-12 col-sm-12 textset3">
+                                        <div class="row col-md-6 col-sm-6 col-lg-6 Qname">
+                                            <div class="form-group">
+                                                <!-- <select class="form-control-arrow" formControlName="securityquestion">
+                                                    <option value="">Please select your Security Question </option>
+                                                    <option>What is your Birthdate?</option>
+                                                    <option>What is your Childhood Friend Name?</option>
+                                                    <option>What is Your old Phone Number</option>
+                                                    <option>What is your Pet Name?</option>
+                                                </select> -->
+                                                <select formControlName="securityquestion" class="form-control-arrow"
+                                                    name="securityQuestionList" id="securityQuestionList"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.securityquestion.errors }">
+                                                    <option value="" hidden> Select the Question </option>
+                                                    <option value="null"> Select the Question </option>
+                                                    <option *ngFor="let system of systemproperties"
+                                                        [value]="system.description">
+                                                        {{system.description}}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                            <div *ngIf="submitted && f.securityquestion.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f.securityquestion.errors.required">Security Question is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                        <div class="row col-md-6 col-sm-6 col-lg-6 Aname">
+                                            <div class="form-group ">
+                                                <input type="text" class="form-control" formControlName="securityanswer"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.securityanswer.errors }"
+                                                    placeholder="Enter Your Answer*" value="" />
+
+                                            </div>
+                                            <div *ngIf="submitted && f.securityanswer.errors" class="invalid-feedback">
+                                                <div *ngIf="f.securityanswer.errors.required">Security Answer is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row col-md-12 col-lg-12 col-sm-12 textset4">
+                                        <div class="row col-md-6 col-sm-6 col-lg-6 ename">
+                                            <div class="form-group">
+                                                <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                                                <input type="email" name="email" id="email" class="form-control"
+                                                    [class.is-invalid]="userRegisterForm.get('email').invalid && userRegisterForm.get('email').touched"
+                                                    [email]="emailValidation" formControlName="email"
+                                                    placeholder="Email"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                            </div>
+
+                                            <div
+                                                *ngIf="(userRegisterForm.get('email').invalid && userRegisterForm.get('email').touched) || userRegisterForm.get('email').dirty">
+                                                <div *ngIf="userRegisterForm.get('email').errors?.required"
+                                                    class="invalid-feedback">
+                                                    Email Address is Required</div>
+                                                <div *ngIf="userRegisterForm.get('email').errors?.email"
+                                                    class="invalid-feedback">Email
+                                                    Address is Invalid</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="buttonsregba">
+                                    <input type="back" class="btnback" value="back" (click)="onBack()" />
+                                    <input type="submit" class="btnRegister" value="submit" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

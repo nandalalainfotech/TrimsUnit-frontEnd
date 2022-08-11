@@ -1,0 +1,197 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Consignee Form</legend>
+        <div class="formData">
+            <form [formGroup]="consigneeForm" (ngSubmit)="onconsigneeClick($event, consigneeForm)">
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="companySlno" for="companySlno" cssClass="required">Company Name</label>
+                            <select class="form-control" path="companySlno" formControlName="companySlno" [ngClass]="{'is-invalid': submitted && f.companySlno.errors}">
+                                <option value="" hidden> - Select the Company Name - </option>
+                                <option value="null"> - Select the Company Name - </option>
+                                <option *ngFor="let companydetail of companydetails;" [value]='companydetail.slNo'>
+                                    {{companydetail.company}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.companySlno.errors" class="invalid-feedback">
+                                <div *ngIf="f.companySlno.errors.required">
+                                    Company Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="consignee" for="consignee" cssClass="required">Consignee</label>
+                            <input type="text" class="form-control" path="consignee" formControlName="consignee" [ngClass]="{'is-invalid': submitted && f.consignee.errors}" />
+                            <div *ngIf="submitted && f.consignee.errors" class="invalid-feedback">
+                                <div *ngIf="f.consignee.errors.required">Consignee is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="address1" for="address1" cssClass="required">Address1</label>
+                            <input type="text" class="form-control" path="address1" formControlName="address1" [ngClass]="{'is-invalid': submitted && f.address1.errors}" />
+                            <div *ngIf="submitted && f.address1.errors" class="invalid-feedback">
+                                <div *ngIf="f.address1.errors.required">Address1 is Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="address2" for="address2" cssClass="required">Address2</label>
+                            <input type="text" class="form-control" path="address2" formControlName="address2" [ngClass]="{'is-invalid': submitted && f.address2.errors}" />
+                            <div *ngIf="submitted && f.address2.errors" class="invalid-feedback">
+                                <div *ngIf="f.address2.errors.required">Address2 is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="address3" for="address3" cssClass="required">Address3</label>
+                            <input type="text" class="form-control" path="address3" formControlName="address3" [ngClass]="{'is-invalid': submitted && f.address3.errors}" />
+                            <div *ngIf="submitted && f.address3.errors" class="invalid-feedback">
+                                <div *ngIf="f.address3.errors.required">
+                                    Address3 is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="gstIn" for="gstIn" cssClass="required">GSTIN</label>
+                            <input type="text" class="form-control" path="gstIn" formControlName="gstIn" [ngClass]="{'is-invalid': submitted && f.gstIn.errors}" />
+                            <div *ngIf="submitted && f.gstIn.errors" class="invalid-feedback">
+                                <div *ngIf="f.gstIn.errors.required">
+                                    GSTIN is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="city" for="city" cssClass="required">City</label>
+                            <input type="text" class="form-control" path="city" formControlName="city" [ngClass]="{'is-invalid': submitted && f.city.errors}" />
+                            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                                <div *ngIf="f.city.errors.required">
+                                    City is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="state" for="state" cssClass="required">State</label>
+                            <input type="text" class="form-control" path="state" formControlName="state" [ngClass]="{'is-invalid': submitted && f.state.errors}" />
+                            <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                                <div *ngIf="f.state.errors.required">
+                                    State is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="country" for="country" cssClass="required">Country</label>
+                            <input type="text" class="form-control" path="country" formControlName="country" [ngClass]="{'is-invalid': submitted && f.country.errors}" />
+                            <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                <div *ngIf="f.country.errors.required">
+                                    Country is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="pinCode" for="pinCode" cssClass="required">Pin Code</label>
+                            <input type="text" class="form-control" path="pinCode" formControlName="pinCode" [ngClass]="{'is-invalid': submitted && f.pinCode.errors}" />
+                            <div *ngIf="submitted && f.pinCode.errors" class="invalid-feedback">
+                                <div *ngIf="f.pinCode.errors.required">
+                                    Pin Code is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="emailId" for="emailId" cssClass="required">Email ID</label>
+                            <input type="text" class="form-control" path="emailId" formControlName="emailId" [ngClass]="{'is-invalid': submitted && f.emailId.errors}" />
+                            <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+                                <div *ngIf="f.emailId.errors.required">
+                                    Email ID is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="contactNo" for="contactNo" cssClass="required">Contact No</label>
+                            <input type="text" class="form-control" path="contactNo" formControlName="contactNo" [ngClass]="{'is-invalid': submitted && f.contactNo.errors}" />
+                            <div *ngIf="submitted && f.contactNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.contactNo.errors.required">
+                                    Contact No is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+
+
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                        (click)="onGeneratePdfReport()">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <legend class="scheduler-border">Consignee Form</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

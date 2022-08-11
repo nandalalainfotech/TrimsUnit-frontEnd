@@ -1,0 +1,206 @@
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Purchase Order</legend>
+        <div class="formData">
+            <form [formGroup]="purchaseOrderForm" (ngSubmit)="onPurchaseOrderClick($event, purchaseOrderForm)">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="suplierSlno" for="suplierSlno" cssClass="required">Supplier Code</label>
+                            <select class="form-control" path="suplierSlno" formControlName="suplierSlno" (change)="onChange($event)">
+                                <option value="" hidden> - Select the Supplier Code - </option>
+                                <option value="null"> - Select the Supplier code - </option>
+                                <option *ngFor="let suppliercode of suppliercodes" [value]='suppliercode.slNo'>
+                                    {{suppliercode.supplierSlno}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="suplierName" for="suplierName" cssClass="required">supplier Name</label>
+                                <input type="text" class="form-control" path="suplierName" formControlName="suplierName" readonly/>
+                                <div *ngIf="submitted && f.suplierName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.suplierName.errors.required">
+                                        suplierName is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label path="suplieraddress" for="suplieraddress" cssClass="required">Consignee No (Ship
+                                    To)</label>
+                                    <input type="text" class="form-control" path="suplieraddress" formControlName="suplieraddress" readonly/>
+                                <!-- <select class="form-control" path="suplieraddress" formControlName="suplieraddress"
+                                    [ngClass]="{'is-invalid': submitted && f.suplieraddress.errors}">
+                                    <option value="" hidden> - Select the Consignee No - </option>
+                                    <option value="null"> - Select the Consignee No - </option>
+                                    <option *ngFor="let supplierquotation001wb of supplierquotation001wbs;" [value]='supplierquotation001wb.slNo'>
+                                        {{supplierquotation001wb.address}}
+                                    </option>
+                                </select> -->
+                                <div *ngIf="submitted && f.suplieraddress.errors" class="invalid-feedback">
+                                    <div *ngIf="f.suplieraddress.errors.required">
+                                        Consignee No is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="pono" for="series" cssClass="required" required="true">PO NO</label>
+                            <input class="form-control" formControlName="pono" readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="date" for="date" cssClass="required">Date</label>
+                            <input class="form-control" formControlName="date" readonly />
+    
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="prsno" for="series" cssClass="required" required="true">PRS No</label>
+                            <select class="form-control" path="prsno" formControlName="prsno" (change)="onChangeprsNo($event)">
+                                <option value="" hidden> - Select the Supplier Code - </option>
+                                <option value="null"> - Select the Supplier code - </option>
+                                <option *ngFor="let suppliercode of suppliercodes" [value]='suppliercode.slNo'>
+                                    {{suppliercode.prsno}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="qno" for="qno" cssClass="required">Quotation No</label>
+                            <input type="text" class="form-control" path="qno" formControlName="qno"
+                               readonly/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="dispatchThrough" for="dispatchThrough" cssClass="required">Dispached
+                                Through</label>
+                            <textarea class="form-control" rows="3" cols="1" path="dispatchThrough"
+                                formControlName="dispatchThrough"
+                                [ngClass]="{'is-invalid': submitted && f.dispatchThrough.errors}">
+                            </textarea>
+                            <div *ngIf="submitted && f.dispatchThrough.errors" class="invalid-feedback">
+                                <div *ngIf="f.dispatchThrough.errors.required">
+                                    Dispached Through is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="destination" for="destination" cssClass="required">Destination</label>
+                            <textarea class="form-control" rows="3" cols="1" path="destination"
+                                formControlName="destination"
+                                [ngClass]="{'is-invalid': submitted && f.destination.errors}">
+                            </textarea>
+                            <div *ngIf="submitted && f.destination.errors" class="invalid-feedback">
+                                <div *ngIf="f.destination.errors.required">
+                                    Destination is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="termsDelivery" for="termsDelivery" cssClass="required">Terms Of
+                                Delivery</label>
+                            <textarea class="form-control" rows="3" cols="1" path="termsDelivery"
+                                formControlName="termsDelivery"readonly>
+                            </textarea>
+                    
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <label path="supplierFrom" for="supplierFrom" cssClass="required">Supplier (Bill
+                                From)</label>
+                            <textarea class="form-control" rows="3" cols="1" path="supplierFrom"
+                                formControlName="supplierFrom"
+                                [ngClass]="{'is-invalid': submitted && f.supplierFrom.errors}">
+                            </textarea>
+                            <div *ngIf="submitted && f.supplierFrom.errors" class="invalid-feedback">
+                                <div *ngIf="f.supplierFrom.errors.required">
+                                    Supplier is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <div class="form-group">
+                            <div class="p-fluid p-grid p-formgrid">
+                                <div class="p-field p-col-12 p-md-5">
+                                    <label path="dueOn" for="dueOn" cssClass="required">Due On</label>
+                                    <p-calendar [monthNavigator]="true" [yearNavigator]="true" formControlName="dueOn"
+                                        [minDate]="minDate" [maxDate]="maxDate" yearRange="2000:2030"
+                                        inputId="navigators" [showIcon]="true" inputId="icon">
+                                    </p-calendar>
+                                    <div *ngIf="submitted && f.dueOn.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dueOn.errors.required">Due On is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1"></div>
+                 
+                </div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit" style="right: 30%"
+                                (click)="onStatusClick()">Submit For Approval</button>
+                            <button type="button" class="btn btn-primary" style="left: 71%;"
+                                (click)="onAddbuttonClick(addPopup)">Add Item</button>
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                        (click)="onViewClick()">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
+                    <button type="button" class="btn btn-primary submit" (click)="onGeneratePdfReport()"
+                        style="margin-right: 40px;">
+                        Export Pdf
+                    </button>
+                    <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <legend class="scheduler-border">Purchase Order</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions"  [getRowStyle]="getRowStyle" (rowClicked)="rowClicked($event)"  style="width: 100%; height: 350px;"
+            [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

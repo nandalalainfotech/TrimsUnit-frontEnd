@@ -1,0 +1,115 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Supplier Assessment Form</legend>
+    <div class="formData">
+        <form [formGroup]="SupplierAssessForm" (ngSubmit)="onSupplierAssessClick($event, SupplierAssessForm)">
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-5 col-sm-5">
+                    <div class="form-group">
+                        <label path="machineno" for="series" cssClass="required" required="true">Supplier Code
+                            :</label>
+                        <span *ngIf="supplierregistration001mb"><b>
+                                {{supplierregistration001mb.supplierCode}}</b></span>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-sm-5">
+                    <div class="form-group">
+                        <label path="machinenames" for="series" cssClass="required">Supplier Name :</label>
+                        <span *ngIf="supplierregistration001mb"><b>
+                                {{supplierregistration001mb.supplierName}}</b></span>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div><br>
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-5">
+                    <div class="form-group">
+                        <label path="assessSlno" for="assessSlno" cssClass="required">Assessment Criteria</label>
+                        <select class="form-control" path="assessSlno" formControlName="assessSlno">
+                            <option value="" hidden> - Assessment Criteria - </option>
+                            <option value="null"> - Assessment Criteria - </option>
+                            <option *ngFor="let criterias of accessmentcriterias" [value]="criterias.slNo">
+                                {{criterias.criteria}} </option>
+                        </select>
+                        <div *ngIf="submitted && f.assessSlno.errors" class="invalid-feedback">
+                            <div *ngIf="f.assessSlno.errors.required">
+                                Assessment Criteria is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-5">
+                    <div class="form-group">
+                        <div class="p-fluid p-grid p-formgrid">
+                            <div class="p-field p-col-12 p-md-5">
+                                <label path="detail" for="detail" cssClass="required"> Details Verified</label>
+                                <textarea class="form-control" rows="3" cols="1" path="detail" formControlName="detail"
+                                    readonly>
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-1 col-sm-1"></div>
+                <div class="col-xs-3 col-sm-5">
+                    <div class="form-group">
+                        <label path="address" for="address" cssClass="required">Max Score</label>
+                        <input type="text" class="form-control" path="contact" value="10" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-5">
+                    <div class="form-group">
+                        <label path="score" for="score" cssClass="required">Scored</label>
+                        <input type="text" class="form-control" path="score" formControlName="score" />
+                        <div *ngIf="submitted && f.score.errors" class="invalid-feedback">
+                            <div *ngIf="f.score.errors.required">
+                                Score is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-sm-1"></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-10 ">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary submit">Complete</button>
+                        <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+
+<div class="scrollbar">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary submit" style="margin-right: 150px;"
+                    (click)="onViewClick()">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                </button>
+                <button type="button" class="btn btn-primary submit" style="margin-right: 40px;"
+                    (click)="onGeneratePdfReport()">
+                    Export Pdf
+                </button>
+                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Supplier Assessment Form</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+            [pagination]="true" [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>

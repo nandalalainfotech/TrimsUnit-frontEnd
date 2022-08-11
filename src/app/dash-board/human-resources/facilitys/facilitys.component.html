@@ -1,0 +1,11 @@
+ <div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div> 
+
+<nav mat-tab-nav-bar>
+   
+    <a mat-tab-link routerLink="./app-firstaid-materials-plan"  routerLinkActive #firstaidTab="routerLinkActive" [active]="firstaidTab.isActive">LIST OF FIRST AID MATERIALS </a>
+    <a mat-tab-link routerLink="./app-safetyequipments-plan"  routerLinkActive #safetyTab="routerLinkActive" [active]="safetyTab.isActive">LIST OF SAFETY EQUIPMENTS  </a>
+    <a mat-tab-link routerLink="./app-fire-plan"  routerLinkActive #fireTab="routerLinkActive" [active]="fireTab.isActive">LIST OF FIRE EXTINGUISHERS</a>
+</nav>
+<router-outlet></router-outlet>
